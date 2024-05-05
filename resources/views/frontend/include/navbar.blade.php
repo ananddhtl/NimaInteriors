@@ -37,8 +37,8 @@
 
                     <ul class="nav">
                         <li><a href="/">Home</a></li>
-                        <li><a href="project-grid.html">Project Grid</a></li>
-                        <li><a href="blog-list.html">Blogs</a></li>
+                        <li><a href="/project">Project Grid</a></li>
+                        <li><a href="/blog">Blogs</a></li>
                         <li><a href="/aboutus">About Us</a></li>
                         <li><a href="/gallery">Gallery</a></li>
                         <li><a href="/faq">FAQ's</a></li>

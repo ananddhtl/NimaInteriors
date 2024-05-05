@@ -28,16 +28,16 @@
                 </a>
             </li>
 
-            <li class="menu-title">Custom</li>
+            <li class="menu-title">Pages</li>
 
             <li class="menu-item">
                 <a href="apps-calendar.html" class="menu-link waves-effect waves-light">
                     <span class="menu-icon"><i class="bx bx-calendar"></i></span>
-                    <span class="menu-text"> Calendar </span>
+                    <span class="menu-text"> Contact Us </span>
                 </a>
             </li>
 
-            <li class="menu-item">
+            {{-- <li class="menu-item">
                 <a href="#menuExpages" data-bs-toggle="collapse" class="menu-link waves-effect waves-light">
                     <span class="menu-icon"><i class="bx bx-file"></i></span>
                     <span class="menu-text"> Extra Pages </span>
@@ -459,7 +459,7 @@
                         </li>
                     </ul>
                 </div>
-            </li>
+            </li> --}}
         </ul>
     </div>
 </div>

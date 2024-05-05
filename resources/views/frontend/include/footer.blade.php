@@ -1,3 +1,9 @@
+<style>
+	.copyright span{
+		color: #D8D8D8;
+		text-decoration: underline;
+	}
+	</style>
 <footer>
 		<div class="container">
 			<div class="row">
@@ -44,21 +50,17 @@
 			</div>
 			<div class="row">
 				<div class="col-lg-3 copyright">
-					
 						<a href="#"><span>Algemene voorwaarden</span></a>
 						<a href="#"><span>Privacyverklaring</span></a>
-
 						<a href="/contact"><span>Cookies</span></a>
-				
-					
 				
 				</div>
 				<div class="col-lg-6">
 					<p class="copyright">© 2021 nimainteriors. All Rights Reserved.</p>
 				</div>
 				<div class="col-lg-3">
-					<p class="copyright">Talen
-						Nederlands English</p>
+					<p class="copyright">Talen<br>
+						Nederlands&nbsp;/&nbsp;English</p>
 				</div>
 			</div>
 		</div>
