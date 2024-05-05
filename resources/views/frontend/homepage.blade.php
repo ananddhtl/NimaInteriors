@@ -9,7 +9,7 @@
 					<div class="col-lg-4 col-md-12 col-sm-12">
 						<div class="welcome-text">
 							<h1>Nima Interiors</h1>
-							<p>Quisque ullamcorper volutpat dolor, sit amet egestas risus elementum id. Duis luctus augue vestibulum sem.</p>
+							<p>Welkom bij Nima Interiors, een toegewijd familiebedrijf sinds 2014.</p>
 							<a class="dark-btn" href="project-grid.html">
 								<span class="show-btn">EXPLORE KITCHEN</span>
 								<span class="hide-btn">EXPLORE KITCHEN</span>
@@ -30,6 +30,7 @@
 						<i class="fa fa-angle-right"></i>
 					</div>
 				</div>
+				{{-- dynamic value --}}
 				<div class="owl-carousel">
 					
 					<div class="item">
@@ -77,12 +78,12 @@
 
 	<!-- ***** Home Parallax Area Start ***** -->
 	<section class="half-parallax">
-		<div class="parallax-image">
+		{{-- <div class="parallax-image">
 
 
 
-		</div>
-		<div class="parallax-items">
+		</div> --}}
+		{{-- <div class="parallax-items">
 			<div class="container">
 				<div class="row">
 					<div class="col-lg-4 col-md-6 col-sm-12">
@@ -120,13 +121,13 @@
 					</div>
 				</div>
 			</div>
-		</div>
+		</div> --}}
 	</section>
 	<!-- ***** Home Parallax Area End ***** -->
 
 
 	<!-- ***** Features Big Item Start ***** -->
-	<section class="section padding-bottom-120">
+	<section class="section white padding-bottom-120">
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-5 col-md-12 col-sm-12 align-self-center mobile-bottom-fix">
@@ -142,56 +143,66 @@
 
 
 					</div>
+					<div>
+						<a href="/project">Laat je inspireren </a><i class="bi bi-arrow-left"></i>
+					</div>
+					
 				</div>
-				<div class="offset-lg-1 col-lg-6 col-md-12 col-sm-12 align-self-center" data-scroll-reveal="enter right move 30px over 0.6s after 0.3s">
-					<img src="{{asset('frontend/assets/images/photos/welcome/home-1.jpeg')}}" class="img-fluid float-right" alt="Title">
+				<div class="offset-lg-1 col-lg-6 col-md-12 col-sm-12 align-self-center">
+					<div  data-scroll-reveal="enter right move 30px over 0.6s after 0.3s">
+						<img src="{{asset('frontend/assets/images/photos/welcome/home-1.jpeg')}}" class="img-fluid float-right" alt="Title">
+					</div>
+				
 				</div>
+				
 			</div>
 		</div>
 	</section>
 	<!-- ***** Features Big Item End ***** -->
-<!--
 
-	***** Counter Parallax Start *****
-	<div class="parallax-counter">
-		<div class="parallax-content">
-			<div class="container">
-				<div class="row">
-					<div class="col-lg-3 col-md-6 col-sm-12">
-						<div class="count-item">
-							<strong>96</strong>
-							<span>Active<br>Customer</span>
+	<!-- ***** Features Big Item Start ***** -->
+	<section class="section   padding-bottom-120">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-8 col-md-12 col-sm-12 align-self-center mobile-bottom-fix">
+					<div class="row no-gutters">
+						<div class="col-lg-6  ">
+							<div data-scroll-reveal="enter right move 30px over 0.6s after 0.3s">
+								<img src="{{asset('frontend/assets/images/photos/home/showroom1.jpeg')}}" class="img-fluid float-right" alt="Title">
+							</div>
 						</div>
-					</div>
-					<div class="col-lg-3 col-md-6 col-sm-12">
-						<div class="count-item">
-							<strong>190</strong>
-							<span>Specialist<br>Staff</span>
-						</div>
-					</div>
-					<div class="col-lg-3 col-md-6 col-sm-12">
-						<div class="count-item">
-							<strong>193</strong>
-							<span>Complated<br>Project</span>
-						</div>
-					</div>
-					<div class="col-lg-3 col-md-6 col-sm-12">
-						<div class="count-item">
-							<strong>12</strong>
-							<span>Ongoing<br>Project</span>
+						<div class="col-lg-6">
+							<div data-scroll-reveal="enter right move 30px over 0.6s after 0.3s">
+								<img src="{{asset('frontend/assets/images/photos/home/show2.jpeg')}}" class="img-fluid float-right" alt="Title">
+							</div>
 						</div>
 					</div>
 				</div>
+				<div class="col-lg-4 col-md-12 col-sm-12 ">
+					<div class="left-heading">
+						<h2 class="section-title dotted">Onze showroom</h2>
+					</div>
+					<div class="left-text">
+						<p class="dark">Stap binnen en laat je verwelkomen in een tijdloze ruimte van inspiratie.We nodigen je graag uit op afspraak en nemen de tijd om samen jouw droomkeuken tot in detail te bespreken. 
+
+							</p>
+						<p class="margin-bottom-40">Neem de tijd om comfortabel plaats te nemen. Het kiezen van jouw nieuwe keuken is geen haastklus. Onze ruimte is ontworpen om je te inspireren, laat je creativiteit de vrije loop terwijl je onze diverse ontwerpen verkent. </p>
+
+
+
+					</div>
+					<div>
+						<a href="/project">Plan een afspraak</a><i class="bi bi-arrow-left"></i>
+					</div>
+				</div>
+				
 			</div>
 		</div>
-	</div> -->
-	<!-- ***** Counter Parallax End ***** -->
-
-
+	</section>
 
 
 	<!-- ***** Blog Start ***** -->
-	<section class="section white">
+	{{-- <section class="section white padding-bottom-120">
 		<div class="container">
 			<!-- ***** Section Title Start ***** -->
 			<div class="row">
@@ -246,6 +257,23 @@
 				<!-- ***** Blog Item End ***** -->
 			</div>
 		</div>
-	</section>
+	</section> --}}
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+
+	<script>
+		$(document).ready(function(){
+			$(".owl-carousel").owlCarousel({
+				items: 1, // Number of items to display
+				loop: true, // Enable infinite loop
+				autoplay: true, // Enable autoplay
+				autoplayTimeout: 100, // Autoplay interval in milliseconds (1 second)
+				autoplayHoverPause: false, // Do not pause autoplay on mouse hover
+				animateOut: 'fadeOutRight', // Animation for slide out
+				animateIn: 'fadeInLeft', // Animation for slide in
+				smartSpeed: 100, // Animation speed
+			});
+		});
+	</script>
 	<!-- ***** Blog End ***** -->
 @endsection

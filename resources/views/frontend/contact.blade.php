@@ -24,7 +24,7 @@
 		<!-- ***** Page Top End ***** -->
 
 		<!-- ***** Page Content Start ***** -->
-		<div class="page-bottom padding-top-0">
+		<div class="page-bottom ">
 			<!-- ***** Map Container Start ***** -->
 			<div class="section map">
 
@@ -41,7 +41,7 @@
 										<div class="icon">
 											<i class="fa fa-location-arrow"></i>
 										</div>
-										<p>455 West Orchard Street Kings <br>Mountain, NC 28086</p>
+										<p>Herentalsebaan 301 <br>2150 Borsbeek</p>
 									</div>
 								</div>
 								<div class="col-lg-4 col-md-6 col-sm-12">
@@ -49,8 +49,8 @@
 										<div class="icon">
 											<i class="fa fa-phone"></i>
 										</div>
-										<a href="tel:(272)211-7370">(272) 211-7370</a>
-										<a href="tel:(272)211-7370">(272) 211-7370</a>
+										<a href="tel:+32 3 296 82 66">+32 3 296 82 66</a>
+										
 									</div>
 								</div>
 								<div class="col-lg-4 col-md-6 col-sm-12">
@@ -58,8 +58,8 @@
 										<div class="icon">
 											<i class="fa fa-envelope"></i>
 										</div>
-										<a href="mailto:support@yourbrand.com">support@yourbrand.com</a>
-										<a href="mailto:info@yourbrand.com">info@yourbrand.com</a>
+										
+										<a href="mailto:info@nimainteriors.com">info@nimainteriors.com</a>
 									</div>
 								</div>
 							</div>
@@ -67,22 +67,30 @@
 					</div>
 				</div>
 			</div>
-
+			<div class="container">
+				<div class="">
+					<h5 class="margin-bottom-30">Breng je interieur naar een hoger niveau met Nima Interiors</h5>
+					<div class="contact-text">
+						<p>Benieuwd hoe wij jouw interieurinrichting transformeren? Maak een afspraak in onze showroom. </p>
+						<p>Vul het contactformulier in of bel ons vandaag nog. We staan klaar om je te helpen jouw visie werkelijkheid te maken.</p>
+					</div>
+				</div>
+			</div>
 			<div class="contact-bottom">
 				<div class="container">
 					<div class="row">
 						<!-- ***** Contact Text Start ***** -->
-						<div class="col-lg-4 col-md-6 col-sm-12">
-							<h5 class="margin-bottom-30">Get in touch</h5>
+						<div class="col-lg-6 col-md-6 col-sm-12">
+							<h5 class="margin-bottom-30">Neem contact met ons op</h5>
 							<div class="contact-text">
-								<p>Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Etiam tempus magna vel turpis.</p>
-								<p>Sed blandit tempus purus, sed sodales leo rutrum vel. Nam vulputate ipsum ac est congue, eget commodo magna lobortis.</p>
+								<p>Open op afspraak  </p>
+								<p>Herentalsebaan 301, 2150 Borsbeek</p>
 							</div>
 						</div>
 						<!-- ***** Contact Text End ***** -->
 
 						<!-- ***** Contact Form Start ***** -->
-						<div class="col-lg-8 col-md-6 col-sm-12">
+						<div class="col-lg-6 col-md-6 col-sm-12">
 							<div class="contact-form">
 								<div class="row">
 									<div class="col-lg-6 col-md-12 col-sm-12">

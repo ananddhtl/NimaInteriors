@@ -25,6 +25,19 @@ Route::get('/gallery', function () {
     return view('frontend.gallery');
 });
 
+Route::get('/project', function () {
+    return view('frontend.project');
+});
+
+Route::get('/project-single', function () {
+    return view('frontend.project-single');
+});
+Route::get('/blog', function () {
+    return view('frontend.blog');
+});
+Route::get('/blog-single', function () {
+    return view('frontend.blog-single');
+});
 Route::get('/faq', function () {
     return view('frontend.faq');
 });
