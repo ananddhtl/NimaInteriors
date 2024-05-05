@@ -45,3 +45,6 @@ Route::get('/faq', function () {
 Route::get('/contactus', function () {
     return view('frontend.contact');
 });
+
+
+require __DIR__ . '/backend/backend.php';
