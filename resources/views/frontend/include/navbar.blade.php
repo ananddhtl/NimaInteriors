@@ -1,6 +1,25 @@
 <div class="preloader-wrapper">
     <div class="loader"></div>
 </div>
+<style>
+    .left-bar i{
+        color: #606060;
+    }
+    .left-bar a{
+        color: #606060;
+    }
+    .right-bar i{
+        color: #606060;
+    }
+    .right-bar a{
+        color: #606060;
+    }
+    .line{
+        width: 100%;
+        border: 0.25px solid #606060;
+    }
+
+</style>
 <header style="height:120px;" class="header-area">
 
     <div class="whole-container bg-gray1 pa-4">
@@ -12,7 +31,7 @@
                     <p style="margin-left: 5px;"><a href="#"><i class="fa fa-twitter"></i></a></p>
                     <p style="margin-left: 5px;"><a href="#"><i class="fa fa-instagram"></i></a></p>
                     <p style="margin-left: 10px; "><a href="">ABOUT US &nbsp; |</a></p>
-                    <p class="contact-us-top-nav ml-3"><a href="/contactus">Contact Us</a></p>
+                    <p class="contact-us-top-nav ml-3"><a href="/contactus"> &nbsp; CONTACT US</a></p>
                 </div>
 
                 <div class="right-bar d-flex">

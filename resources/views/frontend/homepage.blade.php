@@ -131,7 +131,8 @@
             <div class="row">
                 <div class="col-lg-5 col-md-12 col-sm-12 align-self-center mobile-bottom-fix">
                     <div class="left-heading">
-                        <h2 style="font-family:Josefin Sans Flex, Josefin-Sans-Flex-Fallback, Noto Color Emoji, sans-serif; font-weight:600; font-size:28px;" class="section-title dotted">Jouw bestemming voor verfijnde keukens en interieurdesign</h2>
+                        <h2 style="font-family:Josefin Sans Flex, Josefin-Sans-Flex-Fallback, Noto Color Emoji, sans-serif; font-weight:600; font-size:28px;"
+                            class="section-title dotted">Jouw bestemming voor verfijnde keukens en interieurdesign</h2>
                     </div>
                     <div class="left-text">
                         <p class="dark">Onze focus ligt op verfijnde detailwerk dat verschil maakt. Wij geloven in de
@@ -287,19 +288,30 @@
 			});
 		});
 	</script> --}} -
+    
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
     <script>
         $(".owl-carousel").owlCarousel({
+            loop: true,
+            autoplay: true,
+            autoplayTimeout: 3000,
+            // Add this event handler
+            onInitialized: startChangingItems
+        });
 
-            // items: 1, // Number of items to display
-            loop: true, // Enable infinite loop
-            autoplay: true, // Enable autoplay
-            autoplayTimeout: 3000, // Autoplay interval in milliseconds (1 second)
-            // autoplayHoverPause: false, // Do not pause autoplay on mouse hover
-            // animateOut: 'fadeOutRight', // Animation for slide out
-            // animateIn: 'fadeInLeft', // Animation for slide in
-            // smartSpeed: 100,
-        })
+        function startChangingItems(event) {
+            var carousel = event.target;
+            setInterval(function() {
+                var currentItem = $(carousel).find('.owl-item.active');
+                var nextItem = currentItem.next('.owl-item');
+                if (nextItem.length === 0) {
+                    nextItem = $(carousel).find('.owl-item').first();
+                }
+                currentItem.removeClass('current');
+                nextItem.addClass('current');
+                carousel.trigger('to.owl.carousel', nextItem.index());
+            }, 2000);
+        }
     </script>
 @endsection

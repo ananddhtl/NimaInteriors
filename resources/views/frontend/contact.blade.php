@@ -1,5 +1,8 @@
 @extends('welcome')
 @section('content')
+    @if (session('message'))
+        <p>{{ 'message' }}</p>
+    @endif
     <section class="page">
         <!-- ***** Page Top Start ***** -->
         <div class="cover" data-image="{{ asset('frontend/assets/images/photos/cover.jpg') }}">
@@ -92,7 +95,7 @@
 
                         <!-- ***** Contact Form Start ***** -->
                         <div class="col-lg-6 col-md-6 col-sm-12">
-                            <form action="" method="POST">
+                            <form action="{{ route('contactform') }}" method="POST">
                                 @csrf
                                 <div class="contact-form">
                                     <div class="row">
@@ -108,35 +111,37 @@
                                         <div class="col-lg-10 col-md-12 col-sm-12">
                                             <input type="email" name="email" placeholder="Enter your E-Mail">
                                         </div>
-										
+
                                         <div class="col-lg-10 col-md-12 col-sm-12">
-                                            <input type="number" name="streetnumber" placeholder="Enter your street number">
+                                            <input type="number" name="streetnumber"
+                                                placeholder="Enter your street number">
                                         </div>
                                         <div class="col-lg-10 col-md-12 col-sm-12">
-                                            <input type="text" name="pcodeandc" placeholder="Enter your postcode and city">
+                                            <input type="text" name="pcodeandc"
+                                                placeholder="Enter your postcode and city">
                                         </div>
                                         <div class="col-lg-10 col-md-12 col-sm-12 mb-3">
-											
-                                            <select class="form-control">
-                                               
-												<option>Particular</option>
-												<option>Architect</option>
-												<option>Construction Promoter</option>
-												<option>Others</option>
+
+                                            <select name="iam" class="form-control">
+
+                                                <option value="particulars">Particular</option>
+                                                <option value="architect">Architect</option>
+                                                <option value="constructionpromoter">Construction Promoter</option>
+                                                <option value="others">Others</option>
                                             </select>
                                         </div>
-										<div class="col-lg-10 col-md-12 col-sm-12 mb-3">
-											
-                                            <select class="form-control">
-                                               
-												
-												<option>New Construction</option>
-												<option>Renovation</option>
-												<option>Others</option>
+                                        <div class="col-lg-10 col-md-12 col-sm-12 mb-3">
+
+                                            <select name="project" class="form-control">
+
+
+                                                <option value="newconstruction">New Construction</option>
+                                                <option value="renovation">Renovation</option>
+                                                <option value="others">Others</option>
                                             </select>
                                         </div>
                                         <div class="col-lg-10">
-                                            <textarea placeholder="Your message"></textarea>
+                                            <textarea name="message" placeholder="Your message"></textarea>
                                         </div>
                                         <div class="col-lg-12">
                                             <button class="dark-btn float-right" type="submit">

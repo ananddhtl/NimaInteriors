@@ -112,20 +112,42 @@
         </div>
         <!-- ***** Page Content End ***** -->
     </section>
-    <section class="section white">
-        <div class="container white text-center">
-            <h2>Onze partners</h2>
-            <div class="partner-item">
-                <img src="{{ asset('frontend/assets/images/photos/home/Miele_vierkant_wesbite.png') }}" alt="">
-                <p>Miele</p>
+
+    <section class="section bg-light">
+        <div class="container">
+            <h2 class="text-center mb-5">Onze partners</h2>
+            <div class="row justify-content-center">
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="text-center">
+                        <img src="{{ asset('frontend/assets/images/photos/home/Miele_vierkant_wesbite.png') }}"
+                            alt="" class="img-fluid">
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="text-center">
+                        <img src="{{ asset('frontend/assets/images/photos/home/Miele_vierkant_wesbite.png') }}"
+                            alt="" class="img-fluid">
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="text-center">
+                        <img src="{{ asset('frontend/assets/images/photos/home/Novy_vierkant_website.png') }}"
+                            alt="" class="img-fluid">
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="text-center">
+                        <img src="{{ asset('frontend/assets/images/photos/home/Miele_vierkant_wesbite.png') }}"
+                            alt="" class="img-fluid">
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="text-center">
+                        <img src="{{ asset('frontend/assets/images/photos/home/Miele_vierkant_wesbite.png') }}"
+                            alt="" class="img-fluid">
+                    </div>
+                </div>
             </div>
-            <img src="{{ asset('frontend/assets/images/photos/home/Miele_vierkant_wesbite.png') }}" alt="">
-            <img src="{{ asset('frontend/assets/images/photos/home/Novy_vierkant_website.png') }}" alt="">
-            <img src="{{ asset('frontend/assets/images/photos/home/Miele_vierkant_wesbite.png') }}" alt="">
-            <img src="{{ asset('frontend/assets/images/photos/home/Miele_vierkant_wesbite.png') }}" alt="">
-
-
-
         </div>
     </section>
 @endsection
