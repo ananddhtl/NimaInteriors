@@ -2,59 +2,73 @@
     <div class="loader"></div>
 </div>
 <style>
-    .left-bar i{
+    .left-bar i {
         color: #606060;
-    }
-    .left-bar a{
-        color: #606060;
-    }
-    .right-bar i{
-        color: #606060;
-    }
-    .right-bar a{
-        color: #606060;
-    }
-    .line{
-        width: 100%;
-        border: 0.25px solid #606060;
     }
 
+    .left-bar a {
+        color: #606060;
+    }
+
+    .right-bar i {
+        color: #606060;
+    }
+
+    .right-bar a {
+        color: #606060;
+    }
+
+    .line {
+        width: 100%;
+        border: 0.25px solid #d4d3d3;
+    }
+
+    .top-bar {
+        font-size: 12px;
+        padding: 3px;
+    }
+
+    .hide{
+        display: none;
+    }
+   
 </style>
 <header style="height:120px;" class="header-area">
 
-    <div class="whole-container bg-gray1 pa-4">
+    <div class="whole-container bg-gray1 pa-4 hide">
         <div class="container">
             <div class="top-bar d-flex justify-content-between align-items-center">
 
                 <div class="left-bar d-flex">
-                    <p><a href="#"><i class="fa fa-facebook"></i></a></p>
-                    <p style="margin-left: 5px;"><a href="#"><i class="fa fa-twitter"></i></a></p>
-                    <p style="margin-left: 5px;"><a href="#"><i class="fa fa-instagram"></i></a></p>
-                    <p style="margin-left: 10px; "><a href="">ABOUT US &nbsp; |</a></p>
-                    <p class="contact-us-top-nav ml-3"><a href="/contactus"> &nbsp; CONTACT US</a></p>
+                    <p><a href="#"><i class="fa fa-facebook">&nbsp; </i></a></p>
+                    <p style="margin-left: 5px;"><a href="#"><i class="fa fa-twitter">&nbsp; </i></a></p>
+                    <p style="margin-left: 5px;"><a href="#"><i class="fa fa-instagram">&nbsp;&nbsp; |</i></a></p>
+                    <p style="margin-left: 10px; "><a href="">&nbsp; &nbsp; Enkel open op afspraak &nbsp; </a>
+                    </p>
+                    <p class="contact-us-top-nav ml-3"><a href="/contactus"> &nbsp; Info@nimainteriors.com</a></p>
+                    <p class="contact-us-top-nav ml-3"><a href="/contactus"> &nbsp; +3232968266</a></p>
                 </div>
 
                 <div class="right-bar d-flex">
-                    <p style="margin-left: 5px;"><a href="#"><i class="fa fa-phone"></i>&nbsp; +977 ********
-                            &nbsp; | </a></p>
+
                     <p style="margin-left: 5px;"><a href="#" style="text-transform: lowercase!important;"><i
-                                class="fa fa-envelope"></i>&nbsp; info.***********</a></p>
+                                class="fa fa-envelope"></i>&nbsp; lang</a></p>
                 </div>
             </div>
         </div>
     </div>
     <div class="line"></div>
-    <div class="container">
+    <div class="container ">
         <div class="row">
             <div class="col-12">
-                <nav style="margin-top:-15px;"class="main-nav">
+                <nav style=""class="main-nav d-flex justify-content-between align-items-center">
 
                     <a href="/" class="logo">
                         <img src="{{ asset('frontend/assets/images/nima_logo.png') }}" alt="inox"
                             style="height: 50px;width:120px;" />
                     </a>
 
-                    <ul class="nav">
+                    <ul class="nav  ">
                         <li><a href="/">Home</a></li>
                         <li><a href="/project">Project Grid</a></li>
                         <li><a href="/blog">Blogs</a></li>
@@ -72,3 +86,5 @@
         </div>
     </div>
 </header>
+
+

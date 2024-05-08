@@ -14,3 +14,8 @@
 
 <!-- Dashboard init-->
 <script src="{{asset('backend/assets/js/pages/dashboard.js')}}"></script>
+
+<script src="{{asset('backend/assets/libs/quill/quill.min.js')}}"></script>
+
+<!-- Demo js-->
+<script src="{{asset('backend/assets/js/pages/form-quilljs.js')}}"></script>

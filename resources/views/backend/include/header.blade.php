@@ -11,10 +11,13 @@
     <!-- App favicon -->
     <link rel="shortcut icon" href="assets/images/favicon.ico">
 
-    <link href="{{asset('backend/assets/libs/morris.js/morris.css')}}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('backend/assets/libs/morris.js/morris.css') }}" rel="stylesheet" type="text/css" />
 
+    <link href="{{ asset('backend/assets/libs/quill/quill.core.css')}}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('backend/assets/libs/quill/quill.bubble.css')}}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('backend/assets/libs/quill/quill.snow.css')}}" rel="stylesheet" type="text/css" />
     <!-- App css -->
-    <link href="{{asset('backend/assets/css/style.min.css')}}" rel="stylesheet" type="text/css">
-    <link href="{{asset('backend/assets/css/icons.min.css')}}" rel="stylesheet" type="text/css">
-    <script src="{{asset('backend/assets/js/config.js')}}"></script>
+    <link href="{{ asset('backend/assets/css/style.min.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('backend/assets/css/icons.min.css') }}" rel="stylesheet" type="text/css">
+    <script src="{{ asset('backend/assets/js/config.js') }}"></script>
 </head>

@@ -12,25 +12,46 @@ class BlogController extends Controller
      */
     public function index()
     {
-        //
+        $data = Blog::get();
+        return view('backend.blog.list', compact('data'));
+        
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
+    public function addblog()
     {
-        //
+        return view('backend.blog.add');
     }
+
 
     /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
     {
-        //
+        
+        $validatedData = $request->validate([
+            'title' => 'required|max:255',
+            'thumbnail' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+            'description' => 'required',
+        ]);
+    
+     
+        $blog = new Blog();
+        $blog->title = $validatedData['title'];
+    
+        
+        if ($request->hasFile('thumbnail')) {
+            $thumbnail = $request->file('thumbnail');
+            $filename = time().'.'.$thumbnail->getClientOriginalExtension();
+            $thumbnail->move(public_path('admin/blog'), $filename);
+            $blog->image = $filename; 
+        }
+    
+        $blog->description = $request->input('description');
+        $blog->save();
+        return redirect()->route('admin.listblog')->with('success', 'Blog post created successfully!');
     }
-
+    
     /**
      * Display the specified resource.
      */

@@ -31,11 +31,80 @@
             <li class="menu-title">Pages</li>
 
             <li class="menu-item">
-                <a href="apps-calendar.html" class="menu-link waves-effect waves-light">
+                <a href="{{route('admin.contactusdata')}}" class="menu-link waves-effect waves-light">
                     <span class="menu-icon"><i class="bx bx-calendar"></i></span>
                     <span class="menu-text"> Contact Us </span>
                 </a>
             </li>
+
+            <li class="menu-item">
+                <a href="#menuExpages" data-bs-toggle="collapse" class="menu-link waves-effect waves-light">
+                    <span class="menu-icon"><i class="bx bx-file"></i></span>
+                    <span class="menu-text"> Projects</span>
+                    <span class="menu-arrow"></span>
+                </a>
+                <div class="collapse" id="menuExpages">
+                    <ul class="sub-menu">
+                        <li class="menu-item">
+                            <a href="{{route('admin.addproject')}}" class="menu-link">
+                                <span class="menu-text">Add </span>
+                            </a>
+                        </li>
+                        <li class="menu-item">
+                            <a href="{{route('admin.listproject')}}" class="menu-link">
+                                <span class="menu-text">List</span>
+                            </a>
+                        </li>
+                       
+                    </ul>
+                </div>
+            </li> 
+
+            <li class="menu-item">
+                <a href="#menuExpages1" data-bs-toggle="collapse" class="menu-link waves-effect waves-light">
+                    <span class="menu-icon"><i class="bx bx-file"></i></span>
+                    <span class="menu-text"> Project Images</span>
+                    <span class="menu-arrow"></span>
+                </a>
+                <div class="collapse" id="menuExpages1">
+                    <ul class="sub-menu">
+                        <li class="menu-item">
+                            <a href="{{route('admin.addprojectimages')}}" class="menu-link">
+                                <span class="menu-text">Add </span>
+                            </a>
+                        </li>
+                        <li class="menu-item">
+                            <a href="{{route('admin.listprojectimages')}}" class="menu-link">
+                                <span class="menu-text">List</span>
+                            </a>
+                        </li>
+                       
+                    </ul>
+                </div>
+            </li> 
+
+            <li class="menu-item">
+                <a href="#menuExpages1" data-bs-toggle="collapse" class="menu-link waves-effect waves-light">
+                    <span class="menu-icon"><i class="bx bx-file"></i></span>
+                    <span class="menu-text"> Blog</span>
+                    <span class="menu-arrow"></span>
+                </a>
+                <div class="collapse" id="menuExpages1">
+                    <ul class="sub-menu">
+                        <li class="menu-item">
+                            <a href="{{route('admin.addblog')}}" class="menu-link">
+                                <span class="menu-text">Add </span>
+                            </a>
+                        </li>
+                        <li class="menu-item">
+                            <a href="{{route('admin.listblog')}}" class="menu-link">
+                                <span class="menu-text">List</span>
+                            </a>
+                        </li>
+                       
+                    </ul>
+                </div>
+            </li> 
 
             {{-- <li class="menu-item">
                 <a href="#menuExpages" data-bs-toggle="collapse" class="menu-link waves-effect waves-light">

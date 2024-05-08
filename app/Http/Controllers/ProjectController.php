@@ -12,7 +12,14 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        //
+        $data = Project::get();
+        return view('backend.project.list', compact('data'));
+        
+    }
+
+    public function addproject()
+    {
+        return view('backend.project.add');
     }
 
     /**
@@ -28,8 +35,25 @@ class ProjectController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
+    $validatedData = $request->validate([
+        'title' => 'required|max:255',
+        'thumbnail' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+        'description' => 'required',
+    ]);
+    $project = new Project();
+    $project->title = $validatedData['title'];
+    $project->description = $validatedData['description'];
+    if ($request->hasFile('thumbnail')) {
+        $thumbnail = $request->file('thumbnail');
+        $filename = time().'.'.$thumbnail->getClientOriginalExtension();
+        $thumbnail->move(public_path('admin/project'), $filename);
+        $project->thumbnail = $filename;
     }
+    $project->save();
+    return redirect()->route('admin.listproject')->with('success', 'Project created successfully!');
+    }
+
 
     /**
      * Display the specified resource.

@@ -13,7 +13,9 @@ class ContactUsController extends Controller
      */
     public function index()
     {
-        //
+        $data = ContactUs::get();
+        return view('backend.contactusdata', compact('data'));
+        
     }
 
     /**
@@ -48,7 +50,7 @@ class ContactUsController extends Controller
         $data['emailMessage'] = $data['message'];
         unset($data['message']);
         Mail::send('frontend.emailtemplate.contactus', $data, function ($message) use ($data) {
-            $message->to('queswin.tech@gmail.com');
+            $message->to('info@queswin.be');
             $message->subject('You have received a message from the contact us section');
             $message->from($data['email']);
         });
