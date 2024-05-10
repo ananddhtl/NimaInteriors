@@ -1,65 +1,70 @@
 <style>
+	
 	.copyright span{
-		color: #D8D8D8;
+		color: #828282;
 		text-decoration: underline;
 	}
 	</style>
 <footer>
-		<div class="container">
+		<div class="container container-footer">
 			<div class="row">
-				<div class="col-lg-5 col-md-12 col-sm-12">
-					{{-- need to put a logo here with svg file or with certain size , this will be dynamic--}}
-					{{-- <img src="{{ asset('frontend/assets/images/nima_logo.png') }}" class="" alt="" style="width=70px; height=28px; "> --}}
-					<div class="text">Keuken kopen? Kom kijken in De Keukenshop! Dan bespreken we samen jouw droomkeuken – gratis en vrijblijvend.</div>
-					<ul class="social">
-						{{-- here all the social sites will be also dynamic --}}
-						<li><a href="#"><i class="fa fa-facebook"></i></a></li>
-						<li><a href="#"><i class="fa fa-instagram"></i></a></li>
-						<li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-
-					</ul>
-				</div>
-				<div class="col-lg-2 col-md-4 col-sm-6 col-6">
-					<h5>Helpful Links</h5>
+				
+				<div class="col-lg-3 col-md-4 col-sm-6 col-6">
+					<h5>Ga naar</h5>
 					<ul class="footer-nav">
-						<li><a href="/"><i class="fa fa-angle-right"></i><span>Startpagina</span></a></li>
-						<li><a href="/project"><i class="fa fa-angle-right"></i><span>Project</span></a></li>
-						{{-- <li><a href="/faq"><i class="fa fa-angle-right"></i><span>FAQ’s</span></a></li> --}}
-						<li><a href="/blog"><i class="fa fa-angle-right"></i><span>Blog</span></a></li>
-						<li><a href="/contact"><i class="fa fa-angle-right"></i><span>Contact</span></a></li>
+						<li><a href="/"><span>Startpagina</span></a></li>
+						<li><a href="/diensten"><span>Projecten</span></a></li>
+						{{-- <li><a href="/faq"></i><span>FAQ’s</span></a></li> --}}
+						<li><a href="/blog"><span>Blogs</span></a></li>
+						<li><a href="/contact"><span>Contact</span></a></li>
 					</ul>
 				</div>
-				<div class="col-lg-2 col-md-4 col-sm-6 col-6">
-					<h5>Support</h5>
-					<ul class="footer-nav">
-						<li><a href="#"><i class="fa fa-angle-right"></i><span>Privacy Policy</span></a></li>
-						<li><a href="#"><i class="fa fa-angle-right"></i><span>Terms of Use</span></a></li>
-
-						<li><a href="/contact"><i class="fa fa-angle-right"></i><span>Contact</span></a></li>
-					</ul>
-				</div>
+			
 				<div class="col-lg-3 col-md-4 col-sm-12">
-					<h5>Contact Us</h5>
+					<h5>Neem contact op</h5>
 					<div class="address">
 						{{-- this will be also dynamic value --}}
-						<p>Herentalsebaan 301 - 2150 Borsbeek</p>
 						<p>Tel. +32 3 296 82 66</p>
-						<p><span>E-Mail: </span><a href="#">Info@nimainteriors.com</a></p>
-					</div>
+						<p><a href="#">info@nimainteriors.com</a></p>
+						<p style="font-weight:bold;">Open op afpraak:</p>
+						<p>Herentalsebaan 301 - 2150 Borsbeek</p>
+						
+						</div>
 				</div>
+				<div class="col-lg-3 col-md-12 col-sm-12">
+					<h5>Blijf op de hoogte</h5>
+					<ul class="social">
+						{{-- here all the social sites will be also dynamic --}}
+						<li><a href="https://www.facebook.com/nimainterieurs/"><i class="fa fa-facebook"></i></a></li>
+						<li><a href="https://www.instagram.com/nima.interiors/"><i class="fa fa-instagram"></i></a></li>
+						<li><a href="https://www.pinterest.com/nimainteriors/"><i class="fa fa-pinterest"></i></a></li>
+
+					</ul>
+				</div>
+				<div class="col-lg-3 col-md-12 col-sm-12">
+					<h5>Haal inspiratie uit onze gratis brochure </h5>
+				
+					<a href="{{ asset('frontend/assets/doc/Cataloog_NimaIneriors.pdf') }}" target="_blank">
+						<button class="btn btn-secondary">
+							<i class="fa fa-download" style="margin-right: 5px;"></i> Download
+						</button>
+					</a>
+				</div>
+
+				
 			</div>
-			<div class="row">
-				<div class="col-lg-3 copyright">
+			<div class="row copyright text-center">
+				<div class="col-lg-3 col-md-12 col-sm-12">
 						<a href="#"><span>Algemene voorwaarden</span></a>
 						<a href="#"><span>Privacyverklaring</span></a>
 						<a href="/contact"><span>Cookies</span></a>
 				
 				</div>
-				<div class="col-lg-6">
-					<p class="copyright">© 2021 nimainteriors. All Rights Reserved.</p>
-				</div>
-				<div class="col-lg-3">
-					<p class="copyright">Talen<br>
+				{{-- <div class="col-lg-6 col-md-12 col-sm-12">
+					<p class="">© 2021 nimainteriors. All Rights Reserved.</p>
+				</div> --}}
+				<div class="col-lg-3 col-md-12 col-sm-12">
+					<p class="">Talen<br>
 						Nederlands&nbsp;/&nbsp;English</p>
 				</div>
 			</div>

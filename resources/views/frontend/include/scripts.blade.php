@@ -15,7 +15,7 @@
 
 <!-- Global Init -->
 <script src="{{asset('frontend/assets/js/custom.js')}}"></script>
-{{-- <script>
+<script>
     $(document).ready(function(){
         $(".owl-carousel").owlCarousel({
             items: 1, // Number of items to display
@@ -28,5 +28,4 @@
             smartSpeed: 100, // Animation speed
         });
     });
-</script> --}}
-
+</script>

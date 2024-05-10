@@ -64,6 +64,7 @@
 		$(".menu-trigger").on('click', function() {	
 			$(this).toggleClass('active');
 			$('.header-area .nav').slideToggle(200);
+			// $('.header-area .ham-contact-us').slideToggle(200); 
 		});
 	}
 

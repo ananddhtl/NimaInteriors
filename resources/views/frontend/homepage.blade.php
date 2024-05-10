@@ -8,8 +8,11 @@
                     <div class="col-lg-4 col-md-12 col-sm-12">
                         <div class="welcome-text">
                             <h1>Nima Interiors</h1>
-                            <p>Welkom bij Nima Interiors, een toegewijd familiebedrijf sinds 2014.</p>
-                            <a class="dark-btn" href="project-grid.html">
+                            {{-- <p>Welkom bij Nima Interiors, een toegewijd familiebedrijf sinds 2014.</p>  --}}
+                             <p>Onze focus ligt op verfijnde detailwerk dat verschil maakt. Wij geloven in de
+                                kracht van strakke, tijdloze ontwerpen.
+                                </p>   
+                            <a class="dark-btn" href="/project">
                                 <span class="show-btn">EXPLORE KITCHEN</span>
                                 <span class="hide-btn">EXPLORE KITCHEN</span>
                             </a>
@@ -34,40 +37,32 @@
 
                     <div class="item">
                         <div class="img">
-                            <img src="{{ asset('frontend/assets/images/photos/welcome/img-2.jpeg') }}" alt="">
+                            <img src="{{asset('frontend/assets/images/photos/welcome/project-4.jpeg')}}" alt="">
                         </div>
                         <div class="text">
-                            <h5>High Gloss Lacquer</h5>
-                            <p>Mauris sagittis feugiat dui vel varius.</p>
+                            
+                            <p>Onze toewijding aan vakmanschap betekent dat geen detail over het hoofd wordt gezien.</p>
                         </div>
                     </div>
                     <div class="item">
                         <div class="img">
-                            <img src="{{ asset('frontend/assets/images/photos/welcome/3.jpg') }}" alt="">
+                            <img src="{{ asset('frontend/assets/images/photos/welcome/reealisatie.jpeg') }}" alt="">
                         </div>
                         <div class="text">
-                            <h5>Veneer Kitchen</h5>
-                            <p>Mauris sagittis feugiat dui vel varius.</p>
+                          
+                            <p>Met oog voor detail streven we naar niets minder dan perfectie in elk aspect van het ontwerp en de productie.</p>
                         </div>
                     </div>
                     <div class="item">
                         <div class="img">
-                            <img src="{{ asset('frontend/assets/images/photos/welcome/4.jpg') }}" alt="">
+                            <img src="{{ asset('frontend/assets/images/photos/welcome/inspiratie.jpeg') }}" alt="">
                         </div>
                         <div class="text">
-                            <h5>Driftwood</h5>
-                            <p>Mauris sagittis feugiat dui vel varius.</p>
+                            
+                            <p>Bij Nima Interiors creëren we samen met jou een perfect ontwerp dat je verwachtingen overtreft.</p>
                         </div>
                     </div>
-                    <div class="item">
-                        <div class="img">
-                            <img src="{{ asset('frontend/assets/images/photos/welcome/5.jpg') }}" alt="">
-                        </div>
-                        <div class="text">
-                            <h5>Sawn Oak</h5>
-                            <p>Mauris sagittis feugiat dui vel varius.</p>
-                        </div>
-                    </div>
+                    
                 </div>
             </div>
         </div>
@@ -169,7 +164,7 @@
     <!-- ***** Features Big Item End ***** -->
 
     <!-- ***** Features Big Item Start ***** -->
-    <section class="section   padding-bottom-120">
+    <section class="section ">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 col-md-12 col-sm-12 align-self-center mobile-bottom-fix">
@@ -188,7 +183,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-12 col-sm-12 ">
+                <div class="col-lg-4  col-sm-12 ">
                     <div class="left-heading">
                         <h2 class="section-title dotted">Onze showroom</h2>
                     </div>
@@ -206,7 +201,10 @@
 
                     </div>
                     <div>
-                        <a href="/project">Plan een afspraak</a><i class="bi bi-arrow-left"></i>
+                        <a href="/contactus" class="btn btn-secondary ">
+                            Plan een afspraak
+                            <i class="fa fa-arrow-right"></i>
+                        </a>
                     </div>
                 </div>
 
@@ -288,8 +286,8 @@
 			});
 		});
 	</script> --}} -
-{{--     
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    
+    {{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
     <script>
         $(".owl-carousel").owlCarousel({
