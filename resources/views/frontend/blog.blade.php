@@ -30,33 +30,20 @@
             <div class="row">
                 <div class="col-lg-12 margin-bottom-30">
                     <div class="row d-flex justify-content-around">
-                        <!-- ***** Blog Item Start ***** -->
+                        
+                    @foreach($bloglist as $item)
                         <div class="col-lg-6 col-md-6 col-sm-12 mb-4 mr-2" >
-                            <a href="/blog-single" class="">
+                            <a href="/blog-single/{{$item->id}}" class="">
                                 <div class="content">
-                                    <h3>Hoe lang duurt de plaatsing van een nieuwe keuken?</h3>
+                                    <h3>{{$item->title}}</h3>
                                 </div>
                                 <div class="">
-                                    <img src="{{ asset('frontend/assets/images/photos/welcome/blog-1.jpeg') }}" alt="" style="width: 80%; height: 300px;">
+                                    <img src="{{ asset('admin/blog/' . $item->image) }}" alt="" style="width: 80%; height: 300px;">
                                     
                                 </div>
                             </a>
                         </div>
-                        <!-- ***** Blog Item End ***** -->
-            
-                        <!-- ***** Blog Item Start ***** -->
-                        <div class="col-lg- col-md-6 col-sm-12 mb-4 ml-2">
-                            <a href="/blog-single" class="">
-                                <div class="content">
-                                    <h3>A hotel in the heart of Copenhagen’s Latin Quarter</h3>
-                                </div>
-                                <div class="">
-                                    <img src="{{ asset('frontend/assets/images/photos/welcome/blog-2.jpeg') }}" alt="" style="width: 80%; height: 300px;">
-                                    {{-- <div class="date">APR 09</div> --}}
-                                </div>
-                            </a>
-                        </div>
-                        <!-- ***** Blog Item End ***** -->
+                        @endforeach
                       
                     </div>
                 </div>

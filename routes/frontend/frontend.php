@@ -16,12 +16,8 @@ Route::get('/gallery', function () {
 Route::get('/project-single', function () {
     return view('frontend.project-single');
 });
-Route::get('/blog', function () {
-    return view('frontend.blog');
-});
-Route::get('/blog-single', function () {
-    return view('frontend.blog-single');
-});
+
+
 Route::get('/faq', function () {
     return view('frontend.faq');
 });
@@ -34,6 +30,10 @@ Route::get('/contactus', function () {
 Route::post('contactusform', [ContactUsController::class, 'store'])->name('contactform');
 
 Route::get('diensten', [FrontendController::class, 'project'])->name('projectlist');
+
+Route::get('blog', [FrontendController::class, 'blog'])->name('bloglist');
+
+Route::get('blog-single/{id}', [FrontendController::class, 'blogsingledesc'])->name('blogsinglelist');
 
 Route::get('dienstendesc/{id}', [FrontendController::class, 'projectdesc'])->name('projectdesc');
 
