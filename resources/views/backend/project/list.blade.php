@@ -44,7 +44,9 @@
                                         <th>{{$item->description }}</th>
                                         
                                         <th><img height="100px;" width="150px" src="project/{{$item->thumbnail}}"></th>
-                                        <th><button type="button" class="btn btn-info waves-effect waves-light"><i class="mdi mdi-pen"></i></button>&nbsp;<button type="button" class="btn btn-danger waves-effect waves-light"><i class="mdi mdi-close"></i></button></th>
+                                        <th> <a href="{{ route('admin.editproject', $item->id) }}" class="btn btn-info waves-effect waves-light">
+                                            <i class="mdi mdi-pen"></i>
+                                        </a></button>&nbsp;<button type="button" class="btn btn-danger waves-effect waves-light"><i class="mdi mdi-close"></i></button></th>
                                     </tr>
                                     @endforeach
                                     

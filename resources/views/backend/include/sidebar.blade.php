@@ -106,6 +106,23 @@
                 </div>
             </li> 
 
+            
+            <li class="menu-item">
+                <a href="{{ route ('admin.listtermandcondition')}}" class="menu-link waves-effect waves-light">
+                    <span class="menu-icon"><i class="bx bx-home-smile"></i></span>
+                    <span class="menu-text"> Term and Condition</span>
+                    
+                </a>
+            </li>
+
+            <li class="menu-item">
+                <a href="{{ route ('admin.listprivacydeclaration')}}" class="menu-link waves-effect waves-light">
+                    <span class="menu-icon"><i class="bx bx-home-smile"></i></span>
+                    <span class="menu-text">Privacy Declaration</span>
+                    
+                </a>
+            </li>
+
             {{-- <li class="menu-item">
                 <a href="#menuExpages" data-bs-toggle="collapse" class="menu-link waves-effect waves-light">
                     <span class="menu-icon"><i class="bx bx-file"></i></span>
