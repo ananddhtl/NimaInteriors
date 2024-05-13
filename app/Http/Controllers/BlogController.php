@@ -63,18 +63,50 @@ class BlogController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Blog $blog)
+    public function edit(Blog $blog, $id)
     {
-        //
+        
+            $blog = Blog::findOrFail($id);
+      
+            return view('backend.blog.edit', compact('blog'));
+            
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Blog $blog)
-    {
-        //
+    public function update(Request $request, $id)
+{
+  
+    $validatedData = $request->validate([
+        'title' => 'required|max:255',
+        'thumbnail' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+        'description' => 'required',
+    ]);
+
+    
+    $blog = Blog::findOrFail($id);
+
+   
+    $blog->title = $validatedData['title'];
+
+ 
+    if ($request->hasFile('thumbnail')) {
+        $thumbnail = $request->file('thumbnail');
+        $imageName = time().'.'.$thumbnail->getClientOriginalExtension();
+        $thumbnail->move(public_path('admin/blog'), $imageName);
+        $blog->image = $imageName;
     }
+
+ 
+    $blog->description = $validatedData['description'];
+
+  
+    $blog->save();
+
+   
+    return redirect()->route('admin.listblog')->with('success', 'Blog post updated successfully');
+}
 
     /**
      * Remove the specified resource from storage.

@@ -43,10 +43,9 @@
                                         <td>{{ $item->title }}</td>
                                         <td class="ql-editor">{!! $item->description !!}</td>
                                         <td><img src="{{ asset('admin/blog/' . $item->image) }}" height="100px" width="150px"></td>
-                                        <td>
-                                            <button type="button" class="btn btn-info waves-effect waves-light"><i class="mdi mdi-pen"></i></button>
-                                            <button type="button" class="btn btn-danger waves-effect waves-light"><i class="mdi mdi-close"></i></button>
-                                        </td>
+                                        <th> <a href="{{ route('admin.editblog', $item->id) }}" class="btn btn-info waves-effect waves-light">
+                                            <i class="mdi mdi-pen"></i>
+                                        </a></button>&nbsp;<button type="button" class="btn btn-danger waves-effect waves-light"><i class="mdi mdi-close"></i></button></th>
                                     </tr>
                                     @endforeach
                                 </tbody>

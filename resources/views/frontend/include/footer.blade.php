@@ -55,8 +55,8 @@
 			</div>
 			<div class="row copyright text-center">
 				<div class="col-lg-3 col-md-12 col-sm-12">
-						<a href="#"><span>Algemene voorwaarden</span></a>
-						<a href="#"><span>Privacyverklaring</span></a>
+						<a href="/algemene-voorwaarden"><span>Algemene voorwaarden</span></a>
+						<a href="/privacy"><span>Privacyverklaring</span></a>
 						<a href="/contact"><span>Cookies</span></a>
 				
 				</div>

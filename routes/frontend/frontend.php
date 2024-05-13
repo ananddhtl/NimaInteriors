@@ -37,3 +37,7 @@ Route::get('blog-single/{id}', [FrontendController::class, 'blogsingledesc'])->n
 
 Route::get('dienstendesc/{id}', [FrontendController::class, 'projectdesc'])->name('projectdesc');
 
+Route::get('algemene-voorwaarden', [FrontendController::class, 'generaltermandcondition'])->name('generaltermandcondition');
+
+
+Route::get('privacy', [FrontendController::class, 'privacy'])->name('privacy');
