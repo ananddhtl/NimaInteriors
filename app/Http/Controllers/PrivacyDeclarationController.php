@@ -54,7 +54,7 @@ class PrivacyDeclarationController extends Controller
      */
     public function edit(PrivacyDeclaration $privacyDeclaration)
     {
-        //
+        
     }
 
     /**
