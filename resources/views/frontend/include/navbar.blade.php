@@ -143,7 +143,7 @@
                             <li><a href="/blog" id="blog-link">Blogs</a></li>
                            
                             <!-- Other navigation links -->
-                            <li><a class="" href="/contact" id="contact-link">Contact</a></li>
+                            <li><a class="" href="/contactus" id="contact-link">Contact</a></li>
                             
                             <li><a href="/shop" id="shop-link">Winkelwagen <i class="fa fa-shopping-basket"></i></a></li>
                             <li>

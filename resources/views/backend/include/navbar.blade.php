@@ -210,7 +210,7 @@
                 <a class="nav-link dropdown-toggle nav-user me-0 waves-effect waves-light" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
                     <img src="{{asset('backend/assets/images/users/avatar-4.jpg')}}" alt="user-image" class="rounded-circle">
                     <span class="ms-1 d-none d-md-inline-block">
-                        Jamie D. <i class="mdi mdi-chevron-down"></i>
+                        {{ auth()->guard('admin')->user()->name }} <i class="mdi mdi-chevron-down"></i>
                     </span>
                 </a>
                 <div class="dropdown-menu dropdown-menu-end profile-dropdown ">
@@ -220,7 +220,7 @@
                     </div>
 
                     <!-- item-->
-                    <a href="javascript:void(0);" class="dropdown-item notify-item">
+                    {{-- <a href="javascript:void(0);" class="dropdown-item notify-item">
                         <i class="fe-user"></i>
                         <span>My Account</span>
                     </a>
@@ -235,15 +235,16 @@
                     <a href="pages-lock-screen.html" class="dropdown-item notify-item">
                         <i class="fe-lock"></i>
                         <span>Lock Screen</span>
-                    </a>
+                    </a> --}}
 
-                    <div class="dropdown-divider"></div>
+                    {{-- <div class="dropdown-divider"></div> --}}
 
                     <!-- item-->
-                    <a href="pages-login.html" class="dropdown-item notify-item">
+                    <a href="{{ route('admin.logout') }}" class="dropdown-item notify-item">
                         <i class="fe-log-out"></i>
                         <span>Logout</span>
                     </a>
+                    
 
                 </div>
             </li>

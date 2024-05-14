@@ -31,6 +31,28 @@ class ContactUsController extends Controller
      */
     public function store(Request $request)
     {
+        $validatedData = $request->validate([
+            'fname' => 'required',
+            'lname' => 'required',
+            'phonenumber' => 'required',
+            'email' => 'required|email',
+            'streetnumber' => 'required',
+            'pcodeandc' => 'required',
+            'iam' => 'required',
+            'project' => 'required',
+            'message' => 'required',
+        ], [
+            'fname.required' => 'Voornaam is verplicht',
+            'lname.required' => 'Achternaam is verplicht',
+            'phonenumber.required' => 'Telefoonnummer is verplicht',
+            'email.required' => 'E-mailadres is verplicht',
+            'email.email' => 'Voer een geldig e-mailadres in',
+            'streetnumber.required' => 'Straat en nummer is verplicht',
+            'pcodeandc.required' => 'Postcode en stad is verplicht',
+            'iam.required' => 'Selecteer een optie voor "Ik ben"',
+            'project.required' => 'Selecteer een projecttype',
+            'message.required' => 'Het berichtveld is verplicht',
+        ]);
        
         $contactus = new ContactUs();
     

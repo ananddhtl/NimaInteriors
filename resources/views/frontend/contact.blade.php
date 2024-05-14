@@ -83,18 +83,24 @@
             <div class="contact-bottom">
                 <div class="container">
                     <div class="row">
-                        <!-- ***** Contact Text Start ***** -->
+                        @if (session('success'))
+                            <div class="alert alert-success">
+                                {{ session('success') }}
+                            </div>
+                        @endif
                         <div class="col-lg-6 col-md-6 col-sm-12  text-right">
                             <h5 class="margin-bottom-30">Neem contact met ons op</h5>
                             <div class="contact-text">
                                 <p>Open op afspraak </p>
                                 <p>Herentalsebaan 301, 2150 Borsbeek</p>
-                            
-                                <p>info@nimainteriors.com  </p>
+
+                                <p>info@nimainteriors.com </p>
                                 <p><i class="fa fa-phone"></i>+3232968266</p>
                             </div>
                             <div class="iframe-container">
-                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3976!2d1!3d1!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sHerentalsebaan+301%2C+2150+Borsbeek!5e0!3m2!1snl!2sBE!4v1714897402000"   loading="lazy"></iframe>
+                                <iframe
+                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3976!2d1!3d1!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sHerentalsebaan+301%2C+2150+Borsbeek!5e0!3m2!1snl!2sBE!4v1714897402000"
+                                    loading="lazy"></iframe>
                             </div>
                         </div>
                         <!-- ***** Contact Text End ***** -->
@@ -107,44 +113,79 @@
                                     <div class="row">
                                         {{-- firstname --}}
                                         <div class="col-lg-6 col-md-12 col-sm-12">
-                                            <input type="text" name="fname" placeholder="Voornaam" required>
+                                            <input type="text" name="fname" placeholder="Voornaam">
+                                            @if ($errors->has('fname'))
+                                                <p style="color:red; margin-top:-10px;">{{ $errors->first('fname') }}</span>
+                                            @endif
                                         </div>
+
                                         <div class="col-lg-6 col-md-12 col-sm-12">
-                                            <input type="text" name="lname" placeholder="Achternaam" required>
+                                            <input type="text" name="lname" placeholder="Achternaam">
+                                            @if ($errors->has('lname'))
+                                                <p style="color:red; margin-top:-10px;">{{ $errors->first('lname') }}</span>
+                                            @endif
                                         </div>
+
                                         <div class="col-lg-6 col-md-12 col-sm-12 mb-3">
-                                            <select name="iam" class="form-select" aria-label="Ik ben" required>
+                                            <select name="iam" class="form-select" aria-label="Ik ben">
                                                 <option selected disabled hidden>Ik ben</option>
                                                 <option value="particulars">Particulier</option>
                                                 <option value="architect">Architect</option>
                                                 <option value="constructionpromoter">Bouwpromoter</option>
                                                 <option value="others">Others</option>
                                             </select>
+                                            @if ($errors->has('iam'))
+                                                <p style="color:red; margin-top:-10px;">{{ $errors->first('iam') }}</span>
+                                            @endif
                                         </div>
                                         <div class="col-lg-6 col-md-12 col-sm-12 mb-3">
-                                            <select name="project" class="form-select" required>
-                                                <option selected disabled hidden>Kies  project type</option>
+                                            <select name="project" class="form-select">
+                                                <option selected disabled hidden>Kies project type</option>
                                                 <option value="newconstruction">Nieuwbouw</option>
                                                 <option value="renovation">Renovatie</option>
                                                 <option value="others">Andere</option>
                                             </select>
+                                            @if ($errors->has('project'))
+                                                <p style="color:red; margin-top:-10px;">
+                                                    {{ $errors->first('project') }}</span>
+                                            @endif
                                         </div>
                                         <div class="col-lg-6 col-md-12 col-sm-12">
-                                            <input type="text" name="phonenumber" placeholder="Telefoonnummer" required>
+                                            <input type="text" name="phonenumber" placeholder="Telefoonnummer">
+                                            @if ($errors->has('phonenumber'))
+                                                <p style="color:red; margin-top:-10px;">
+                                                    {{ $errors->first('phonenumber') }}</span>
+                                            @endif
                                         </div>
-                                        
-                            
+
+
                                         <div class="col-lg-6 col-md-12 col-sm-12">
-                                            <input type="number" name="streetnumber" placeholder="Straat en nummer" required>
+                                            <input type="number" name="streetnumber" placeholder="Straat en nummer">
+                                            @if ($errors->has('streetnumber'))
+                                                <p style="color:red; margin-top:-10px;">
+                                                    {{ $errors->first('streetnumber') }}</span>
+                                            @endif
                                         </div>
                                         <div class="col-lg-6 col-md-12 col-sm-12">
-                                            <input type="text" name="pcodeandc" placeholder="Postcode en stad" required>
+                                            <input type="text" name="pcodeandc" placeholder="Postcode en stad">
+                                            @if ($errors->has('pcodeandc'))
+                                                <p style="color:red; margin-top:-10px;">
+                                                    {{ $errors->first('pcodeandc') }}</span>
+                                            @endif
                                         </div>
                                         <div class="col-lg-6 col-md-12 col-sm-12">
-                                            <input type="email" name="email" placeholder="E-mailadres" required>
+                                            <input type="email" name="email" placeholder="E-mailadres">
+                                            @if ($errors->has('email'))
+                                                <p style="color:red; margin-top:-10px;">
+                                                    {{ $errors->first('email') }}</span>
+                                            @endif
                                         </div>
                                         <div class="col-lg-10">
-                                            <textarea name="message" placeholder="Your message" required></textarea>
+                                            <textarea name="message" placeholder="Your message"></textarea>
+                                            @if ($errors->has('message'))
+                                                <p style="color:red; margin-top:-10px;">
+                                                    {{ $errors->first('message') }}</span>
+                                            @endif
                                         </div>
                                         <div class="col-lg-12">
                                             <button class="dark-btn float-right" type="submit">
@@ -155,13 +196,13 @@
                                     </div>
                                 </div>
                             </form>
-                            
+
                         </div>
                         <!-- ***** Contact Form End ***** -->
                     </div>
                 </div>
             </div>
-         
+
         </div>
 
 
@@ -171,30 +212,31 @@
         <div class="container white">
             <div class="row">
                 <div class="img-profile col-lg-6 col-md-6 col-sm-12">
-                   
-                        <img src="{{ asset('frontend/assets/images/photos/contact/MajdaenAdam.jpeg') }}"
-                        class="img-fluid"  alt="Title">
-                   
+
+                    <img src="{{ asset('frontend/assets/images/photos/contact/MajdaenAdam.jpeg') }}" class="img-fluid"
+                        alt="Title">
+
                 </div>
                 <div class="profile-info col-lg-6 col-md-6 col-sm-12  text-justify">
                     <h3 class=" pb-4">
                         Een toegewijd familiebedrijf sinds 2014
                     </h3>
                     <p>
-                        Welkom bij Nima Interiors. Onze reis begon met een gedeelde passie voor interieur. 
-                        Na jarenlange ervaring bij gerenommeerde interieurbedrijven besloten Adam en Majda 
-                        hun eigen weg te gaan. Wat ooit begon als een breed scala aan interieurinrichtingen, 
+                        Welkom bij Nima Interiors. Onze reis begon met een gedeelde passie voor interieur.
+                        Na jarenlange ervaring bij gerenommeerde interieurbedrijven besloten Adam en Majda
+                        hun eigen weg te gaan. Wat ooit begon als een breed scala aan interieurinrichtingen,
                         evolueerde al snel naar een bijzondere focus op keukens en elk aspect van huiselijk comfort
                     </p>
                     <p>
-                        Nu, ruim twintig jaar later, hebben we ons gespecialiseerd in het ontwerpen en realiseren van 
-                        verfijnde interieurs, van keukens tot aan elk detail dat bijdraagt aan de sfeer van thuis. 
-                        Gedurende onze reis hebben we onze eigen unieke stijl ontwikkeld, 
-                        een stijl die met trots wordt herkend als die van Nima Interiors, maar bovenal als jouw persoonlijke signatuur.
+                        Nu, ruim twintig jaar later, hebben we ons gespecialiseerd in het ontwerpen en realiseren van
+                        verfijnde interieurs, van keukens tot aan elk detail dat bijdraagt aan de sfeer van thuis.
+                        Gedurende onze reis hebben we onze eigen unieke stijl ontwikkeld,
+                        een stijl die met trots wordt herkend als die van Nima Interiors, maar bovenal als jouw persoonlijke
+                        signatuur.
                     </p>
                 </div>
             </div>
-           
+
         </div>
     </section>
 @endsection
