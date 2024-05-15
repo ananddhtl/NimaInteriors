@@ -4,6 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Models\NormalUser;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Password;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Validation\ValidationException;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\URL;
 
 class NormalUserController extends Controller
 {
@@ -28,8 +36,106 @@ class NormalUserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'fullname' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:normal_users',
+            'password1' => 'required|string|min:8',
+        ]);
+     
+    
+        $user = new NormalUser();
+    
+        $user->fullname = $validatedData['fullname'];
+        $user->email = $validatedData['email']; 
+        $user->password = Hash::make($validatedData['password1']); 
+        $user->save();
+    
+        auth()->guard('web')->login($user);
+        return redirect()->route('dashboard');
     }
+    
+    public function login(Request $request)
+{
+    $credentials = $request->validate([
+        'email' => 'required|string|email',
+        'password' => 'required|string',
+    ]);
+
+    if (auth()->attempt($credentials)) {
+       
+        return redirect()->route('dashboard');
+    } else {
+       
+        return back()->withInput()->withErrors(['email' => 'Incorrect email or password.']);
+    }
+}
+
+
+public function forgotPassword(Request $request)
+{
+    try {
+        $request->validate([
+            'email' => 'required|string|email',
+        ]);
+
+        $email = $request->input('email');
+        Session::put('reset_email', $email); 
+      
+        $resetPasswordUrl = URL::signedRoute('customer.changepassword', ['email' => $email]);
+
+
+       
+        Mail::send('frontend.emailtemplate.reset_password', ['resetPasswordUrl' => $resetPasswordUrl], function ($message) use ($email) {
+            $message->to($email)->subject('Reset Password');
+        });
+
+        return redirect()->back()->with('status', 'Password reset link has been sent to your email.');
+    } catch (\Exception $e) {
+      dd($e->getMessage());
+        return redirect()->back()->withErrors(['email' => 'An unexpected error occurred. Please try again later.']);
+    }
+}
+public function changePassword(Request $request)
+{
+    // Ensure the user is authenticated
+    if (!Auth::check()) {
+        return redirect()->route('login')->withErrors(['error' => 'Please log in to change your password.']);
+    }
+
+    $request->validate([
+        'new_password' => 'required|string|min:8',
+    ]);
+
+    try {
+       
+        $email = Session::get('reset_email');
+
+        
+        $user = NormalUser::where('email', $email)->first();
+        
+        if (!$user) {
+            return redirect()->route('login')->withErrors(['error' => 'User not found.']);
+        }
+
+       
+        $user->password = Hash::make($request->input('new_password'));
+        $user->save();
+
+       
+        Session::forget('reset_email');
+
+        return redirect()->route('dashboard')->with('success', 'Password changed successfully.');
+    } catch (\Exception $e) {
+        return redirect()->back()->withErrors(['error' => 'An unexpected error occurred. Please try again later.']);
+    }
+}
+public function logout()
+{
+    Auth::logout();
+
+   
+    return redirect()->route('login');
+}
 
     /**
      * Display the specified resource.
