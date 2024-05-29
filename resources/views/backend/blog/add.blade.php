@@ -40,6 +40,11 @@
                                                 <div class="col-md-10">
                                                     <input type="text" name="title" id="simpleinput"
                                                         class="form-control" placeholder="Enter Blog Title">
+                                                    @if ($errors->has('title'))
+                                                        <p style="color:red; font-size: 15px;">
+                                                            {{ $errors->first('title') }}
+                                                        </p>
+                                                    @endif
                                                 </div>
                                             </div>
                                             <div class="mb-2 row">
@@ -48,6 +53,11 @@
                                                 <div class="col-md-10">
                                                     <input type="file" name="thumbnail" class="form-control"
                                                         id="example-fileinput">
+                                                    @if ($errors->has('thumbnail'))
+                                                        <p style="color:red; font-size: 15px;">
+                                                            {{ $errors->first('thumbnail') }}
+                                                        </p>
+                                                    @endif
                                                 </div>
                                             </div>
 
@@ -68,6 +78,11 @@
                                                         <a class="ql-action"></a><a class="ql-remove"></a>
                                                     </div>
                                                 </div>
+                                                @if ($errors->has('description'))
+                                                    <p style="color:red; font-size: 15px;">
+                                                        {{ $errors->first('description') }}
+                                                    </p>
+                                                @endif
 
                                                 <input type="hidden" name="description" id="description-input">
                                             </div>

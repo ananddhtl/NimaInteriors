@@ -1,6 +1,6 @@
 @extends('backend.include.main')
 @section('content')
-<link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+    <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
 
     <div class="container-fluid">
 
@@ -19,13 +19,20 @@
                 </div>
             </div>
         </div>
-       
+
 
         <div class="row">
             <div class="col-lg-12">
                 <div class="card">
+                    @if (session('success'))
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            <i class="mdi mdi-bullseye-arrow me-2"></i>
+                            {{ session('success') }}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    @endif
                     <div class="card-body">
-                        
+
 
                         <div class="table-responsive">
                             <table class="table mb-0">
@@ -38,30 +45,34 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach($data as $item)
-                                    <tr>
-                                        <td>{{ $item->title }}</td>
-                                        <td class="ql-editor">{!! $item->description !!}</td>
-                                        <td><img src="{{ asset('admin/blog/' . $item->image) }}" height="100px" width="150px"></td>
-                                        <th> <a href="{{ route('admin.editblog', $item->id) }}" class="btn btn-info waves-effect waves-light">
-                                            <i class="mdi mdi-pen"></i>
-                                        </a></button>&nbsp;<button type="button" class="btn btn-danger waves-effect waves-light"><i class="mdi mdi-close"></i></button></th>
-                                    </tr>
+                                    @foreach ($data as $item)
+                                        <tr>
+                                            <td>{{ $item->title }}</td>
+                                            <td class="ql-editor">{!! $item->description !!}</td>
+                                            <td><img src="{{ asset('admin/blog/' . $item->image) }}" height="100px"
+                                                    width="150px"></td>
+                                            <th> <a href="{{ route('admin.editblog', $item->id) }}"
+                                                    class="btn btn-info waves-effect waves-light">
+                                                    <i class="mdi mdi-pen"></i>
+                                                </a></button>&nbsp;<button type="button"
+                                                    class="btn btn-danger waves-effect waves-light"><i
+                                                        class="mdi mdi-close"></i></button></th>
+                                        </tr>
                                     @endforeach
                                 </tbody>
-                                
+
                             </table>
                         </div>
                     </div>
-                </div> 
-            </div> 
+                </div>
+            </div>
 
-            
+
         </div>
-       
 
 
-      
+
+
 
     </div>
 @endsection

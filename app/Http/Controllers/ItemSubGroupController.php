@@ -38,7 +38,7 @@ class ItemSubGroupController extends Controller
         $subgroup->subGroupName =$request->subGroupName;      
         $subgroup->item_group_id =$request->itemgroup_id;      
         $subgroup->save();
-        return redirect()->back()->with('group_added','Sub Group Item   added successfully');  
+        return redirect()->back()->with('success','Sub Group Item   added successfully');  
         
        }
     elseif( $request->itemgroup_id!="" && $request->itemSubgroup_idEdit!="")

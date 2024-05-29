@@ -38,6 +38,9 @@ Route::prefix('admin')->middleware(['auth:admin'])->group(function () {
     Route::get('addprojectimages', [ProjectImagesController::class, 'addprojectimages'])->name('admin.addprojectimages');
     Route::get('listprojectimages', [ProjectImagesController::class, 'index'])->name('admin.listprojectimages');
     Route::post('storeprojectimages', [ProjectImagesController::class, 'store'])->name('admin.storeprojectimages');
+    Route::delete('delete-image/{id}', [ProjectImagesController::class, 'destroy'])->name('admin.destroyproductimages');
+
+
 
     Route::get('addblog', [BlogController::class, 'addblog'])->name('admin.addblog');
     Route::get('listblog', [BlogController::class, 'index'])->name('admin.listblog');

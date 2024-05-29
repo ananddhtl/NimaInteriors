@@ -172,6 +172,12 @@
                                                     <input type="text" name="itemName" id="simpleinput"
                                                         class="form-control" value="{{ @$group->groupName }}"
                                                         placeholder="Enter Item Name">
+                                                        @if ($errors->has('itemName'))
+                                                        <p style="color:red;
+                                                             font-size: 15px;">
+                                                             {{ $errors->first('itemName') }}
+                                                        </p>
+                                                     @endif
                                                 </div>
                                             </div>
                                             {{-- <div class="mb-2 row">
@@ -193,6 +199,12 @@
                                                     <input type="text" name="itemDetails" id="simpleinput"
                                                         class="form-control" value="{{ @$group->groupName }}"
                                                         placeholder="Enter Item Details">
+                                                        @if ($errors->has('itemDetails'))
+                                                        <p style="color:red;
+                                                             font-size: 15px;">
+                                                             {{ $errors->first('itemDetails') }}
+                                                        </p>
+                                                     @endif
                                                 </div>
                                             </div>
                                             <div class="mb-2 row">
@@ -207,6 +219,12 @@
                                                         data-bs-toggle="modal" data-bs-target="#myModalForGroup"
                                                         id="groupName" placeholder="Select Group"
                                                         value="{{ @$itemsgroupDetails->groupName }}" readonly>
+                                                        @if ($errors->has('itemgroup_id'))
+                                                        <p style="color:red;
+                                                             font-size: 15px;">
+                                                             {{ $errors->first('itemgroup_id') }}
+                                                        </p>
+                                                     @endif
                                                 </div>
                                             </div>
                                             <div class="mb-2 row">
@@ -220,6 +238,12 @@
                                                         name="subgroupName" id="subGroupName" data-bs-toggle="modal"
                                                         data-bs-target="#myModalForSubGroup"
                                                         placeholder="Select Subgroup">
+                                                        @if ($errors->has('sub_groups_id'))
+                                                        <p style="color:red;
+                                                             font-size: 15px;">
+                                                             {{ $errors->first('sub_groups_id') }}
+                                                        </p>
+                                                     @endif
                                                 </div>
 
                                             </div>
@@ -227,18 +251,33 @@
                                                 <label class="col-md-2 col-form-label">Select the Brand</label>
                                                 <div class="col-md-10">
                                                     <select name="company_id"class="form-control">
-                                                        @foreach (@$brand as $item )
-                                                        <option value="{{ @$item->id }}">{{ @$item ->companyName ?? ''}} </option>
+                                                        @foreach (@$brand as $item)
+                                                            <option value="{{ @$item->id }}">
+                                                                {{ @$item->companyName ?? '' }} </option>
                                                         @endforeach
-                                                       
+
                                                     </select>
-                                                  
+                                                    @if ($errors->has('company_id'))
+                                                        <p style="color:red;
+                                                             font-size: 15px;">
+                                                             {{ $errors->first('company_id') }}
+                                                        </p>
+                                                     @endif
+
                                                 </div>
                                             </div>
                                             <div class="mb-2 row">
-                                                <label class="col-md-2 col-form-label" for="example-fileinput">Item Image</label>
+                                                <label class="col-md-2 col-form-label" for="example-fileinput">Item
+                                                    Image</label>
                                                 <div class="col-md-10">
-                                                    <input type="file" name="thumbnail" class="form-control" id="example-fileinput">
+                                                    <input type="file" name="thumbnail" class="form-control"
+                                                        id="example-fileinput">
+                                                        @if ($errors->has('thumbnail'))
+                                                        <p style="color:red;
+                                                             font-size: 15px;">
+                                                             {{ $errors->first('thumbnail') }}
+                                                        </p>
+                                                     @endif
                                                 </div>
                                             </div>
                                             <div class="mb-2 row">
@@ -247,6 +286,12 @@
                                                     <input type="text" name="units" id="simpleinput"
                                                         class="form-control" value="{{ @$group->groupName }}"
                                                         placeholder="Enter Item Details">
+                                                        @if ($errors->has('units'))
+                                                        <p style="color:red;
+                                                             font-size: 15px;">
+                                                             {{ $errors->first('units') }}
+                                                        </p>
+                                                     @endif
                                                 </div>
                                             </div>
 
@@ -288,10 +333,12 @@
                                                 <th>{{ $item->itemName }}</th>
                                                 <th>{{ $item->itemDetails }}</th>
                                                 <th>{{ $item->units }}</th>
-                                                <td>@if(!empty($item->thumbnail))
-                                                    <img height="70px;" src="{{$item->thumbnail}}" alt="">
+                                                <td>
+                                                    @if (!empty($item->thumbnail))
+                                                        <img height="70px;" src="{{ $item->thumbnail }}" alt="">
                                                     @else
-                                                    <img height="70px;" src="{{asset('defaultimage.jpg')}}" alt="">
+                                                        <img height="70px;" src="{{ asset('defaultimage.jpg') }}"
+                                                            alt="">
                                                     @endif
                                                 </td>
                                                 <td>
@@ -301,11 +348,12 @@
                                                     <a target="_blank"
                                                         href="/admin/itemsDetailsEdit/{{ $item->id }}-{{ $item->itemgroup_id }}-{{ $item->sub_groups_id }}-{{ $item->company_id }}"
                                                         class="btn btn-info">Edit </a>
-                                                    <a href="/delete-itemsDetails/{{ $item->id }}" class="btn btn-danger"
+                                                    <a href="/delete-itemsDetails/{{ $item->id }}"
+                                                        class="btn btn-danger"
                                                         onclick="return confirm('Are you sure you want to delete this item ?');">
                                                         Delete
                                                     </a>
-                    
+
                                                 </td>
                                             </tr>
                                         @endforeach

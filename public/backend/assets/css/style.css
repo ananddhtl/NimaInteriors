@@ -19195,3 +19195,8 @@ span.flatpickr-weekday,
 .waves-block {
   display: block;
 }
+
+.error-message{
+  color:brown;
+  font-size: 35px;
+}

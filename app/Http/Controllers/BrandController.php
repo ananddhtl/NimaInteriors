@@ -12,8 +12,8 @@ class BrandController extends Controller
      */
     public function index()
     {
+       
         $data=Brand::orderBy("id","desc")->where('status','0')->take(10)->get();
-
        return view('backend.inventory.brand',compact('data'));
     }
 
@@ -48,6 +48,7 @@ class BrandController extends Controller
             return redirect()->back()->with('company_updated','Company updated is successfully updated'); 
         }
         else{
+    
         $request->validate([
             'companyName' => 'required|unique:brands',
             'address' => 'required|',
@@ -57,7 +58,8 @@ class BrandController extends Controller
         $company = new Brand();
         $company->companyName =$request->companyName; 
         $company->address =$request->address;      
-        $company->contactNumber =$request->contactNumber;      
+        $company->contactNumber =$request->contactNumber; 
+        $company->status =0;           
         $company->save();
         //return view('Company.add-company',compact('companies'))->with('company_added','Company  added successfully');   
       
@@ -77,11 +79,11 @@ class BrandController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Brand $brand)
+    public function edit(Brand $brand, $id)
     {
         $data = Brand::orderBy("id","desc")->where('status','0')->take(10)->get();
         $editbrand=Brand::FindorFail($id);
-        return view('backend.inventory.brand',compact('data'));
+        return view('backend.inventory.brand',compact('data','editbrand'));
     }
 
     /**

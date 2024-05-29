@@ -34,12 +34,20 @@
                                         <form action="{{ route('admin.storegroup') }}" class="form-horizontal"
                                             role="form" method="POST" enctype="multipart/form-data">
                                             @csrf
-                                            <input type="hidden" name="group_idEdit" id="group_idEdit" value="{{ @$group->id }}"> 
+                                            <input type="hidden" name="group_idEdit" id="group_idEdit"
+                                                value="{{ @$group->id }}">
                                             <div class="mb-2 row">
                                                 <label class="col-md-2 col-form-label" for="simpleinput">Group Name</label>
                                                 <div class="col-md-10">
                                                     <input type="text" name="groupName" id="simpleinput"
-                                                        class="form-control" value="{{ @$group->groupName }}" placeholder="Enter Group Name">
+                                                        class="form-control" value="{{ @$group->groupName }}"
+                                                        placeholder="Enter Group Name">
+                                                    @if ($errors->has('groupName'))
+                                                       <p style="color:red;
+                                                        font-size: 15px;">
+                                                            {{ $errors->first('groupName') }}
+                                                       </p>
+                                                    @endif
                                                 </div>
                                             </div>
 
@@ -81,7 +89,8 @@
                                                 <th> <a href="{{ route('admin.editgroupname', $item->id) }}"
                                                         class="btn btn-info waves-effect waves-light">
                                                         <i class="mdi mdi-pen"></i>
-                                                    </a>&nbsp; <a href="{{ route('admin.deletegroupname', $item->id) }}" onclick=" return confirm('Are you sure you want to delete this item ?'); "
+                                                    </a>&nbsp; <a href="{{ route('admin.deletegroupname', $item->id) }}"
+                                                        onclick=" return confirm('Are you sure you want to delete this item ?'); "
                                                         class="btn btn-danger waves-effect waves-light">
                                                         <i class="mdi mdi-close"></i>
                                                     </a></th>

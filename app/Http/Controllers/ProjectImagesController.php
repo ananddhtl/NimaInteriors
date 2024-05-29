@@ -83,8 +83,21 @@ class ProjectImagesController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(ProjectImages $projectImages)
+    public function destroy($id)
     {
-        //
+    $image = ProjectImages::findOrFail($id);
+
+    
+    $imagePath = public_path($image->images);
+    if (file_exists($imagePath)) {
+        unlink($imagePath);
     }
+
+   
+    $image->delete();
+
+    return response()->json(['success' => 'Image deleted successfully']);
+    }
+
+    
 }
