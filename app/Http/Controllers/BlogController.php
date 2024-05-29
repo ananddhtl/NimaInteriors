@@ -111,8 +111,11 @@ class BlogController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Blog $blog)
+    public function destroy(Blog $blog, $id)
     {
-        //
+        $blog=Blog::findorfail($id);  
+           
+        $blog->delete();
+        return back()->with('message','Blog is delete successfully');
     }
 }

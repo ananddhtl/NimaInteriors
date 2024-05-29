@@ -53,9 +53,9 @@
                                             <th> <a href="{{ route('admin.editblog', $item->id) }}"
                                                     class="btn btn-info waves-effect waves-light">
                                                     <i class="mdi mdi-pen"></i>
-                                                </a></button>&nbsp;<button type="button"
+                                                </a></button>&nbsp;<a href="{{ route('admin.deleteblog', $item->id) }}"><button type="button"
                                                     class="btn btn-danger waves-effect waves-light"><i
-                                                        class="mdi mdi-close"></i></button></th>
+                                                        class="mdi mdi-close"></i></button></a></th>
                                         </tr>
                                     @endforeach
                                 </tbody>

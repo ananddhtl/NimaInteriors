@@ -45,6 +45,7 @@ Route::prefix('admin')->middleware(['auth:admin'])->group(function () {
     Route::get('addblog', [BlogController::class, 'addblog'])->name('admin.addblog');
     Route::get('listblog', [BlogController::class, 'index'])->name('admin.listblog');
     Route::get('editblog/{id}', [BlogController::class, 'edit'])->name('admin.editblog');
+    Route::get('deleteblog/{id}', [BlogController::class, 'destroy'])->name('admin.deleteblog');
     Route::post('updateblog/{id}', [BlogController::class, 'update'])->name('admin.updateblog');
     Route::post('storeblog', [BlogController::class, 'store'])->name('admin.storeblog');
 
