@@ -12,7 +12,8 @@
                 <div class="col-lg-6">
                     <div class="d-none d-lg-block">
                         <ol class="breadcrumb m-0 float-end">
-                           <a href="{{route('admin.addblog')}}"> <button type="button" class="btn btn-secondary waves-effect">Add</button></a>
+                            <a href="{{ route('admin.addblog') }}"> <button type="button"
+                                    class="btn btn-secondary waves-effect">Add</button></a>
                         </ol>
                     </div>
                 </div>
@@ -57,12 +58,17 @@
                                             <td class="ql-editor">{!! $item->description !!}</td>
                                             <td><img src="{{ asset('admin/blog/' . $item->image) }}" height="100px"
                                                     width="150px"></td>
-                                            <th> <a href="{{ route('admin.editblog', $item->id) }}"
+                                            <td>
+                                                <a href="{{ route('admin.editblog', $item->id) }}"
                                                     class="btn btn-info waves-effect waves-light">
-                                                    <i class="mdi mdi-pen"></i>
-                                                </a></button>&nbsp;<a href="{{ route('admin.deleteblog', $item->id) }}"><button type="button"
-                                                    class="btn btn-danger waves-effect waves-light"><i
-                                                        class="mdi mdi-close"></i></button></a></th>
+                                                    <i class="mdi mdi-pen"></i> Edit
+                                                </a>
+                                                &nbsp;
+                                                <button type="button" class="btn btn-danger waves-effect waves-light"
+                                                    onclick="confirmDelete('{{ route('admin.deleteblog', $item->id) }}')">
+                                                    <i class="mdi mdi-close"></i> Delete
+                                                </button>
+                                            </td>
                                         </tr>
                                     @endforeach
                                 </tbody>
@@ -81,4 +87,13 @@
 
 
     </div>
+    <script>
+        function confirmDelete(deleteUrl) {
+            if (confirm("Are you sure you want to delete this item?")) {
+                window.location.href = deleteUrl;
+            } else {
+               
+            }
+        }
+    </script>
 @endsection
