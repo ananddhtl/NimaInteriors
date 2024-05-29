@@ -9,19 +9,17 @@
             <div class="py-3 py-lg-4">
                 <div class="row">
                     <div class="col-lg-6">
-                        <h4 class="page-title mb-0">Add Blog</h4>
+                        <h4 class="page-title mb-0">Blog Data</h4>
                     </div>
                     <div class="col-lg-6">
                         <div class="d-none d-lg-block">
                             <ol class="breadcrumb m-0 float-end">
-                                <li class="breadcrumb-item"><a href="javascript: void(0);">Blog</a></li>
-                                <li class="breadcrumb-item active">Add</li>
+                               <a href="{{route('admin.listblog')}}"> <button type="button" class="btn btn-secondary waves-effect">List</button></a>
                             </ol>
                         </div>
                     </div>
                 </div>
             </div>
-
 
             <div class="row">
                 <div class="col-6">

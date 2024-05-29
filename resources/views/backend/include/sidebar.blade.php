@@ -36,80 +36,28 @@
                     <span class="menu-text"> Contact Us </span>
                 </a>
             </li>
+            <li class="menu-item">
+                <a href="{{route('admin.listproject')}}" class="menu-link waves-effect waves-light">
+                    <span class="menu-icon"><i class='bx bxs-hard-hat' ></i></span>
+                    <span class="menu-text"> Projects </span>
+                </a>
+            </li>
 
             <li class="menu-item">
-                <a href="#menuExpages" data-bs-toggle="collapse" class="menu-link waves-effect waves-light">
-                    <span class="menu-icon"><i class="bx bx-file"></i></span>
-                    <span class="menu-text"> Projects</span>
-                    <span class="menu-arrow"></span>
+                <a href="{{route('admin.listprojectimages')}}" class="menu-link waves-effect waves-light">
+                    <span class="menu-icon"><i class='bx bx-images'></i></span>
+                    <span class="menu-text"> Projects Images</span>
                 </a>
-                <div class="collapse" id="menuExpages">
-                    <ul class="sub-menu">
-                        <li class="menu-item">
-                            <a href="{{route('admin.addproject')}}" class="menu-link">
-                                <span class="menu-text">Add </span>
-                            </a>
-                        </li>
-                        <li class="menu-item">
-                            <a href="{{route('admin.listproject')}}" class="menu-link">
-                                <span class="menu-text">List</span>
-                            </a>
-                        </li>
-                       
-                    </ul>
-                </div>
-            </li> 
-
+            </li>
             <li class="menu-item">
-                <a href="#menuExpages1" data-bs-toggle="collapse" class="menu-link waves-effect waves-light">
-                    <span class="menu-icon"><i class="bx bx-file"></i></span>
-                    <span class="menu-text"> Project Images</span>
-                    <span class="menu-arrow"></span>
+                <a href="{{route('admin.listblog')}}" class="menu-link waves-effect waves-light">
+                    <span class="menu-icon"><i class='bx bxl-blogger' ></i></span>
+                    <span class="menu-text">Blog</span>
                 </a>
-                <div class="collapse" id="menuExpages1">
-                    <ul class="sub-menu">
-                        <li class="menu-item">
-                            <a href="{{route('admin.addprojectimages')}}" class="menu-link">
-                                <span class="menu-text">Add </span>
-                            </a>
-                        </li>
-                        <li class="menu-item">
-                            <a href="{{route('admin.listprojectimages')}}" class="menu-link">
-                                <span class="menu-text">List</span>
-                            </a>
-                        </li>
-                       
-                    </ul>
-                </div>
-            </li> 
-
-            <li class="menu-item">
-                <a href="#menuExpages1" data-bs-toggle="collapse" class="menu-link waves-effect waves-light">
-                    <span class="menu-icon"><i class="bx bx-file"></i></span>
-                    <span class="menu-text"> Blog</span>
-                    <span class="menu-arrow"></span>
-                </a>
-                <div class="collapse" id="menuExpages1">
-                    <ul class="sub-menu">
-                        <li class="menu-item">
-                            <a href="{{route('admin.addblog')}}" class="menu-link">
-                                <span class="menu-text">Add </span>
-                            </a>
-                        </li>
-                        <li class="menu-item">
-                            <a href="{{route('admin.listblog')}}" class="menu-link">
-                                <span class="menu-text">List</span>
-                            </a>
-                        </li>
-                       
-                    </ul>
-                </div>
-            </li> 
-
-            
+            </li>
             <li class="menu-item">
                 <a href="{{ route ('admin.listtermandcondition')}}" class="menu-link waves-effect waves-light">
-                    <span class="menu-icon"><i class="bx bx-home-smile"></i></span>
+                    <span class="menu-icon"><i class='bx bxs-shield' ></i></span>
                     <span class="menu-text"> Term and Condition</span>
                     
                 </a>
@@ -117,7 +65,7 @@
 
             <li class="menu-item">
                 <a href="{{ route ('admin.listprivacydeclaration')}}" class="menu-link waves-effect waves-light">
-                    <span class="menu-icon"><i class="bx bx-home-smile"></i></span>
+                    <span class="menu-icon"><i class='bx bxs-widget' ></i></span>
                     <span class="menu-text">Privacy Declaration</span>
                     
                 </a>
@@ -125,7 +73,7 @@
 
             <li class="menu-item">
                 <a href="#menuExpages5" data-bs-toggle="collapse" class="menu-link waves-effect waves-light">
-                    <span class="menu-icon"><i class="bx bx-file"></i></span>
+                    <span class="menu-icon"><i class='bx bxs-shopping-bag' ></i></span>
                     <span class="menu-text"> Product Management</span>
                     <span class="menu-arrow"></span>
                 </a>
@@ -158,7 +106,7 @@
 
             <li class="menu-item">
                 <a href="#menuExpages5" data-bs-toggle="collapse" class="menu-link waves-effect waves-light">
-                    <span class="menu-icon"><i class="bx bx-file"></i></span>
+                    <span class="menu-icon"><i class='bx bxs-objects-vertical-bottom' ></i></span>
                     <span class="menu-text"> Stock Management</span>
                     <span class="menu-arrow"></span>
                 </a>

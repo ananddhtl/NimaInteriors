@@ -12,8 +12,7 @@
                 <div class="col-lg-6">
                     <div class="d-none d-lg-block">
                         <ol class="breadcrumb m-0 float-end">
-                            <li class="breadcrumb-item"><a href="javascript: void(0);">Blog</a></li>
-                            <li class="breadcrumb-item active">List</li>
+                           <a href="{{route('admin.addblog')}}"> <button type="button" class="btn btn-secondary waves-effect">Add</button></a>
                         </ol>
                     </div>
                 </div>

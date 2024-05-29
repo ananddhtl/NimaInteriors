@@ -10,8 +10,7 @@
                 <div class="col-lg-6">
                     <div class="d-none d-lg-block">
                         <ol class="breadcrumb m-0 float-end">
-                            <li class="breadcrumb-item"><a href="javascript: void(0);">Project</a></li>
-                            <li class="breadcrumb-item active">List</li>
+                           <a href="{{route('admin.addproject')}}"> <button type="button" class="btn btn-secondary waves-effect">Add</button></a>
                         </ol>
                     </div>
                 </div>
@@ -23,16 +22,15 @@
             <div class="col-lg-12">
                 <div class="card">
                     @if (session('success'))
-                    <div class="alert alert-success alert-dismissible fade show" role="alert">
-                        <i class="mdi mdi-bullseye-arrow me-2"></i>
-                        {{ session('success') }}
-                        <button type="button" class="btn-close" data-bs-dismiss="alert"
-                            aria-label="Close"></button>
-                    </div>
-                @endif
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            <i class="mdi mdi-bullseye-arrow me-2"></i>
+                            {{ session('success') }}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    @endif
                     <div class="card-body">
 
-                       
+
 
                         <div class="table-responsive">
                             <table class="table mb-0">
