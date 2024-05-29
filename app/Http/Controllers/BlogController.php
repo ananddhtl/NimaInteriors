@@ -116,6 +116,6 @@ class BlogController extends Controller
         $blog=Blog::findorfail($id);  
            
         $blog->delete();
-        return back()->with('message','Blog is delete successfully');
+        return back()->with('deleted','Blog is delete successfully');
     }
 }
