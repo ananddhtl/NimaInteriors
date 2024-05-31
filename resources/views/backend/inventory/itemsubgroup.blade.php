@@ -76,12 +76,7 @@
 
                                             <input type="hidden" name="itemgroup_id" id="itemgroup_id"
                                                 value="{{ @$subgroup->itemgroup_id }}" />
-                                                @if ($errors->has('itemgroup_id'))
-                                                <p style="color:red;
-                                                     font-size: 15px;">
-                                                     {{ $errors->first('itemgroup_id') }}
-                                                </p>
-                                             @endif
+
                                             <div class="mb-2 row">
                                                 <label class="col-md-2 col-form-label" for="simpleinput">Sub Group
                                                     Name</label>
@@ -89,12 +84,6 @@
                                                     <input type="text" name="subGroupName"
                                                         value="{{ @$subgroup->subGroupName }}" class="form-control"
                                                         id="" placeholder="Enter Sub Group Item">
-                                                        @if ($errors->has('subGroupName'))
-                                                        <p style="color:red;
-                                                             font-size: 15px;">
-                                                             {{ $errors->first('subGroupName') }}
-                                                        </p>
-                                                     @endif
                                                 </div>
                                             </div>
                                             <button type="submit" class="btn btn-primary">Submit</button>

@@ -5,22 +5,19 @@
         <div class="welcome-content">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-4 col-md-12 col-sm-12">
+                    <div class="col-lg-7 col-md-12 col-sm-12">
                         <div class="welcome-text">
-
-
-                            
-
                             <h1>{{ __('Nima Interiors') }}</h1>
                             {{-- <p>Welkom bij Nima Interiors, een toegewijd familiebedrijf sinds 2014.</p>  --}}
-                            <p>{{ __('detail_work_focus') }}</p>
-                            <a class="dark-btn" href="/project">
-                                <span class="show-btn">EXPLORE KITCHEN</span>
-                                <span class="hide-btn">EXPLORE KITCHEN</span>
+                            <h1>{{ __('detail_work_focus') }}</h1>
+                           
+                            <a class="dark-btn" href="/diensten">
+                                <span class="">Plan jouw showroombezoek</span>
+                             
                             </a>
                         </div>
                     </div>
-                    <div class="col-lg-8">
+                    <div class="col-lg-3">
                         <div class="slider-position">&nbsp;</div>
                     </div>
                 </div>
@@ -39,11 +36,11 @@
 
                     <div class="item">
                         <div class="img">
-                            <img src="{{ asset('frontend/assets/images/photos/welcome/project-4.jpeg') }}" alt="">
+                            <img src="{{asset('frontend/assets/images/photos/welcome/project-4.jpeg')}}" alt="">
                         </div>
                         <div class="text">
-
-                            <p>{{__('Onze toewijding aan vakmanschap betekent dat geen detail over het hoofd wordt gezien.')}}</p>
+                            
+                            <p>Laat je inspireren door onze keukenontwerpen</p>
                         </div>
                     </div>
                     <div class="item">
@@ -51,9 +48,8 @@
                             <img src="{{ asset('frontend/assets/images/photos/welcome/reealisatie.jpeg') }}" alt="">
                         </div>
                         <div class="text">
-
-                            <p>Met oog voor detail streven we naar niets minder dan perfectie in elk aspect van het ontwerp
-                                en de productie.</p>
+                          
+                            <p>Ben je op zoek naar een moderne stijl of geef je toch de voorkeur aan een landelijke keuken?</p>
                         </div>
                     </div>
                     <div class="item">
@@ -61,12 +57,11 @@
                             <img src="{{ asset('frontend/assets/images/photos/welcome/inspiratie.jpeg') }}" alt="">
                         </div>
                         <div class="text">
-
-                            <p>Bij Nima Interiors creëren we samen met jou een perfect ontwerp dat je verwachtingen
-                                overtreft.</p>
+                            
+                            <p>Bekijk onze keukenontwerpen in 3D.</p>
                         </div>
                     </div>
-
+                    
                 </div>
             </div>
         </div>
@@ -76,50 +71,9 @@
 
     <!-- ***** Home Parallax Area Start ***** -->
     <section class="half-parallax">
-        {{-- <div class="parallax-image">
+       
 
 
-
-		</div> --}}
-        {{-- <div class="parallax-items">
-			<div class="container">
-				<div class="row">
-					<div class="col-lg-4 col-md-6 col-sm-12">
-						<div class="parallax-item">
-							<i class="fa fa-hourglass-o"></i>
-							<h5 class="feature-title">PLANNING</h5>
-							<p>Proin luctus odio et purus iaculis, et porta ex molestie. Curabitur euismod nulla enim.</p>
-							<a class="dark-btn" href="gallery.html">
-								<span class="show-btn">READ MORE</span>
-								<span class="hide-btn">READ MORE</span>
-							</a>
-						</div>
-					</div>
-					<div class="col-lg-4 col-md-6 col-sm-12">
-						<div class="parallax-item">
-							<i class="fa fa-connectdevelop"></i>
-							<h5 class="feature-title">INTERIOR</h5>
-							<p>Vestibulum justo odio, auctor sed elit vitae, sollicitudin varius metus. Maecenas diam.</p>
-							<a class="dark-btn" href="gallery.html">
-								<span class="show-btn">READ MORE</span>
-								<span class="hide-btn">READ MORE</span>
-							</a>
-						</div>
-					</div>
-					<div class="col-lg-4 col-md-6 col-sm-12">
-						<div class="parallax-item">
-							<i class="fa fa-flag-o"></i>
-							<h5 class="feature-title">EXTERIOR</h5>
-							<p>Integer tincidunt aliquam nibh. Sed sed velit tristique, egestas lorem eu, fermentum diam.</p>
-							<a class="dark-btn" href="gallery.html">
-								<span class="show-btn">READ MORE</span>
-								<span class="hide-btn">READ MORE</span>
-							</a>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div> --}}
     </section>
     <!-- ***** Home Parallax Area End ***** -->
 
@@ -130,27 +84,30 @@
             <div class="row">
                 <div class="col-lg-5 col-md-12 col-sm-12 align-self-center mobile-bottom-fix">
                     <div class="left-heading">
-                        <h2 style="font-family:Josefin Sans Flex, Josefin-Sans-Flex-Fallback, Noto Color Emoji, sans-serif; font-weight:600; font-size:28px;"
+                        <h2 
                             class="section-title dotted">Jouw bestemming voor verfijnde keukens en interieurdesign</h2>
                     </div>
                     <div class="left-text">
-                        <p class="dark">Onze focus ligt op verfijnde detailwerk dat verschil maakt. Wij geloven in de
-                            kracht van strakke, tijdloze ontwerpen. Elk element van onze keukens is met zorg en precisie
-                            ontworpen, met aandacht voor de kleinste details. We zijn ervan overtuigd dat elk idee, hoe
-                            verfijnd ook, binnen ons bereik ligt om tot werkelijkheid te brengen. Kan je het dromen? Dan
-                            kunnen wij het maken.
+                        <p class="dark">Bij Nima Interiors ligt de focus op verfijnd detailwerk dat groot verschil maakt. Wij geloven in de kracht van strakke, tijdloze ontwerpen. 
+                            Elk element van onze keukens is met zorg en precisie ontworpen, met aandacht voor de kleinste details. Bij ons wordt elk idee, hoe verfijnd ook, werkelijkheid.
 
                         </p>
-                        <p class="margin-bottom-40">We bieden een persoonlijke benadering van ontwerp, waarbij jouw visie
-                            centraal staat. Of je nu droomt van een moderne keuken met strakke lijnen of een tijdloos
-                            klassiek ontwerp, bij Nima Interiors kunnen we jouw verlangde keuken werkelijkheid maken. </p>
+                        <p >Wij hanteren een persoonlijke benadering waarbij jouw 
+                            visie centraal staat. Denk je aan een moderne keuken met strakke lijnen of wil
+                             je een tijdloos klassiek ontwerp? Bij Nima Interiors in Borsbeek kunnen
+                             we de keuken die jij in gedachten hebt werkelijkheid maken. </p>
 
 
 
                     </div>
-                    <a class="dark-btn" href="#">
-                        <span class="show-btn">EXPLORE MORE</span>
-                        <span class="hide-btn">EXPLORE MORE</span>
+                    <a class="section-btn" href="/diensten">
+                       <div class="btn  btn-c">
+                        Maak een afspraak
+                       </div>
+                       {{-- <div class="arrow-p">
+                        <i class="fa fa-arrow-right"></i>
+                       </div> --}}
+                       
                     </a>
 
                 </div>
@@ -197,17 +154,16 @@
                             bespreken.
 
                         </p>
-                        <p class="margin-bottom-40">Neem de tijd om comfortabel plaats te nemen. Het kiezen van jouw nieuwe
-                            keuken is geen haastklus. Onze ruimte is ontworpen om je te inspireren, laat je creativiteit de
-                            vrije loop terwijl je onze diverse ontwerpen verkent. </p>
+                        <p class="dark"> Onze showroom in Borsbeek biedt een verfijnde setting om jouw nieuwe
+                             keuken zonder haast te kiezen. Laat je creativiteit de vrije loop terwijl je onze diverse showroomkeukens verkent</p>
 
 
 
                     </div>
                     <div>
-                        <a href="/contactus" class="btn btn-secondary ">
+                        <a href="/contact" class="btn btn-c " >
                             Plan een afspraak
-                            <i class="fa fa-arrow-right"></i>
+                           
                         </a>
                     </div>
                 </div>
@@ -216,104 +172,4 @@
         </div>
     </section>
 
-
-    <!-- ***** Blog Start ***** -->
-    {{-- <section class="section white padding-bottom-120">
-		<div class="container">
-			<!-- ***** Section Title Start ***** -->
-			<div class="row">
-				<div class="col-lg-12">
-					<div class="center-heading">
-						<h2 class="section-title">Latest Blog Posts</h2>
-					</div>
-				</div>
-				<div class="offset-lg-3 col-lg-6">
-					<div class="center-text">
-						<p>Donec vulputate urna sed rutrum venenatis. Cras consequat magna quis arcu elementum, quis congue risus.</p>
-					</div>
-				</div>
-			</div>
-			<!-- ***** Section Title End ***** -->
-
-			<div class="row">
-				<!-- ***** Blog Item Start ***** -->
-				<div class="col-lg-6 col-md-6 col-sm-12">
-					<a href="blog-single.html" class="blog-post-grid">
-						<img src="{{asset('frontend/assets/images/photos/welcome/blog-1.jpeg')}}" alt="">
-						<div class="content">
-							<h3>Chief clubhouse for female executives opens in Boston</h3>
-							<div class="date">APR 09</div>
-						</div>
-					</a>
-				</div>
-				<!-- ***** Blog Item End ***** -->
-
-				<!-- ***** Blog Item Start ***** -->
-				<div class="col-lg-6 col-md-6 col-sm-12">
-					<a href="blog-single.html" class="blog-post-grid">
-						<img src="{{asset('frontend/assets/images/photos/welcome/blog-2.jpeg')}}" alt="">
-						<div class="content">
-							<h3>A hotel in the heart of Copenhagen’s Latin Quarter</h3>
-							<div class="date">APR 09</div>
-						</div>
-					</a>
-				</div>
-				<!-- ***** Blog Item End ***** -->
-
-				<!-- ***** Blog Item Start ***** -->
-				<!-- <div class="col-lg-4 col-md-6 col-sm-12">
-					<a href="blog-single.html" class="blog-post-grid">
-						<img src="assets/images/photos/blog/3.jpg" alt="">
-						<div class="content">
-							<h3>Skandium’s eco townhouse for LDF18 with Montana</h3>
-							<div class="date">APR 09</div>
-						</div>
-					</a>
-				</div> -->
-				<!-- ***** Blog Item End ***** -->
-			</div>
-		</div>
-	</section> --}}
-
-
-    {{-- <script>
-		$(document).ready(function(){
-			$(".owl-carousel").owlCarousel({
-				items: 1, // Number of items to display
-				loop: true, // Enable infinite loop
-				autoplay: true, // Enable autoplay
-				autoplayTimeout: 100, // Autoplay interval in milliseconds (1 second)
-				autoplayHoverPause: false, // Do not pause autoplay on mouse hover
-				animateOut: 'fadeOutRight', // Animation for slide out
-				animateIn: 'fadeInLeft', // Animation for slide in
-				smartSpeed: 100, // Animation speed
-			});
-		});
-	</script> --}} -
-
-    {{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
-    <script>
-        $(".owl-carousel").owlCarousel({
-            loop: true,
-            autoplay: true,
-            autoplayTimeout: 3000,
-            // Add this event handler
-            onInitialized: startChangingItems
-        });
-
-        function startChangingItems(event) {
-            var carousel = event.target;
-            setInterval(function() {
-                var currentItem = $(carousel).find('.owl-item.active');
-                var nextItem = currentItem.next('.owl-item');
-                if (nextItem.length === 0) {
-                    nextItem = $(carousel).find('.owl-item').first();
-                }
-                currentItem.removeClass('current');
-                nextItem.addClass('current');
-                carousel.trigger('to.owl.carousel', nextItem.index());
-            }, 2000);
-        }
-    </script> --}}
 @endsection

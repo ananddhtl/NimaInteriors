@@ -9,12 +9,13 @@
             <div class="py-3 py-lg-4">
                 <div class="row">
                     <div class="col-lg-6">
-                        <h4 class="page-title mb-0">Project Images Data</h4>
+                        <h4 class="page-title mb-0">Add Project Images</h4>
                     </div>
                     <div class="col-lg-6">
                         <div class="d-none d-lg-block">
                             <ol class="breadcrumb m-0 float-end">
-                               <a href="{{route('admin.listprojectimages')}}"> <button type="button" class="btn btn-secondary waves-effect">List</button></a>
+                                <li class="breadcrumb-item"><a href="javascript: void(0);">Project Images</a></li>
+                                <li class="breadcrumb-item active">Add</li>
                             </ol>
                         </div>
                     </div>
@@ -42,7 +43,7 @@
                                                         @endforeach
                                                        
                                                     </select>
-                                                  
+                                                    {{-- <input type="text" name="title" id="simpleinput" value={{$item->id}}>{{$item->title}} class="form-control"> --}}
                                                 </div>
                                             </div>
                                             <div class="mb-2 row">

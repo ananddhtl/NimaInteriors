@@ -14,7 +14,7 @@ class AdminController extends Controller
      */
     public function showloginform()
     {
-        return view('backend.login');
+        return view('backend.Auth.login');
     }
 
     /**

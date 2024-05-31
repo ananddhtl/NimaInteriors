@@ -108,9 +108,9 @@ return [
     */
 
     'available_locales' => [
-        'English' => 'en',
-        'Russian' => 'ru',
-        'French' => 'fr',
+        'EN' => 'en',
+        'BE' => 'be',
+       
     ],
 
     /*

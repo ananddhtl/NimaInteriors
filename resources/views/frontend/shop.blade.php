@@ -17,6 +17,8 @@
 <section class="page">
     <div class="container-countdown text-center">
         <h1>Coming Soon</h1>
+
+     
         <p class="lead">We're working hard to bring you something awesome. Stay tuned!</p>
         {{-- <div class="countdown" id="countdown"></div> --}}
     </div>

@@ -7,34 +7,32 @@
         <div class="container">
             <div class="row">
                 <div class="offset-lg-3 col-lg-6">
-                    <h1>Term and Condition</h1>
+                    <h1>Algemene Verkoopsvoorwaarden</h1>
                 </div>
             </div>
             <div class="row">
                 <div class="col-lg-12">
-                    <ol class="breadcrumb">
+                    {{-- <ol class="breadcrumb">
                         <li><a href="index.html">Home</a></li>
                         <li class="active">Term and Condition</li>
-                    </ol>
+                    </ol> --}}
                 </div>
             </div>
         </div>
     </div>
 </div>
 <!-- ***** Page Top End ***** -->
-<div class="page-bottom">
-    <div class="container mb-6">
+<div class="page-terms">
+    <div class="container inner-container mb-6">
         <div >
             
            
 
-            <div class="blog-content text-justify mt-4">
+            <div class="terms-content text-justify mt-4 ql-editor">
             {!! $data[0]->description !!}
                 
             </div>
-            <div class="text-center">
-                <a href="/contact">Plan een bezoek</a>
-            </div>
+            
             
         </div>
         

@@ -20,6 +20,7 @@ Route::get('/project-single', function () {
 });
 
 
+
 Route::get('/faq', function () {
     return view('frontend.faq');
 });
@@ -37,6 +38,8 @@ Route::prefix('customer')->group(function () {
     Route::get('/register', function () {
         return view('frontend.customer.register');
     });
+
+    
     Route::get('/forgetpassword', function () {
         return view('frontend.customer.forgetpassword');
     })->name('forgetpassword');
@@ -59,6 +62,10 @@ Route::post('contactusform', [ContactUsController::class, 'store'])->name('conta
 
 Route::get('diensten', [FrontendController::class, 'project'])->name('projectlist');
 
+Route::get('products', [FrontendController::class, 'getproducts'])->name('productslist');
+
+Route::get('productsdesc/{id}', [FrontendController::class, 'getproductsdesc'])->name('productdesc');
+
 Route::get('blog', [FrontendController::class, 'blog'])->name('bloglist');
 
 Route::get('blog-single/{id}', [FrontendController::class, 'blogsingledesc'])->name('blogsinglelist');
@@ -70,7 +77,13 @@ Route::get('algemene-voorwaarden', [FrontendController::class, 'generaltermandco
 Route::get('privacy', [FrontendController::class, 'privacy'])->name('privacy');
 Route::post('language-switch', [FrontendController::class, 'languageSwitch'])->name('language.switch');
 
-Route::middleware(['auth:web'])->group(function () {
+Route::middleware(['auth:web'])->prefix('customer')->group(function () {
+   
+    Route::get('dashboard', [FrontendController::class, 'dashboard'])->name('dashboard');
+    Route::get('updateprofile', [FrontendController::class, 'updateprofile'])->name('profile');
+    Route::get('updatepassword', [FrontendController::class, 'password'])->name('password');
+    Route::post('/profile/update', [FrontendController::class, 'update'])->name('profile.update');
+    Route::post('/profile/password/update', [FrontendController::class, 'updatePassword'])->name('profile.password.update');
 
 
 });

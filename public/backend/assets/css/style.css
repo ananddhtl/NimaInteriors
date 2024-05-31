@@ -23,7 +23,7 @@ File: Main Css File
 }
 
 [data-bs-theme=dark] {
-  --bs-light: #424e5a;
+  --bs-light: #5584b4;
   --bs-light-rgb: 66, 78, 90;
   --bs-dark: #f3f7f9;
   --bs-dark-rgb: 243, 247, 249;
@@ -19194,9 +19194,4 @@ span.flatpickr-weekday,
 
 .waves-block {
   display: block;
-}
-
-.error-message{
-  color:brown;
-  font-size: 35px;
 }

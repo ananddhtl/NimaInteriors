@@ -28,8 +28,8 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="mb-4">
-                                <span class="badge badge-soft-primary float-end">Daily</span>
-                                <h5 class="card-title mb-0">Cost per Unit</h5>
+                                <span class="badge badge-soft-primary float-end">Revenue</span>
+                                <h5 class="card-title mb-0">Sales</h5>
                             </div>
                             <div class="row d-flex align-items-center mb-4">
                                 <div class="col-8">
@@ -55,13 +55,13 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="mb-4">
-                                <span class="badge badge-soft-primary float-end">Per Week</span>
-                                <h5 class="card-title mb-0">Market Revenue</h5>
+                                <span class="badge badge-soft-primary float-end">Customer</span>
+                                <h5 class="card-title mb-0">Total new customer</h5>
                             </div>
                             <div class="row d-flex align-items-center mb-4">
                                 <div class="col-8">
                                     <h2 class="d-flex align-items-center mb-0">
-                                        $1875.54
+                                        14
                                     </h2>
                                 </div>
                                 <div class="col-4 text-end">

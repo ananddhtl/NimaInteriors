@@ -9,13 +9,36 @@
             <div class="py-3 py-lg-4">
                 <div class="row">
                     <div class="col-lg-6">
-                        <h4 class="page-title mb-0">Add Brand</h4>
+                        @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
+                    
+                    @if(session('company_updated'))
+                        <div class="alert alert-success">
+                            {{ session('company_updated') }}
+                        </div>
+                    @endif
+                    
+                    @if(session('company_added'))
+                        <div class="alert alert-success">
+                            {{ session('company_added') }}
+                        </div>
+                    @endif
+                    
+
+                        <h4 class="page-title mb-0">Add Item Group</h4>
                     </div>
                     <div class="col-lg-6">
                         <div class="d-none d-lg-block">
                             <ol class="breadcrumb m-0 float-end">
                                 <li class="breadcrumb-item"><a href="javascript: void(0);">
-                                        Brand</a></li>
+                                        Item Group</a></li>
                                 <li class="breadcrumb-item active">Add</li>
                             </ol>
                         </div>
@@ -34,59 +57,31 @@
                                         <form action="{{ route('admin.storebrand') }}" class="form-horizontal"
                                             role="form" method="POST" enctype="multipart/form-data">
                                             @csrf
-                                            <input type="hidden" name="group_idEdit" id="group_idEdit"
-                                                value="{{ old('group_idEdit', @$editbrand->id) }}">
-
+                                            <input type="hidden" name="group_idEdit" id="group_idEdit" value="{{ @$editbrand->id }}"> 
                                             <div class="mb-2 row">
-                                                <label class="col-md-2 col-form-label" for="simpleinput">Company
-                                                    Name</label>
+                                                <label class="col-md-2 col-form-label" for="simpleinput">Company Name</label>
                                                 <div class="col-md-10">
                                                     <input type="text" name="companyName" id="simpleinput"
-                                                        class="form-control"
-                                                        value="{{ old('companyName', @$editbrand->companyName) }}"
-                                                        placeholder="Enter Company Name">
-                                                    @if ($errors->has('companyName'))
-                                                        <p style="color:red; font-size: 15px;">
-                                                            {{ $errors->first('companyName') }}
-                                                        </p>
-                                                    @endif
+                                                        class="form-control" value="{{ @$editbrand->companyName }}" placeholder="Enter Company Name">
                                                 </div>
                                             </div>
-
                                             <div class="mb-2 row">
                                                 <label class="col-md-2 col-form-label" for="simpleinput">Address</label>
                                                 <div class="col-md-10">
                                                     <input type="text" name="address" id="simpleinput"
-                                                        class="form-control"
-                                                        value="{{ old('address', @$editbrand->address) }}"
-                                                        placeholder="Enter Address">
-                                                    @if ($errors->has('address'))
-                                                        <p style="color:red; font-size: 15px;">
-                                                            {{ $errors->first('address') }}
-                                                        </p>
-                                                    @endif
+                                                        class="form-control" value="{{ @$editbrand->address }}" placeholder="Enter Address">
                                                 </div>
                                             </div>
-
                                             <div class="mb-2 row">
-                                                <label class="col-md-2 col-form-label" for="simpleinput">Contact
-                                                    Number</label>
+                                                <label class="col-md-2 col-form-label" for="simpleinput">Contact Number</label>
                                                 <div class="col-md-10">
                                                     <input type="text" name="contactNumber" id="simpleinput"
-                                                        class="form-control"
-                                                        value="{{ old('contactNumber', @$editbrand->contactNumber) }}"
-                                                        placeholder="Enter Contact Number">
-                                                    @if ($errors->has('contactNumber'))
-                                                        <p style="color:red; font-size: 15px;">
-                                                            {{ $errors->first('contactNumber') }}
-                                                        </p>
-                                                    @endif
+                                                        class="form-control" value="{{ @$editbrand->contactnumber }}" placeholder="Enter Contact Number">
                                                 </div>
                                             </div>
 
                                             <button type="submit" class="btn btn-primary">Submit</button>
                                         </form>
-
 
                                     </div>
                                 </div>
@@ -120,18 +115,17 @@
                                         @foreach ($data as $item)
                                             <tr>
 
-                                                <?php $i = 1; ?>
-
+                                                <?php $i=1; ?>
+                                               
                                                 <th>{{ $item->companyName }}</th>
                                                 <th>{{ $item->address }}</th>
-                                                <th>{{ $item->contactNumber }}</th>
-                                                <th>{{ $item->status }}</th>
+                                                <th>{{ $item->contactNumber}}</th>
+                                                 <th>{{ $item->status }}</th> 
 
                                                 <th> <a href="{{ route('admin.editbrand', $item->id) }}"
                                                         class="btn btn-info waves-effect waves-light">
                                                         <i class="mdi mdi-pen"></i>
-                                                    </a>&nbsp; <a href="{{ route('admin.deletebrand', $item->id) }}"
-                                                        onclick=" return confirm('Are you sure you want to delete this item ?'); "
+                                                    </a>&nbsp; <a href="{{ route('admin.deletebrand', $item->id) }}" onclick=" return confirm('Are you sure you want to delete this item ?'); "
                                                         class="btn btn-danger waves-effect waves-light">
                                                         <i class="mdi mdi-close"></i>
                                                     </a></th>

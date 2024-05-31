@@ -13,8 +13,8 @@
                     </div>
                     <div class="col-lg-6">
                         <div class="d-none d-lg-block">
-                            <ol class="breadcrumb m-0 float-end">
-                               <a href="{{route('admin.listblog')}}"> <button type="button" class="btn btn-secondary waves-effect">List</button></a>
+                            <ol class="breadcrumb m-0 ">
+                               <a href="{{route('admin.listblog')}}"> <button type="button" class="btn btn-secondary waves-effect">Back</button></a>
                             </ol>
                         </div>
                     </div>

@@ -11,31 +11,28 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-lg-12">
+                {{-- <div class="col-lg-12">
                     <ol class="breadcrumb">
                         <li><a href="index.html">Home</a></li>
                         <li class="active">Privacy</li>
                     </ol>
-                </div>
+                </div> --}}
             </div>
         </div>
     </div>
 </div>
 <!-- ***** Page Top End ***** -->
-<div class="page-bottom">
-    <div class="container mb-6">
+<div class="page-privacy">
+    <div class="container inner-container mb-6">
         <div >
             
            
 
-            <div class="blog-content text-justify mt-4">
+            <div class="privacy-content text-justify mt-4 mb-4 ql-editor">
             {!! $data[0]->description !!}
                 
             </div>
-            <div class="text-center">
-                <a href="/contact">Plan een bezoek</a>
-            </div>
-            
+          
         </div>
         
     </div>
