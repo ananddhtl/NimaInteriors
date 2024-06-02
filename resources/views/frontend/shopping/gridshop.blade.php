@@ -166,7 +166,7 @@
                     @foreach($itemsdetails as $item)
                     <div class="card-item product-item  col-lg-3 col-md-4 col-sm-4 col-xs-6 col-phone-12">
                         <div class="image-container img-b">
-                            <a href="/shop/product-detail"><img src="{{$item->thumbnail}}" alt="Modular Modern Chair"></a>
+                            <a href=""><img src="{{$item->thumbnail}}" alt="Modular Modern Chair"></a>
                             <div class="action-bot">
                                 <div class="overlay">
                                     <button class="add-to-cart">ADD TO CART</button>

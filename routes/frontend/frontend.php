@@ -68,9 +68,11 @@ Route::get('productsdesc/{id}', [FrontendController::class, 'getproductsdesc'])-
 
 Route::get('blog', [FrontendController::class, 'blog'])->name('bloglist');
 
-Route::get('blog-single/{id}', [FrontendController::class, 'blogsingledesc'])->name('blogsinglelist');
 
-Route::get('dienstendesc/{id}', [FrontendController::class, 'projectdesc'])->name('projectdesc');
+
+Route::get('/blog/{slug}', [FrontendController::class, 'blogsingledesc'])->name('blogsinglelist');
+
+Route::get('dienstendesc/{slug}', [FrontendController::class, 'projectdesc'])->name('projectdesc');
 
 Route::get('algemene-voorwaarden', [FrontendController::class, 'generaltermandcondition'])->name('generaltermandcondition');
 
@@ -84,6 +86,8 @@ Route::middleware(['auth:web'])->prefix('customer')->group(function () {
     Route::get('updatepassword', [FrontendController::class, 'password'])->name('password');
     Route::post('/profile/update', [FrontendController::class, 'update'])->name('profile.update');
     Route::post('/profile/password/update', [FrontendController::class, 'updatePassword'])->name('profile.password.update');
+
+    Route::get('addressbook', [NormalUserController::class, 'addressbook'])->name('addressbook');
 
 
 });

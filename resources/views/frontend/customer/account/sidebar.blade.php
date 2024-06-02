@@ -2,7 +2,7 @@
     <h4>Manage My Account</h4>
     <ul>
         <a href="{{route('dashboard')}}">Profile</a>
-        <li data-content="address" data-header="Address Settings">Address Book</li>
+        <a href="{{route('addressbook')}}">Address Book</a>
         <li data-content="order" data-header="Order History">Payment Options</li>
     </ul>
     <h4>My Orders</h4>

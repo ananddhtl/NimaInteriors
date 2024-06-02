@@ -57,7 +57,7 @@
                             </div> --}}
                             @foreach($projectlist as $item)
                             <div class="col-lg-4 col-md-6 col-sm-12 text-center">
-                                <a href="/dienstendesc/{{$item->id}}" class="project-grid-item">
+                                <a href="/dienstendesc/{{$item->slug}}" class="project-grid-item">
                                     
                                     <div class="text-h3 ">
                                         <h3>{{$item->title}}</h3>

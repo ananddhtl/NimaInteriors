@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Project;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Str; 
 class ProjectController extends Controller
 {
     /**
@@ -44,6 +44,7 @@ class ProjectController extends Controller
     $project = new Project();
     $project->title = $validatedData['title'];
     $project->description = $validatedData['description'];
+    $project->slug = Str::slug($validatedData['title']);
     if ($request->hasFile('thumbnail')) {
         $thumbnail = $request->file('thumbnail');
         $filename = time().'.'.$thumbnail->getClientOriginalExtension();

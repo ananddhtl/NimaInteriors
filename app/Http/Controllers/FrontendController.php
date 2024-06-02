@@ -21,8 +21,8 @@ class FrontendController extends Controller
         return view('frontend.project', compact('projectlist'));
     }
 
-    public function projectdesc($id){
-        $project = Project::with('images')->findOrFail($id);
+    public function projectdesc($slug){
+        $project = Project::where('slug', $slug)->firstOrFail();
         return view('frontend.project-single', compact('project'));
     }
 
@@ -33,11 +33,12 @@ class FrontendController extends Controller
     }
 
 
-    public function blogsingledesc($id){
-        $blog = Blog::findOrfail($id);
+    public function blogsingledesc($slug){
+        $blog = Blog::where('slug', $slug)->firstOrFail();
      
         return view('frontend.blog-single', compact('blog'));
     }
+    
 
     public function generaltermandcondition(){
       

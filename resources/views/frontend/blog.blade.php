@@ -34,7 +34,7 @@
                         <!-- ***** Blog Item Start ***** -->
                         @foreach($bloglist as $item)
                         <div class="col-lg-6 col-md-6 col-sm-12 mb-4 mr-2" >
-                            <a href="/blog-single/{{$item->id}}" class="">
+                            <a href="{{ route('blogsinglelist', $item->slug) }}" class="">
                                 <div class="content">
                                     {{-- <h3>Hoe lang duurt de plaatsing van een nieuwe keuken?</h3> --}}
                                     <h3>{{$item->title}}</h3>

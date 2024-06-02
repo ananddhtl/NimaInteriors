@@ -11,10 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('item_sub_groups', function (Blueprint $table) {
+        Schema::create('item_groups', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('item_group_id')->constrained('item_groups');
-            $table->string("subGroupName");
+            $table->string('groupName');
             $table->boolean('status')->default(0);
             $table->timestamps();
         });

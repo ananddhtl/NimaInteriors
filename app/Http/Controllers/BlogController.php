@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Blog;
+use Illuminate\Support\Str; 
 use Illuminate\Http\Request;
 
 class BlogController extends Controller
@@ -28,27 +29,35 @@ class BlogController extends Controller
      */
     public function store(Request $request)
     {
-        
+      
         $validatedData = $request->validate([
             'title' => 'required|max:255',
-            'thumbnail' => 'required| image|mimes:jpeg,png,jpg,gif|max:2048',
+            'thumbnail' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
             'description' => 'required',
         ]);
-    
-     
+        
+        
         $blog = new Blog();
         $blog->title = $validatedData['title'];
-    
         
+       
+        $blog->slug = Str::slug($validatedData['title']);
+        
+
         if ($request->hasFile('thumbnail')) {
             $thumbnail = $request->file('thumbnail');
             $filename = time().'.'.$thumbnail->getClientOriginalExtension();
             $thumbnail->move(public_path('admin/blog'), $filename);
             $blog->image = $filename; 
         }
-    
+        
+      
         $blog->description = $request->input('description');
+        
+       
         $blog->save();
+        
+       
         return redirect()->route('admin.listblog')->with('success', 'Blog post created successfully!');
     }
     

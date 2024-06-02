@@ -30,11 +30,7 @@ public function instock()
   {
 
     $reports = \DB::select("SELECT * FROM `inventories` INNER JOIN inventory_settings on inventories.inventoryID=inventory_settings.id where instock>0;");
-
     return view('backend.reports.instock', compact('reports'));
-   
-
-
 
   }
 
