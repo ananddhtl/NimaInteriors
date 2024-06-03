@@ -6,7 +6,9 @@ use App\Models\InventorySettings;
 use App\Models\InventorySettingDetails;
 use App\Models\ItemGroup;
 use App\Models\ItemSubGroup;
+use App\Models\AddonCategory;
 use App\Models\Brand;
+use App\Models\ProductImages;
 use Illuminate\Http\Request;
 
 class InventorySettingsController extends Controller
@@ -42,7 +44,7 @@ class InventorySettingsController extends Controller
             $request->validate([
                 'itemName' => 'required',
                 'itemgroup_id' => 'required',
-                'sub_groups_id' => 'required',
+                
                 'company_id' => 'required',
                 'units' => 'required',
                 'thumbnail' => 'image|mimes:jpeg,png,jpg,gif,webp|max:2048',
@@ -75,6 +77,7 @@ class InventorySettingsController extends Controller
                 $itemsdetails->itemDetails = $request->itemDetails;
                 $itemsdetails->itemgroup_id = $request->itemgroup_id;
                 $itemsdetails->sub_groups_id = $request->sub_groups_id;
+                $itemsdetails->delivery_estimation_time = $request->delivery_estimation_time;
                 $itemsdetails->company_id = $request->company_id;
                 $itemsdetails->units = $request->units;
                 if ($request->hasFile('thumbnail')) {
@@ -107,10 +110,36 @@ class InventorySettingsController extends Controller
 
         $itemsdetail = InventorySettings::FindorFail($separatedid[0]);
 
+        $addoncategory = AddonCategory::get();
+
         $itemsunitdetails = InventorySettingDetails::where('commonCode_id', '=', $separatedid[0])->orderBy("id", "desc")->take(10)->get();
 
-        return view('backend.inventory.itemunits', compact('itemsunitdetails', 'itemsdetail', 'itemsgroupDetails', 'itemssubgroupdetails', 'itemscompanydetails'));
+        return view('backend.inventory.itemunits', compact('itemsunitdetails', 'itemsdetail', 'itemsgroupDetails', 'itemssubgroupdetails', 'itemscompanydetails','addoncategory'));
     }
+
+    public function viewitemdetails($id)
+{
+    $requestid = request()->route('id');
+    $separatedid = explode("-", $requestid);
+
+    $brand = Brand::all();
+    $itemsgroupDetails = ItemGroup::findOrFail($separatedid[1]);
+    $itemssubgroupdetails = ItemSubGroup::findOrFail($separatedid[2]);
+    $itemscompanydetails = Brand::findOrFail($separatedid[3]);
+    $itemsdetail = InventorySettings::findOrFail($separatedid[0]);
+
+    $addoncategory = AddonCategory::get();
+
+   
+    $productimages = ProductImages::where('product_id', $separatedid[0])->get()->groupBy('product_id');
+
+   
+    $itemsunitdetails = InventorySettingDetails::where('commonCode_id', $separatedid[0])->orderBy('id', 'desc')->first();
+
+    return view('backend.inventory.viewitemdetails', compact('itemsunitdetails', 'itemsdetail', 'itemsgroupDetails', 'itemssubgroupdetails', 'itemscompanydetails', 'addoncategory', 'productimages'));
+}
+
+    
     /**
      * Display the specified resource.
      */

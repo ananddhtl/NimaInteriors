@@ -11,14 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('normal_users', function (Blueprint $table) {
+        Schema::create('address_books', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->constrained('normal_users');
+            $table->string('addresstype');
             $table->string('fullname');
-            $table->string('email');
-            $table->string('password');
-            $table->string('gender')->nullable();
-            $table->string('phonenumber')->nullable();;
-            $table->string('dob')->nullable();
+            $table->bigInteger('postcode');
+            $table->bigInteger('housenumber');
+            $table->bigInteger('addition');
             $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('normal_users');
+        Schema::dropIfExists('address_books');
     }
 };

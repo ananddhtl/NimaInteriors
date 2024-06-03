@@ -3,68 +3,42 @@
     <div class="modal" id="myModalForSubGroup">
         <div class="modal-dialog modal-dialog-scrollable">
             <div class="modal-content">
-
                 <!-- Modal Header -->
                 <div class="modal-header">
-                    <div class="form-body">
-
-                        <div style="">
-
-
-                            <div data-example-id="simple-form-inline ">
-                                <div class="form-group">
-
-
-                                    <div class="col-sm-12">
-                                        <input autocomplete="off" type="text" name="search" id="searchforsubgroup"
-                                            onkeyup="selectSubGroupFromTable(document.getElementById('itemgroup_id').value);"
-                                            value="{{ @$group->groupName }}" class="form-control" id=""
-                                            placeholder="Search Subgroup ">
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-
-
+                    <h5 class="modal-title">Search Subgroup</h5>
+                    <button type="button" class="close" data-bs-dismiss="modal">&times;</button>
                 </div>
 
-                <!-- Modal body -->
+                <!-- Modal Body -->
                 <div class="modal-body">
-                    <div class="form-body">
-
-                        <div>
-
-
-                            <div data-example-id="simple-form-inline">
-                                <table style="width: 100%" id="DataTableForSubgroup" class="table table-striped">
-                                    <thead>
-                                        <tr>
-                                            <th> Subgroup Name</th>
-
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-
-
-                                    </tbody>
-                                </table>
-
-                            </div>
-                        </div>
+                    
+                    <div>
+                        <input autocomplete="off" type="text" name="search" id="searchforsubgroup"
+                            onkeyup="selectSubGroupFromTable(document.getElementById('itemgroup_id').value);"
+                            class="form-control" placeholder="Search Subgroup">
                     </div>
-
+                    <div>
+                        <table style="width: 100%" id="DataTableForSubgroup" class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Subgroup Name</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- This will be dynamically filled by JavaScript -->
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
 
-                <!-- Modal footer -->
+                <!-- Modal Footer -->
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
                 </div>
-
             </div>
         </div>
     </div>
+
 
     <div class="modal" id="myModalForGroup">
         <div class="modal-dialog modal-dialog-scrollable">
@@ -89,6 +63,18 @@
                                 </div>
 
                             </div>
+
+                            <div class="form-group">
+                                <label for="itemgroup_id">Select Item Group:</label>
+                                <select class="form-control" id="itemgroup_id" onchange="putGroupNameAndGroupIdInTextField(this.value, this.options[this.selectedIndex].text)">
+                                    <option value="">Select Item Group</option>
+                                    @foreach ($itemgroup as $group)
+                                        <option value="{{ $group->id }}">{{ $group->groupName }}</option>
+                                    @endforeach
+                                </select>
+                                
+                            </div>
+                            
                         </div>
                     </div>
 
@@ -164,13 +150,12 @@
                                         <form action="{{ route('admin.storeitemssetting') }}" class="form-horizontal"
                                             role="form" method="POST" enctype="multipart/form-data">
                                             @csrf
-                                            <input type="hidden" name="group_idEdit" id="group_idEdit"
-                                                value="{{ @$group->id }}">
+                                            
                                             <div class="mb-2 row">
                                                 <label class="col-md-2 col-form-label" for="simpleinput">Item Name</label>
                                                 <div class="col-md-10">
                                                     <input type="text" name="itemName" id="simpleinput"
-                                                        class="form-control" value="{{ @$group->groupName }}"
+                                                        class="form-control" 
                                                         placeholder="Enter Item Name">
                                                 </div>
                                             </div>
@@ -191,7 +176,7 @@
                                                     Details</label>
                                                 <div class="col-md-10">
                                                     <input type="text" name="itemDetails" id="simpleinput"
-                                                        class="form-control" value="{{ @$group->groupName }}"
+                                                        class="form-control" 
                                                         placeholder="Enter Item Details">
                                                 </div>
                                             </div>
@@ -227,26 +212,50 @@
                                                 <label class="col-md-2 col-form-label">Select the Brand</label>
                                                 <div class="col-md-10">
                                                     <select name="company_id"class="form-control">
-                                                        @foreach (@$brand as $item )
-                                                        <option value="{{ @$item->id }}">{{ @$item ->companyName ?? ''}} </option>
+                                                        @foreach (@$brand as $item)
+                                                            <option value="{{ @$item->id }}">
+                                                                {{ @$item->companyName ?? '' }} </option>
                                                         @endforeach
-                                                       
+
                                                     </select>
-                                                  
+
                                                 </div>
                                             </div>
+
                                             <div class="mb-2 row">
-                                                <label class="col-md-2 col-form-label" for="example-fileinput">Item Image</label>
+                                                <label class="col-md-2 col-form-label" for="example-fileinput">Item
+                                                    Image</label>
                                                 <div class="col-md-10">
-                                                    <input type="file" name="thumbnail" class="form-control" id="example-fileinput">
+                                                    <input type="file" name="thumbnail" class="form-control"
+                                                        id="example-fileinput">
                                                 </div>
                                             </div>
                                             <div class="mb-2 row">
                                                 <label class="col-md-2 col-form-label" for="simpleinput">Unit</label>
                                                 <div class="col-md-10">
                                                     <input type="text" name="units" id="simpleinput"
-                                                        class="form-control" value="{{ @$group->groupName }}"
-                                                        placeholder="Enter Item Details">
+                                                        class="form-control" 
+                                                        placeholder="Enter Unit">
+                                                </div>
+                                            </div>
+                                            <div class="mb-2 row">
+                                                <label class="col-md-2 col-form-label" for="simpleinput">Delivery
+                                                    Estimation Time</label>
+                                                <div class="col-md-10">
+                                                    <input type="text" name="deliveryestimation" id="simpleinput"
+                                                        class="form-control" 
+                                                        placeholder="Enter Delivery Estimation">
+                                                </div>
+                                            </div>
+                                            <div class="mb-2 row">
+                                                <label class="col-md-2 col-form-label">Status</label>
+                                                <div class="col-md-10">
+                                                    <select name="status" class="form-control">
+                                                        <option value="0"
+                                                           >Pending</option>
+                                                        <option value="1"
+                                                            >Approved</option>
+                                                    </select>
                                                 </div>
                                             </div>
 
@@ -278,6 +287,7 @@
                                             <th>Item Details</th>
                                             <th>P.Unit</th>
                                             <th>Thumbnail</th>
+                                            <th>Status</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
@@ -288,24 +298,37 @@
                                                 <th>{{ $item->itemName }}</th>
                                                 <th>{{ $item->itemDetails }}</th>
                                                 <th>{{ $item->units }}</th>
-                                                <td>@if(!empty($item->thumbnail))
-                                                    <img height="70px;" src="{{$item->thumbnail}}" alt="">
+                                                <td>
+                                                    @if (!empty($item->thumbnail))
+                                                        <img height="70px;" src="{{ $item->thumbnail }}" alt="">
                                                     @else
-                                                    <img height="70px;" src="{{asset('defaultimage.jpg')}}" alt="">
+                                                        <img height="70px;" src="{{ asset('defaultimage.jpg') }}"
+                                                            alt="">
                                                     @endif
                                                 </td>
+                                                <th>
+                                                    <div class="form-check form-switch">
+                                                        <input type="checkbox" class="form-check-input"
+                                                            id="flexSwitchCheck{{ $item->id }}"
+                                                            onchange="toggleStatus('{{ $item->id }}')"
+                                                            {{ $item->status ? 'checked' : '' }}
+                                                            {{ $item->isNonChangeable ? 'disabled' : '' }}>
+                                                        <input type="hidden" name="status{{ $item->id }}"
+                                                            value="{{ $item->status ? '1' : '0' }}">
+                                                    </div>
+                                                </th>
                                                 <td>
                                                     <a href="/admin/additemunitdetails/{{ $item->id }}-{{ $item->itemgroup_id }}-{{ $item->sub_groups_id }}-{{ $item->company_id }}"
                                                         class="btn btn-info">Add
-                                                        Units </a>
-                                                    <a target="_blank"
-                                                        href="/admin/itemsDetailsEdit/{{ $item->id }}-{{ $item->itemgroup_id }}-{{ $item->sub_groups_id }}-{{ $item->company_id }}"
-                                                        class="btn btn-info">Edit </a>
-                                                    <a href="/delete-itemsDetails/{{ $item->id }}" class="btn btn-danger"
+                                                        Details </a>
+                                                    <a href="/admin/viewitemdetails/{{ $item->id }}-{{ $item->itemgroup_id }}-{{ $item->sub_groups_id }}-{{ $item->company_id }}"
+                                                        class="btn btn-info">View </a>
+                                                    <a href="/delete-itemsDetails/{{ $item->id }}"
+                                                        class="btn btn-danger"
                                                         onclick="return confirm('Are you sure you want to delete this item ?');">
                                                         Delete
                                                     </a>
-                    
+
                                                 </td>
                                             </tr>
                                         @endforeach
@@ -344,7 +367,7 @@
 
                 var searchKey = $("#searchforsubgroup").val();
 
-                //alert(query);
+
 
                 $.ajax({
                     url: "{{ route('admin.searchsubgroup') }}",
@@ -447,4 +470,11 @@
 
         });
     </script>
+    <script>
+        function putGroupNameInSearchField(selectElement) {
+            var groupName = selectElement.options[selectElement.selectedIndex].text;
+            $('#search').val(groupName);
+        }
+    </script>
+    
 @endsection

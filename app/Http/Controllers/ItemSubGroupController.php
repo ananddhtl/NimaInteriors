@@ -28,7 +28,17 @@ class ItemSubGroupController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-    {   
+    { 
+        if ($request->ajax()) {
+           
+            $item = itemSubGroup::find($request->id);
+            if ($item) {
+                $item->status = $request->status;
+                $item->save();
+                return response()->json(['success' => true, 'message' => 'Status updated successfully.']);
+            }
+            return response()->json(['success' => false, 'message' => 'Item not found.'], 404);
+        }  
      if($request->itemgroup_id!="" && $request->itemSubgroup_idEdit=="")
         {      
         $request->validate(['subGroupName' => 'required',

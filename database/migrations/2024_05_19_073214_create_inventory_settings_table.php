@@ -20,6 +20,7 @@ return new class extends Migration
             $table->unsignedBigInteger('company_id');
             $table->integer('itemStatus')->default(0);
             $table->string('units');
+            $table->string('thumbnail');
             $table->integer('vatable')->default(0);
             $table->boolean('status')->default(0);
             $table->string('commonCode')->default(0);

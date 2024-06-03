@@ -88,6 +88,6 @@ Route::middleware(['auth:web'])->prefix('customer')->group(function () {
     Route::post('/profile/password/update', [FrontendController::class, 'updatePassword'])->name('profile.password.update');
 
     Route::get('addressbook', [NormalUserController::class, 'addressbook'])->name('addressbook');
-
-
+    Route::get('addaddressbook', [NormalUserController::class, 'addressbookpage'])->name('add.address');
+    Route::post('/storeaddressbook', [NormalUserController::class, 'storeaddressbook'])->name('storeaddressbook');
 });

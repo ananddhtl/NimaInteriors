@@ -11,43 +11,56 @@
                     <div class="col-lg-10 right-form show-d">
                         <div class="profile-setting">
                             <div class="card">
-                                <div class="card-header" id="card-header">Profile Settings</div>
+                                <div class="card-header" id="card-header">Add Address Book</div>
                                 <div class="card-body">
 
 
-                                    <form id="addressForm" method="POST" action="{{ route('profile.update') }}">
+                                    <form id="addressForm" method="POST" action="{{ route('storeaddressbook') }}">
                                         @csrf
                                         <div class="row">
                                             <div class="col-lg-12 form-group">
-                                                <label for="name">Name:</label>
-                                                <input type="text" id="name" name="name" value="{{ auth()->user()->fullname }}" required>
-                                            </div>
-                                            <div class="col-lg-12 form-group">
-                                                <label for="gender">Gender:</label>
-                                                <select id="gender" name="gender" class="form-control" required>
-                                                    <option value="">Select Gender</option>
-                                                    <option value="male" {{ auth()->user()->gender == 'male' ? 'selected' : '' }}>Male</option>
-                                                    <option value="female" {{ auth()->user()->gender == 'female' ? 'selected' : '' }}>Female</option>
-                                                    <option value="other" {{ auth()->user()->gender == 'other' ? 'selected' : '' }}>Other</option>
-                                                </select>
-                                            </div>
-                                            
-                                            <div class="col-lg-12 form-group">
-                                                <label for="email">Phone Number:</label>
-                                                <input type="number" id="email" name="phonenumber" value="{{ auth()->user()->phonenumber }}" required>
-                                            </div>
-                                            <div class="col-lg-12 form-group">
-                                                <label for="email">DOB:</label>
-                                                <input type="date" id="email" name="dob" value="{{ auth()->user()->dob }}" required>
+                                                <label for="name">Where do you want this address:</label>
+                                                <div>
+                                                    <input type="checkbox" id="home" name="addresstype[]"
+                                                        value="home">
+                                                    <label for="home">Home</label>
+                                                </div>
+                                                <div>
+                                                    <input type="checkbox" id="work" name="addresstype[]"
+                                                        value="work">
+                                                    <label for="work">Work</label>
+                                                </div>
+                                                <div>
+                                                    <input type="checkbox" id="otherwise" name="addresstype[]"
+                                                        value="otherwise">
+                                                    <label for="otherwise">Otherwise</label>
+                                                </div>
                                             </div>
 
+                                            <div class="col-lg-12 form-group">
+                                                <label for="fullname">Full Name:</label>
+                                                <input type="text" id="fullname" name="fullname" required>
+                                            </div>
+                                            <div class="col-lg-12 form-group">
+                                                <label for="postalCode">Postal Code:</label>
+                                                <input type="text" id="postalCode" name="postalCode" required>
+                                            </div>
+                                            <div class="col-lg-12 form-group">
+                                                <label for="houseNo">House No.:</label>
+                                                <input type="text" id="houseNo" name="houseNo" required>
+                                            </div>
+                                            <div class="col-lg-12 form-group">
+                                                <label for="additional">Addition :</label>
+                                                <input type="text" id="additional" name="additional">
+                                            </div>
 
                                             <div class="col-lg-12">
                                                 <button class="btn btn-secondary" type="submit">Save Address</button>
                                             </div>
                                         </div>
                                     </form>
-                                    
+
+
                                 </div>
 
                             </div>

@@ -11,14 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('normal_users', function (Blueprint $table) {
+        Schema::create('product_images', function (Blueprint $table) {
             $table->id();
-            $table->string('fullname');
-            $table->string('email');
-            $table->string('password');
-            $table->string('gender')->nullable();
-            $table->string('phonenumber')->nullable();;
-            $table->string('dob')->nullable();
+            $table->integer('product_id');
+            $table->string('images');
             $table->timestamps();
         });
     }
@@ -28,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('normal_users');
+        Schema::dropIfExists('product_images');
     }
 };

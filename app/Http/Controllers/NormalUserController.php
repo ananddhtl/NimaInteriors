@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\NormalUser;
+use App\Models\AddressBook;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
@@ -20,7 +21,9 @@ class NormalUserController extends Controller
      */
     public function index()
     {
-        //
+        $data = NormalUser::all();
+        return view('backend.normaluser.list', compact('data'));
+
     }
 
     /**
@@ -137,7 +140,20 @@ public function logout()
     return redirect()->route('login');
 }
 
-    /**
+    public function addressbook()
+    {
+ 
+        $user_id = auth()->id();
+
+        $data = AddressBook::where('user_id', $user_id)->get();
+    
+        return view('frontend.customer.account.addressbook', compact('data'));
+
+   
+    
+
+
+    } /**
      * Display the specified resource.
      */
     public function show(NormalUser $normalUser)
@@ -145,6 +161,42 @@ public function logout()
         //
     }
 
+    public function addressbookpage ()
+    {
+ 
+       
+    
+        return view('frontend.customer.account.addaddress');
+
+   
+    
+
+
+    } 
+    public function storeaddressbook(Request $request)
+    {
+    dd($request->all());
+    $request->validate([
+        'addresstype' => 'required',
+        'fullname' => 'required',
+        'postalcode' => 'required',
+        'houseNo' => 'required',
+        'additional' => 'required',
+    ]);
+
+
+    $user_id = auth()->id();
+
+    $addressBook = new AddressBook();
+    $addressBook->user_id = $user_id; 
+    $addressBook->addresstype = $request->addresstype;
+    $addressBook->fullname = $request->fullname;
+    $addressBook->postcode = $request->postcode;
+    $addressBook->housenumber = $request->housenumber;
+    $addressBook->addition = $request->addition;
+    $addressBook->save();
+    return redirect()->back()->with('success', 'Address saved successfully.');
+    }
     /**
      * Show the form for editing the specified resource.
      */

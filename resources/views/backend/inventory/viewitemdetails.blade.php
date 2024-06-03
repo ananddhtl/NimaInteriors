@@ -40,23 +40,17 @@
                                                 <div class="col-md-10">
                                                     <input autocomplete="off" type="text" class="form-control"
                                                         name="itemName" placeholder="Item Name"
-                                                        value="{{ @$itemsdetail->itemName }}" readonly>
+                                                        value="{{ @$itemsdetail->itemName }}">
                                                 </div>
                                             </div>
-                                            <div class="mb-2 row">
-                                                <label class="col-md-2 col-form-label" for="simpleinput">Vatable</label>
-                                                <div class="col-md-10">
-                                                    <input autocomplete="off" type="text" class="form-control"
-                                                        name="vatable" placeholder="Vatable" value="No" readonly>
-                                                </div>
-                                            </div>
+
                                             <div class="mb-2 row">
                                                 <label class="col-md-2 col-form-label" for="simpleinput">Item
                                                     Details</label>
                                                 <div class="col-md-10">
                                                     <input autocomplete="off" type="text" class="form-control"
                                                         name="itemDetails" placeholder="Items Details"
-                                                        value="{{ @$itemsdetail->itemDetails }}" readonly>
+                                                        value="{{ @$itemsdetail->itemDetails }}">
                                                 </div>
                                             </div>
                                             <div class="mb-2 row">
@@ -65,7 +59,7 @@
                                                     <input autocomplete="off" type="text" class="form-control"
                                                         data-toggle="modal" data-target="#myModalForGroup" id="groupName"
                                                         placeholder="Select Group"
-                                                        value="{{ @$itemsgroupDetails->groupName }}" readonly>
+                                                        value="{{ @$itemsgroupDetails->groupName }}">
                                                 </div>
                                             </div>
                                             <div class="mb-2 row">
@@ -74,7 +68,7 @@
                                                     <input autocomplete="off" type="text" class="form-control"
                                                         data-toggle="modal" id="subGroupName"
                                                         data-target="#myModalForSubGroup" placeholder="Select Sub group"
-                                                        value="{{ @$itemssubgroupdetails->subGroupName }}" readonly>
+                                                        value="{{ @$itemssubgroupdetails->subGroupName }}">
                                                 </div>
                                             </div>
                                             <div class="mb-2 row">
@@ -83,7 +77,7 @@
                                                     <input autocomplete="off" type="text" class="form-control"
                                                         data-toggle="modal" id="subGroupName"
                                                         data-target="#myModalForSubGroup" placeholder="Select Sub group"
-                                                        value="{{ @$itemsdetail->units }}" readonly>
+                                                        value="{{ @$itemsdetail->units }}">
                                                 </div>
                                             </div>
                                             <div class="mb-2 row">
@@ -92,7 +86,7 @@
                                                     <input autocomplete="off" type="text" class="form-control"
                                                         data-toggle="modal" id="subGroupName"
                                                         data-target="#myModalForSubGroup" placeholder="Select Sub group"
-                                                        value="{{ @$itemscompanydetails->companyName }}" readonly>
+                                                        value="{{ @$itemscompanydetails->companyName }}">
                                                 </div>
                                             </div>
 
@@ -128,14 +122,16 @@
                                                 <label class="col-md-2 col-form-label" for="simpleinput">Buy rate</label>
                                                 <div class="col-md-10">
                                                     <input autocomplete="off" type="number" class="form-control"
-                                                        name="buyrate" placeholder="Buy Rate">
+                                                        name="buyrate" placeholder="Buy Rate"
+                                                        value="{{ $itemsunitdetails->buyRate ?? '' }}">
                                                 </div>
                                             </div>
                                             <div class="mb-2 row">
                                                 <label class="col-md-2 col-form-label" for="simpleinput">Sell rate</label>
                                                 <div class="col-md-10">
                                                     <input autocomplete="off" type="number" class="form-control"
-                                                        name="sellrate" placeholder="Sell Rate">
+                                                        name="sellrate" placeholder="Sell Rate"
+                                                        value="{{ $itemsunitdetails->sellRate ?? '' }}">
                                                 </div>
                                             </div>
                                             <div class="mb-2 row">
@@ -143,7 +139,8 @@
                                                     MRP</label>
                                                 <div class="col-md-10">
                                                     <input autocomplete="off" type="number" class="form-control"
-                                                        name="mrp" placeholder="MRP">
+                                                        name="mrp" placeholder="MRP"
+                                                        value="{{ $itemsunitdetails->mrp ?? '' }}">
                                                 </div>
                                             </div>
 
@@ -152,10 +149,13 @@
                                                     Discount</label>
                                                 <div class="col-md-10">
                                                     <input autocomplete="off" type="number" class="form-control"
-                                                        name="dis" placeholder="Discount" value="">
+                                                        name="dis" placeholder="Discount"
+                                                        value="{{ $itemsunitdetails->discountPercent ?? '' }}">
                                                 </div>
                                             </div>
-                                            <button type="submit" class="btn btn-primary">Save</button>
+
+
+                                            <button type="submit" class="btn btn-primary">Update</button>
 
                                         </form>
 
@@ -203,10 +203,11 @@
                                                     </select>
                                                 </div>
                                             </div>
-                                            
 
 
-                                            <button type="button" class="btn btn-primary" onclick="addItem()" id="addButton">Add</button>
+
+                                            <button type="button" class="btn btn-primary" onclick="addItem()"
+                                                id="addButton">Add</button>
 
 
 
@@ -231,33 +232,26 @@
                             <div class="row">
                                 <div class="col-12">
                                     <div class="p-2">
-                                        <form action="{{ route('admin.storeitemsimage') }}"
-                                            class="form-horizontal" role="form" method="POST"
-                                            enctype="multipart/form-data">
-                                            @csrf
-                                            <input autocomplete="off" type="hidden" class="form-control"
-                                                name="commonCode_id" value="{{ @$itemsdetail->id }}"
-                                                placeholder="UnitsStatus">
-                                            
-                                            
-                                                <div class="mb-2 row">
-                                                    <label class="col-md-2 col-form-label" for="simpleinput">
-                                                        Product Images</label>
-                                                    <div class="col-md-10">
-                                                        <input autocomplete="off" type="file" class="form-control"
-                                                            name="images[]" placeholder="Items Details"
-                                                             multiple>
-                                                    </div>
+
+
+
+                                        @foreach ($productimages as $productId => $images)
+                                            @foreach ($images as $image)
+                                                <div style="position: relative; display: inline-block; margin: 10px;">
+                                                    <form action="{{ route('productimages.destroy', $image->id) }}"
+                                                        method="POST" style="position: absolute; top: 0; right: 0;">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button type="submit"
+                                                            style="background: none; border: none; color: red; font-size: 20px; cursor: pointer;">&times;</button>
+                                                    </form>
+                                                    <img height="100px;" width="150px;"
+                                                        src="{{ asset($image->images) }}" alt="Product Image">
                                                 </div>
+                                            @endforeach
+                                        @endforeach
 
 
-                                            <button type="submit" class="btn btn-primary" >Submit</button>
-
-
-
-                                            
-
-                                        </form>
 
                                     </div>
                                 </div>
@@ -270,7 +264,7 @@
             </div>
 
 
-            
+
 
 
 
@@ -288,90 +282,88 @@
             });
         });
     </script>
-<script>
-    $(document).ready(function() {
-        var selectedItems = []; // Array to store selected items
+    <script>
+        $(document).ready(function() {
+            var selectedItems = []; // Array to store selected items
 
-        $('#addonCategorySelect').change(function() {
-            var selectedCategoryId = $(this).val();
+            $('#addonCategorySelect').change(function() {
+                var selectedCategoryId = $(this).val();
 
-            $.ajax({
-                url: '{{ route('admin.getaddonitems') }}',
-                method: 'GET',
-                data: {
-                    category_id: selectedCategoryId
-                },
-                success: function(response) {
-                    var $addonItemsSelect = $('#addonItemsSelect');
-                    $addonItemsSelect.empty();
+                $.ajax({
+                    url: '{{ route('admin.getaddonitems') }}',
+                    method: 'GET',
+                    data: {
+                        category_id: selectedCategoryId
+                    },
+                    success: function(response) {
+                        var $addonItemsSelect = $('#addonItemsSelect');
+                        $addonItemsSelect.empty();
 
-                    $.each(response, function(key, item) {
-                        var displayText = item.title;
-                        if (item.price !== null) {
-                            displayText += ' - $' + item.price;
-                        }
-                        $addonItemsSelect.append('<option value="' + item.id +
-                            '">' + displayText + '</option>');
-                    });
-                },
-                error: function(xhr, status, error) {
-                    console.error('Error fetching addon items:', error);
-                }
+                        $.each(response, function(key, item) {
+                            var displayText = item.title;
+                            if (item.price !== null) {
+                                displayText += ' - $' + item.price;
+                            }
+                            $addonItemsSelect.append('<option value="' + item.id +
+                                '">' + displayText + '</option>');
+                        });
+                    },
+                    error: function(xhr, status, error) {
+                        console.error('Error fetching addon items:', error);
+                    }
+                });
             });
+
+            $('#addonItemsSelect').change(function() {
+                var selectedOption = $(this).find('option:selected');
+                var selectedItemId = selectedOption.val();
+                var selectedItemText = selectedOption.text();
+                var selectedPrice = selectedItemText.split('- $')[1];
+
+                // Push selected item to the array
+                selectedItems.push({
+                    id: selectedItemId,
+                    title: selectedItemText,
+                    price: selectedPrice
+                });
+
+                // Display selected items in the div
+                displaySelectedItems();
+            });
+
+            // Function to display selected items in the div
+            function displaySelectedItems() {
+                var $selectedAddonItems = $('#selectedAddonItems');
+                $selectedAddonItems.empty();
+
+                // Loop through selected items array and display them in the div
+                selectedItems.forEach(function(item) {
+                    $selectedAddonItems.append('<div>' + item.title +
+                        ' - $<input type="text" class="price-input" value="' + item.price +
+                        '"><button class="delete-btn" data-id="' + item.id + '">Delete</button></div>');
+                });
+            }
+
+            // Event delegation for dynamically added delete buttons
+            $(document).on('click', '.delete-btn', function() {
+                var itemId = $(this).data('id');
+                // Remove the selected item from the array
+                selectedItems = selectedItems.filter(function(item) {
+                    return item.id != itemId;
+                });
+                // Display updated list of selected items
+                displaySelectedItems();
+            });
+
+            // Function to handle click event of "Add" button
+            function addItem() {
+                // Remove the selected options from both dropdowns
+                $('#addonCategorySelect').val('');
+                $('#addonItemsSelect').empty();
+
+                // Display selected items in the div
+                displaySelectedItems();
+            }
         });
-
-        $('#addonItemsSelect').change(function() {
-            var selectedOption = $(this).find('option:selected');
-            var selectedItemId = selectedOption.val();
-            var selectedItemText = selectedOption.text();
-            var selectedPrice = selectedItemText.split('- $')[1]; 
-            
-            // Push selected item to the array
-            selectedItems.push({
-                id: selectedItemId,
-                title: selectedItemText,
-                price: selectedPrice
-            });
-
-            // Display selected items in the div
-            displaySelectedItems();
-        });
-
-        // Function to display selected items in the div
-        function displaySelectedItems() {
-            var $selectedAddonItems = $('#selectedAddonItems');
-            $selectedAddonItems.empty();
-            
-            // Loop through selected items array and display them in the div
-            selectedItems.forEach(function(item) {
-                $selectedAddonItems.append('<div>' + item.title +
-                    ' - $<input type="text" class="price-input" value="' + item.price +
-                    '"><button class="delete-btn" data-id="' + item.id + '">Delete</button></div>');
-            });
-        }
-
-        // Event delegation for dynamically added delete buttons
-        $(document).on('click', '.delete-btn', function() {
-            var itemId = $(this).data('id');
-            // Remove the selected item from the array
-            selectedItems = selectedItems.filter(function(item) {
-                return item.id != itemId;
-            });
-            // Display updated list of selected items
-            displaySelectedItems();
-        });
-
-        // Function to handle click event of "Add" button
-        function addItem() {
-            // Remove the selected options from both dropdowns
-            $('#addonCategorySelect').val('');
-            $('#addonItemsSelect').empty();
-
-            // Display selected items in the div
-            displaySelectedItems();
-        }
-    });
-</script>
-
-
+    </script>
 @endsection

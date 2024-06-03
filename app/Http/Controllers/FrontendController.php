@@ -93,15 +93,14 @@ class FrontendController extends Controller
     public function update(Request $request)
     {
      
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users,email,' . Auth::id(),
-        ]);
-
        
+
+     
         $user = Auth::user();
         $user->fullname = $request->input('name');
-        $user->email = $request->input('email');
+        $user->gender = $request->input('gender');
+        $user->phonenumber = $request->input('phonenumber');
+        $user->dob = $request->input('dob');
         $user->save();
 
       
@@ -128,6 +127,7 @@ class FrontendController extends Controller
         return redirect()->back()->with('success', 'Password updated successfully.');
     }
 
+    
 
     
 }

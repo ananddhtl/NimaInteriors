@@ -14,13 +14,13 @@
             <div class="py-3 py-lg-4">
                 <div class="row">
                     <div class="col-lg-6">
-                        <h4 class="page-title mb-0">Add Item Sub Group</h4>
+                        <h4 class="page-title mb-0">Add Item Sub Category</h4>
                     </div>
                     <div class="col-lg-6">
                         <div class="d-none d-lg-block">
                             <ol class="breadcrumb m-0 float-end">
                                 <li class="breadcrumb-item"><a href="javascript: void(0);">
-                                        Item Sub Group</a></li>
+                                        Item Sub Category</a></li>
                                 <li class="breadcrumb-item active">Add</li>
                             </ol>
                         </div>
@@ -48,6 +48,7 @@
                                                         class="form-control" placeholder="Search  Group ">
                                                 </div>
                                             </div>
+
                                             <div class="form-body">
 
                                                 <div style="margin-left: 17%">
@@ -86,6 +87,17 @@
                                                         id="" placeholder="Enter Sub Group Item">
                                                 </div>
                                             </div>
+                                            <div class="mb-2 row">
+                                                <label class="col-md-2 col-form-label">Status</label>
+                                                <div class="col-md-10">
+                                                    <select name="status" class="form-control">
+                                                        <option value="0" {{ @$group->status == 0 ? 'selected' : '' }}>
+                                                            Pending</option>
+                                                        <option value="1" {{ @$group->status == 1 ? 'selected' : '' }}>
+                                                            Approved</option>
+                                                    </select>
+                                                </div>
+                                            </div>
                                             <button type="submit" class="btn btn-primary">Submit</button>
                                         </form>
 
@@ -122,7 +134,17 @@
                                                 <td>{{ $item->itemgroup->groupName ?? '' }}</td>
 
                                                 <td>{{ $item->subGroupName ?? '' }}</td>
-                                                <td>{{ $item->status ?? '' }}</td>
+                                                <th>
+                                                    <div class="form-check form-switch">
+                                                        <input type="checkbox" class="form-check-input"
+                                                               id="flexSwitchCheck{{ $item->id }}"
+                                                               onchange="toggleStatus('{{ $item->id }}')"
+                                                               {{ $item->status ? 'checked' : '' }}
+                                                               {{ $item->isNonChangeable ? 'disabled' : '' }}>
+                                                        <input type="hidden" name="status{{ $item->id }}"
+                                                               value="{{ $item->status ? '1' : '0' }}">
+                                                    </div>
+                                                </th>
                                                 <th> <a href="{{ route('admin.editsubgroupname', $item->id) }}"
                                                         class="btn btn-info waves-effect waves-light">
                                                         <i class="mdi mdi-pen"></i>
@@ -248,5 +270,30 @@
             }
 
         });
+    </script>
+
+    <script>
+        function toggleStatus(itemId) {
+            var checkbox = $('#flexSwitchCheck' + itemId);
+            var status = checkbox.is(':checked') ? 1 : 0;
+
+            $.ajax({
+                url: '{{ route('admin.storesubgroup') }}',
+                type: 'POST',
+                data: {
+                    _token: '{{ csrf_token() }}',
+                    id: itemId,
+                    status: status
+                },
+                success: function(response) {
+
+                    alert('Status updated successfully');
+                },
+                error: function(xhr) {
+
+                    console.log('Error updating status');
+                }
+            });
+        }
     </script>
 @endsection

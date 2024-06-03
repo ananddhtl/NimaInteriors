@@ -17,6 +17,10 @@ use App\Http\Controllers\DummiesController;
 use App\Http\Controllers\DummySecondController;
 use App\Http\Controllers\InventoriesController;
 use App\Http\Controllers\ReportController;
+use App\Http\Controllers\AddonCategoryController;
+use App\Http\Controllers\AddonItemController;
+use App\Http\Controllers\ProductImagesController;
+use App\Http\Controllers\NormalUserController;
 
 
 Route::get('admin/login', [AdminController::class, 'showloginform'])->name('admin.login');
@@ -78,6 +82,7 @@ Route::prefix('admin')->middleware(['auth:admin'])->group(function () {
     
     Route::get('items', [InventorySettingsController::class, 'index'])->name('admin.items');
     Route::get('/additemunitdetails/{id}', [InventorySettingsController::class, 'additemunitdetails']);
+    Route::get('/viewitemdetails/{id}', [InventorySettingsController::class, 'viewitemdetails']);
     Route::post('items', [InventorySettingsController::class, 'store'])->name('admin.storeitemssetting');
     Route::post('inventorysettingsdetails', [InventorySettingsController::class, 'inventorysettingStore'])->name('admin.storeitemssettingdetails');
     Route::get('searchsubgroup', [ItemSubGroupController::class, 'searchsubgroup'])->name('admin.searchsubgroup');
@@ -101,6 +106,17 @@ Route::prefix('admin')->middleware(['auth:admin'])->group(function () {
     Route::get('/groupwise', [ReportController::class, 'groupwise'])->name('admin.groupwise');
     Route::get('/subgroupwise', [ReportController::class, 'subgroupwise'])->name('admin.subgroupwise');
     Route::get('/singleitemgroupwisestock/{id}', [ReportController::class, 'singleitemgroupwisestock']);
+
+    Route::get('addonitemcatgeory', [AddonCategoryController::class, 'index'])->name('admin.addonitemcategory');
+    Route::get('addonitem', [AddonItemController::class, 'index'])->name('admin.addonitem');
+    Route::post('storeaddonitemcatgeory', [AddonCategoryController::class, 'store'])->name('admin.storeaddonitemcategory');
+    Route::post('storeaddonitem', [AddonItemController::class, 'store'])->name('admin.storeaddonitem');
+    Route::get('/get-addon-items', [AddonItemController::class, 'getAddonItems'])->name('admin.getaddonitems');
+
+    Route::post('/storeproductimages', [ProductImagesController::class, 'store'])->name('admin.storeitemsimage');
+    Route::delete('/productimages/{id}', [ProductImagesController::class, 'destroy'])->name('productimages.destroy');
+    Route::get('/normalusers', [NormalUserController::class, 'index'])->name('admin.listnormausers');
+
 });
 
 
