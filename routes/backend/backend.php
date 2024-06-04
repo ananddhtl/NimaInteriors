@@ -27,9 +27,8 @@ Route::post('admin/login', [AdminController::class, 'login'])->name('adminlogin'
 
 Route::prefix('admin')->middleware(['auth:admin'])->group(function () {
 
-    Route::get('/admindashboard', function () {
-        return view('backend.dashboard');
-    });
+    
+    Route::get('dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
     Route::get('contactusdata', [ContactUsController::class, 'index'])->name('admin.contactusdata');
     Route::get('admin/logout', [AdminController::class, 'logout'])->name('admin.logout');
 

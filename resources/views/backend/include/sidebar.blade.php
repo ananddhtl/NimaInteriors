@@ -21,7 +21,7 @@
             <li class="menu-title">Nima Interiors</li>
 
             <li class="menu-item">
-                <a href="/admin/dashboard" class="menu-link waves-effect waves-light">
+                <a href="{{ route('admin.dashboard') }}" class="menu-link waves-effect waves-light">
                     <span class="menu-icon"><i class="bx bx-home-smile"></i></span>
                     <span class="menu-text"> Dashboard</span>
 

@@ -9,6 +9,7 @@ use App\Models\PrivacyDeclaration;
 use App\Models\InventorySettings;
 use App\Models\ItemGroup;
 use App\Models\ItemSubGroup;
+use App\Models\ProductImages;
 use App\Models\Brand;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -98,14 +99,23 @@ class FrontendController extends Controller
 
     public function getproductsdesc($id)
     {
+       
         $itemsdetails = InventorySettings::join('inventory_setting_details', 'inventory_settings.id', '=', 'inventory_setting_details.commonCode_id')
             ->orderBy('inventory_settings.id', 'asc')
             ->where('inventory_settings.status', '0')
             ->where('inventory_settings.id', $id)
             ->select('inventory_settings.*', 'inventory_setting_details.*')
-            ->first(); 
+            ->first();
 
-        return view('frontend.shopping.product-detail', compact('itemsdetails'));
+       
+        $productimages = ProductImages::where('product_id', $id)->get();
+
+        
+        if (!$itemsdetails) {
+            return redirect()->back()->with('error', 'Product details not found.');
+        }
+
+        return view('frontend.shopping.product-detail', compact('itemsdetails', 'productimages'));
     }
 
 

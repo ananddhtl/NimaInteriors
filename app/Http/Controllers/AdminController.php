@@ -20,9 +20,9 @@ class AdminController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function dashboard()
     {
-        //
+        return view('backend.dashboard');
     }
 
     /**
@@ -38,7 +38,7 @@ class AdminController extends Controller
 
          if (auth()->guard('admin')->attempt($credentials)) {
           
-            return redirect()->intended('/admin/admindashboard');
+            return redirect()->route('admin.dashboard');
         } else {
             
             return back()->withErrors(['email' => 'Invalid credentials']);
