@@ -11,7 +11,7 @@
 
                 <!-- Modal Body -->
                 <div class="modal-body">
-                    
+
                     <div>
                         <input autocomplete="off" type="text" name="search" id="searchforsubgroup"
                             onkeyup="selectSubGroupFromTable(document.getElementById('itemgroup_id').value);"
@@ -66,15 +66,16 @@
 
                             <div class="form-group">
                                 <label for="itemgroup_id">Select Item Group:</label>
-                                <select class="form-control" id="itemgroup_id" onchange="putGroupNameAndGroupIdInTextField(this.value, this.options[this.selectedIndex].text)">
+                                <select class="form-control" id="itemgroup_id"
+                                    onchange="putGroupNameAndGroupIdInTextField(this.value, this.options[this.selectedIndex].text)">
                                     <option value="">Select Item Group</option>
                                     @foreach ($itemgroup as $group)
                                         <option value="{{ $group->id }}">{{ $group->groupName }}</option>
                                     @endforeach
                                 </select>
-                                
+
                             </div>
-                            
+
                         </div>
                     </div>
 
@@ -150,13 +151,12 @@
                                         <form action="{{ route('admin.storeitemssetting') }}" class="form-horizontal"
                                             role="form" method="POST" enctype="multipart/form-data">
                                             @csrf
-                                            
+
                                             <div class="mb-2 row">
                                                 <label class="col-md-2 col-form-label" for="simpleinput">Item Name</label>
                                                 <div class="col-md-10">
                                                     <input type="text" name="itemName" id="simpleinput"
-                                                        class="form-control" 
-                                                        placeholder="Enter Item Name">
+                                                        class="form-control" placeholder="Enter Item Name">
                                                 </div>
                                             </div>
                                             {{-- <div class="mb-2 row">
@@ -176,8 +176,7 @@
                                                     Details</label>
                                                 <div class="col-md-10">
                                                     <input type="text" name="itemDetails" id="simpleinput"
-                                                        class="form-control" 
-                                                        placeholder="Enter Item Details">
+                                                        class="form-control" placeholder="Enter Item Details">
                                                 </div>
                                             </div>
                                             <div class="mb-2 row">
@@ -234,8 +233,7 @@
                                                 <label class="col-md-2 col-form-label" for="simpleinput">Unit</label>
                                                 <div class="col-md-10">
                                                     <input type="text" name="units" id="simpleinput"
-                                                        class="form-control" 
-                                                        placeholder="Enter Unit">
+                                                        class="form-control" placeholder="Enter Unit">
                                                 </div>
                                             </div>
                                             <div class="mb-2 row">
@@ -243,18 +241,15 @@
                                                     Estimation Time</label>
                                                 <div class="col-md-10">
                                                     <input type="text" name="deliveryestimation" id="simpleinput"
-                                                        class="form-control" 
-                                                        placeholder="Enter Delivery Estimation">
+                                                        class="form-control" placeholder="Enter Delivery Estimation">
                                                 </div>
                                             </div>
                                             <div class="mb-2 row">
                                                 <label class="col-md-2 col-form-label">Status</label>
                                                 <div class="col-md-10">
                                                     <select name="status" class="form-control">
-                                                        <option value="0"
-                                                           >Pending</option>
-                                                        <option value="1"
-                                                            >Approved</option>
+                                                        <option value="0">Pending</option>
+                                                        <option value="1">Approved</option>
                                                     </select>
                                                 </div>
                                             </div>
@@ -318,18 +313,15 @@
                                                     </div>
                                                 </th>
                                                 <td>
-                                                    <a href="/admin/additemunitdetails/{{ $item->id }}-{{ $item->itemgroup_id }}-{{ $item->sub_groups_id }}-{{ $item->company_id }}"
-                                                        class="btn btn-info">Add
-                                                        Details </a>
-                                                    <a href="/admin/viewitemdetails/{{ $item->id }}-{{ $item->itemgroup_id }}-{{ $item->sub_groups_id }}-{{ $item->company_id }}"
-                                                        class="btn btn-info">View </a>
-                                                    <a href="/delete-itemsDetails/{{ $item->id }}"
+                                                    <a href="{{ route('admin.addunitdetails', ['id' => $item->id, 'itemgroup_id' => $item->itemgroup_id, 'sub_groups_id' => $item->sub_groups_id, 'company_id' => $item->company_id]) }}"
+                                                        class="btn btn-info">Add Details</a>
+                                                    <a href="{{ route('admin.viewitemdetails', ['id' => $item->id, 'itemgroup_id' => $item->itemgroup_id, 'sub_groups_id' => $item->sub_groups_id, 'company_id' => $item->company_id]) }}"
+                                                        class="btn btn-info">View</a>
+                                                    <a href="{{ route('admin.deleteitemdetails', ['id' => $item->id]) }}"
                                                         class="btn btn-danger"
-                                                        onclick="return confirm('Are you sure you want to delete this item ?');">
-                                                        Delete
-                                                    </a>
-
+                                                        onclick="return confirm('Are you sure you want to delete this item ?');">Delete</a>
                                                 </td>
+
                                             </tr>
                                         @endforeach
                                     </tbody>
@@ -476,5 +468,4 @@
             $('#search').val(groupName);
         }
     </script>
-    
 @endsection

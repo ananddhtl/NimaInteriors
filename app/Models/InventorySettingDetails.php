@@ -9,8 +9,9 @@ class InventorySettingDetails extends Model
 {
     use HasFactory;
 
-    public function inventorysetting() {
-        return $this->belongsTo(InventorySettings::class, 'commonCode_id');
+    public function inventorysetting()
+    {
+        return $this->belongsTo(InventorySettings::class, 'commonCode_id', 'id');
     }
     
     

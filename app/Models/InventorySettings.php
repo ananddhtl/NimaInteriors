@@ -9,8 +9,9 @@ class InventorySettings extends Model
 {
     use HasFactory;
 
-    public function inventorysettingdetails() {
-        return $this->hasMany(InventorySettingDetails::class, 'commonCode_id');
+    public function inventorysettingdetails()
+    {
+        return $this->hasMany(InventorySettingDetails::class, 'commonCode_id', 'id');
     }
     
     

@@ -22,7 +22,7 @@ class InventorySettingsController extends Controller
 
         $itemgroup = ItemGroup::all();
         $brand = Brand::all();
-        return view('backend.inventory.items', compact('itemsdetails','itemgroup','brand'));
+        return view('backend.inventory.items', compact('itemsdetails', 'itemgroup', 'brand'));
     }
 
     /**
@@ -37,21 +37,20 @@ class InventorySettingsController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-    {
-        {
+    { {
 
-            
+
             $request->validate([
                 'itemName' => 'required',
                 'itemgroup_id' => 'required',
-                
+
                 'company_id' => 'required',
                 'units' => 'required',
                 'thumbnail' => 'image|mimes:jpeg,png,jpg,gif,webp|max:2048',
             ]);
-    
-    
-    
+
+
+
             if ($request->itemEditId) {
                 $itemsupdate = InventorySettings::find($request->itemEditId);
                 $itemsupdate->itemName = $request->itemName;
@@ -59,7 +58,7 @@ class InventorySettingsController extends Controller
                 $itemsupdate->itemgroup_id = $request->itemgroup_id;
                 $itemsupdate->sub_groups_id = $request->sub_groups_id;
                 $itemsupdate->company_id = $request->company_id;
-    
+
                 $itemsupdate->units = $request->units;
                 if ($request->hasFile('thumbnail')) {
                     $thumbnail = $request->file('thumbnail');
@@ -71,8 +70,8 @@ class InventorySettingsController extends Controller
                 $itemsupdate->update();
                 return back()->with('itemsdetails_updated', 'Group Item  is successfully updated');
             } else {
-                
-                $itemsdetails = new  InventorySettings();
+
+                $itemsdetails = new InventorySettings();
                 $itemsdetails->itemName = $request->itemName;
                 $itemsdetails->itemDetails = $request->itemDetails;
                 $itemsdetails->itemgroup_id = $request->itemgroup_id;
@@ -87,66 +86,88 @@ class InventorySettingsController extends Controller
                     $save_url = '/uploads/itemsettings/thumbnail/' . $img_name;
                     $itemsdetails->thumbnail = $save_url;
                 }
-    
+
                 $itemsdetails->save();
                 return redirect()->back()->with('itemdetails', 'Item details  added successfully');
             }
         }
     }
 
-    public function additemunitdetails($id)
+
+
+    public function additemunitdetails($id, $itemgroup_id, $sub_groups_id, $company_id)
     {
-       
-        $requestid = request()->route('id');
-        $separatedid = explode("-", $requestid);
 
         $brand = Brand::all();
-        $itemsgroupDetails = ItemGroup::FindorFail($separatedid[1]);
-            
-        $itemssubgroupdetails = ItemSubGroup::FindorFail($separatedid[2]);
 
-        $itemscompanydetails = Brand::FindorFail($separatedid[3]);
+        $itemsgroupDetails = ItemGroup::findOrFail($itemgroup_id);
 
+        $itemssubgroupdetails = ItemSubGroup::findOrFail($sub_groups_id);
 
-        $itemsdetail = InventorySettings::FindorFail($separatedid[0]);
+        $itemscompanydetails = Brand::findOrFail($company_id);
+
+        $itemsdetail = InventorySettings::findOrFail($id);
 
         $addoncategory = AddonCategory::get();
 
-        $itemsunitdetails = InventorySettingDetails::where('commonCode_id', '=', $separatedid[0])->orderBy("id", "desc")->take(10)->get();
+        $itemsunitdetails = InventorySettingDetails::where('commonCode_id', '=', $id)
+            ->orderBy("id", "desc")
+            ->take(10)
+            ->get();
 
-        return view('backend.inventory.itemunits', compact('itemsunitdetails', 'itemsdetail', 'itemsgroupDetails', 'itemssubgroupdetails', 'itemscompanydetails','addoncategory'));
+        return view('backend.inventory.itemunits', compact('itemsunitdetails', 'itemsdetail', 'itemsgroupDetails', 'itemssubgroupdetails', 'itemscompanydetails', 'addoncategory'));
     }
 
-    public function viewitemdetails($id)
-{
-    $requestid = request()->route('id');
-    $separatedid = explode("-", $requestid);
 
-    $brand = Brand::all();
-    $itemsgroupDetails = ItemGroup::findOrFail($separatedid[1]);
-    $itemssubgroupdetails = ItemSubGroup::findOrFail($separatedid[2]);
-    $itemscompanydetails = Brand::findOrFail($separatedid[3]);
-    $itemsdetail = InventorySettings::findOrFail($separatedid[0]);
+    public function viewitemdetails($id, $itemgroup_id, $sub_groups_id, $company_id)
+    {
+        $brand = Brand::all();
+        $itemsgroupDetails = ItemGroup::findOrFail($itemgroup_id);
+        $itemssubgroupdetails = ItemSubGroup::findOrFail($sub_groups_id);
+        $itemscompanydetails = Brand::findOrFail($company_id);
+        $itemsdetail = InventorySettings::findOrFail($id);
+        $addoncategory = AddonCategory::get();
+        $productimages = ProductImages::where('product_id', $id)->get()->groupBy('product_id');
+        $itemsunitdetails = InventorySettingDetails::where('commonCode_id', $id)->orderBy('id', 'desc')->first();
 
-    $addoncategory = AddonCategory::get();
+        return view('backend.inventory.viewitemdetails', compact('itemsunitdetails', 'itemsdetail', 'itemsgroupDetails', 'itemssubgroupdetails', 'itemscompanydetails', 'addoncategory', 'productimages'));
+    }
 
-   
-    $productimages = ProductImages::where('product_id', $separatedid[0])->get()->groupBy('product_id');
 
-   
-    $itemsunitdetails = InventorySettingDetails::where('commonCode_id', $separatedid[0])->orderBy('id', 'desc')->first();
 
-    return view('backend.inventory.viewitemdetails', compact('itemsunitdetails', 'itemsdetail', 'itemsgroupDetails', 'itemssubgroupdetails', 'itemscompanydetails', 'addoncategory', 'productimages'));
-}
-
-    
     /**
      * Display the specified resource.
      */
-    public function show(InventorySettings $inventorySettings)
+    public function storeaddonitems(Request $request, InventorySettings $inventorySettings)
     {
-        //
+        $request->validate([
+            'commonCode_id' => 'required',
+            'addonItems' => 'required|array',
+        ]);
+
+        $commonCodeId = $request->commonCode_id;
+        $addonItems = $request->addonItems;
+
+        
+        $groupedItems = [];
+        foreach ($addonItems as $item) {
+            $categoryId = $item['category'];
+            $groupedItems[$categoryId][] = $item['title'];
+        }
+
+        
+        $addonItemsJson = json_encode($groupedItems);
+
+       
+        $inventorySetting = InventorySettings::find($commonCodeId);
+
+        
+        $inventorySetting->addondetails = $addonItemsJson;
+        $inventorySetting->save();
+
+        return response()->json(['success' => 'Addon items saved successfully']);
     }
+
 
     /**
      * Show the form for editing the specified resource.
@@ -175,7 +196,7 @@ class InventorySettingsController extends Controller
     public function inventorysettingStore(Request $request)
     {
 
-     
+
 
         // if ($request->unit_status == 0) {
         // }
@@ -186,16 +207,16 @@ class InventorySettingsController extends Controller
 
         $data = InventorySettingDetails::where('status', '=', '0')
             ->where('commonCode_id', '=', $request->commonCode_id)
-            ->where('altUnits', '=',  $request->Alunits)
+            ->where('altUnits', '=', $request->Alunits)
             ->first();
 
         if ($data != null) {
-            // user doesn't exist
+
 
             return redirect()->back()->with('itemAlreadyExist', 'This unit is already exist.');
         } else {
 
-            $itemsettings = new  InventorySettingDetails();
+            $itemsettings = new InventorySettingDetails();
             $itemsettings->unitStatus = $request->unit_status;
             $itemsettings->altUnits = $request->Alunits;
             $itemsettings->whereQty = $request->whereQty;
@@ -214,14 +235,14 @@ class InventorySettingsController extends Controller
     public function stockin(InventorySettings $inventorySettings)
     {
         $itemsdummy = \DB::select("select * from inventory_settings inner join dummies on inventory_settings.id=dummies.item_id order by dummies.id desc");
-        return view('backend.inventory.stockin',compact('itemsdummy'));
+        return view('backend.inventory.stockin', compact('itemsdummy'));
     }
 
     public function stockout(InventorySettings $inventorySettings)
     {
         $itemsdummy = \DB::select("select * from inventory_settings inner join dummy_seconds on inventory_settings.id=dummy_seconds.item_id order by dummy_seconds.id desc");
-       
-        return view('backend.inventory.stockout',compact('itemsdummy'));
+
+        return view('backend.inventory.stockout', compact('itemsdummy'));
     }
 
     public function searchforstockitem(Request $request)

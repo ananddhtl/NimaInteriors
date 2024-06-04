@@ -1,12 +1,11 @@
 @extends('welcome')
-@section('title','login :: Nimainteriors.com')
+@section('title', 'login :: Nimainteriors.com')
 
 @section('content')
 
-<section class="bg-white">
-    <div class="container container-product productlisting">
-        <div class="coloumns row d-flex ">
-            <div class="c1 filter col-lg-3 col-md-3">
+    <section class="productlisting">
+        <div class="listing-flex">
+            <div class="c1 filter">
                 <div class="r1">
                     <div class="title">
                         <strong>
@@ -15,205 +14,204 @@
                     </div>
                     <hr>
                     <div class="category">
-                        <span class="title">Category</span>
-                        <ul>
-                            @foreach($category as $item)
-                            <li class="item-category-list">
-                                <input type="checkbox" name="category" id="category-check">
-                                <span class="item-category"> {{$item->groupName}}</span>
-                                <span class="catagory-count">(12)</span>
-                            </li>
-                            @endforeach
-                            {{-- <li class="item-category-list">
-                                <input type="checkbox" name="category" id="category-check">
-                                <span class="item-category"> Category 4</span>
-                                <span class="catagory-count">(12)</span>
-                            </li>
-                            <li class="item-category-list">
-                                <input type="checkbox" name="category" id="category-check">
-                                <span class="item-category"> Category 5</span>
-                                <span class="catagory-count">(12)</span>
-                            </li> --}}
+                        <span class="title">All Categories</span>
+                        <ul class="categories-lists">
+                            <a href="" class="product-active">
+                                <li><i class="fa-solid fa-chevron-right"></i> Furniture</li>
+                            </a>
+                            <a href="">
+                                <li><i class="fa-solid fa-chevron-right"></i> Table</li>
+                            </a>
+                            <a href="">
+                                <li><i class="fa-solid fa-chevron-right"></i> Cupboard</li>
+                            </a>
+                            <a href="">
+                                <li><i class="fa-solid fa-chevron-right"></i> Daraz</li>
+                            </a>
+                            <a href="">
+                                <li><i class="fa-solid fa-chevron-right"></i> Category 1</li>
+                            </a>
                         </ul>
                     </div>
-                    <div class="category">
-                        <span class="title">Sub Category</span>
-                        <ul> @foreach($subcategory as $item)
-                            <li class="item-category-list">
-                                <input type="checkbox" name="category" id="category-check">
-                                <span class="item-category"> {{$item->groupName}}</span>
-                                <span class="catagory-count">(12)</span>
-                            </li>
-                            @endforeach
-                           
-                            {{-- <li class="item-category-list">
-                                <input type="checkbox" name="category" id="category-check">
-                                <span class="item-category"> Category 4</span>
-                                <span class="catagory-count">(12)</span>
-                            </li>
-                            <li class="item-category-list">
-                                <input type="checkbox" name="category" id="category-check">
-                                <span class="item-category"> Category 5</span>
-                                <span class="catagory-count">(12)</span>
-                            </li> --}}
-                        </ul>
-                    </div>
-                    <div class="category">
-                        <span class="title">Brand</span>
-                        <ul>
-                            @foreach($brand as $item)
-                            <li class="item-category-list">
-                                <input type="checkbox" name="category" id="category-check">
-                                <span class="item-category">{{$item->companyName}}</span>
-                                <span class="catagory-count">(12)</span>
-                            </li>
-                            @endforeach
-                           
-                            {{-- <li class="item-category-list">
-                                <input type="checkbox" name="category" id="category-check">
-                                <span class="item-category"> Category 4</span>
-                                <span class="catagory-count">(12)</span>
-                            </li>
-                            <li class="item-category-list">
-                                <input type="checkbox" name="category" id="category-check">
-                                <span class="item-category"> Category 5</span>
-                                <span class="catagory-count">(12)</span>
-                            </li> --}}
-                        </ul>
-                    </div>
-                    
-                    <!-- manufacturer -->
-                    
-                    <hr>
-    
-                    <!-- colours -->
-                    <div class="color">
-                        <span class="title">Color</span>
-                        <ul>
-                            <li class="color-list"><a href="#">
-                                    <div class="red"></div>
-                                    <span class="color-name">Red</span>
-                                    <span class="count">(12)</span>
-                                </a></li>
-                                <li class="color-list"><a href="#">
-                                    <div class="yellow"></div>
-                                    <span class="color-name">yellow</span>
-                                    <span class="count">(12)</span>
-                                </a></li>
-                                <li class="color-list"><a href="#">
-                                    <div class="green"></div>
-                                    <span class="color-name">green</span>
-                                    <span class="count">(12)</span>
-                                </a></li>
-                                <li class="color-list"><a href="#">
-                                    <div class="blue"></div>
-                                    <span class="color-name">blue</span>
-                                    <span class="count">(12)</span>
-                                </a></li>
-                        </ul>
-                    </div>
-                </div>
-                <br>
-                <!-- ad loads here -->
-                <div class="r2 ad">
-                    <img src="assets/images/photos/welcome/4.jpg" alt="no ad">
-                </div>
-                <br>
-                <!-- items get recomended -->
-                <div class="recomend">
-                    <div class="recomended">
-                        <span class="title">Recommended </span>
-                    </div>
-                    <hr>
-                    <!-- 1 -->
-                    <div class="recomend-card">
-                        <div class="recomend-img">
-                            <img src="https://shorturl.at/7EwWp" alt="1">
-                        </div>
-                        <div class="recomend-data">
-                            <ul>
-                                <li class="recomend-data-list"><a href="#" class="recomend-data-link">
-                                    <span class="recomend-data-text">ProductName</span></a><br>
-                                    <span class="recomend-data-Price">$100</span>
-                                </li>
-                                <!-- <li class="recomend-data-list"></li> -->
-                                <li class="recomend-data-list"><a href="#" class="recomend-data-link"><i class="fa-solid fa-cart-shopping"></i> <span class="recomend-data-text">Add to cart</span></a></li>
-                            </ul>
-                        </div>
-                    </div>
-    
-    
-                </div>
-            </div>
-    
-            <!-- second coloumn -->
-    
-            <div class="c2 product col-lg-9 col-md-9.">
-                <div class="hero r2">
-                    <!-- Hero -->
-                    <!-- please change this img link this one is from a stock image website -->
-                    <img src="{{ asset('frontend/assets/images/photos/project/project_cover1.jpeg') }}"
-                        alt="">
-                </div>
-               
-                <hr>
-                <!-- number 123 to be changed from backend -->
-                <!-- page counter 1 -->
-               
-                <!-- actual cards for items are to be fetch here -->
-    
-                <div class="layout r5">
-                    @foreach($itemsdetails as $item)
-                    <div class="card-item product-item  col-lg-3 col-md-4 col-sm-4 col-xs-6 col-phone-12">
-                        <div class="image-container img-b">
-                            <a href=""><img src="{{$item->thumbnail}}" alt="Modular Modern Chair"></a>
-                            <div class="action-bot">
-                                <div class="overlay">
-                                    <button class="add-to-cart">ADD TO CART</button>
+                    <!-- <hr> -->
+                    <!-- <div class="price">
+                            <span class="title">price</span>
+                            <br>
+                            <span id="minValue" class="amount">250</span>
+                            <span id="maxValue" class="amount">750</span>
+                            <button class="price-filter-btn">Filter</button>
+                         
+                            <div class="slider-container">
+                                <div class="range-slider">
+                                    <input type="range" id="minPrice" min="0" max="9999" value="1234"
+                                        oninput="updateSlider()">
+                                    <input type="range" id="maxPrice" min="0" max="9999" value="7500"
+                                        oninput="updateSlider()">
                                 </div>
-                    
-                                 <div class="image-container">
-                                    <div class="icons">
-                                        <a title="Add to Wishlist" class="icon"><i class="fa fa-heart"></i></a>
-                                        <a  title="Add to compare" class="icon"><i class="fa fa-random"></i></a>
-                                        <a title="Quick view"  class="icon"><i class="fa fa-eye"></i></a>
-                                    </div>
+                                <div class="range-values">
                                 </div>
                             </div>
-                            
-                            
+
+
+                      
+
+                            <script>
+                                function updateSlider() {
+                                    let minPrice = document.getElementById('minPrice');
+                                    let maxPrice = document.getElementById('maxPrice');
+                                    let minValue = parseInt(minPrice.value);
+                                    let maxValue = parseInt(maxPrice.value);
+
+                                    if (minValue > maxValue - 10) {
+                                        if (event.target.id === "minPrice") {
+                                            minPrice.value = maxValue - 10;
+                                            minValue = maxValue - 10;
+                                        } else {
+                                            maxPrice.value = minValue + 10;
+                                            maxValue = minValue + 10;
+                                        }
+                                    }
+
+                                    document.getElementById('minValue').textContent = minValue;
+                                    document.getElementById('maxValue').textContent = maxValue;
+                                }
+
+                                updateSlider();
+                            </script>
+
+                        </div> -->
+                    <!-- <hr> -->
+                    <!-- manufacturer -->
+                    <!-- <div class="manufacture">
+                            <span class="title">Manufacturer</span>
+                            <ul>
+                                <li class="manufacturer-list">
+                                    <input type="checkbox" name="Manufacturer" id="Manufacturer">
+                                    <span class="manufacturer-name"> Manufacturer 1</span>
+                                    <span class="manufacturer-list-count">(12)</span>
+                                </li>
+                                <li class="manufacturer-list">
+                                    <input type="checkbox" name="Manufacturer" id="Manufacturer">
+                                    <span class="manufacturer-name"> Manufacturer 2</span>
+                                    <span class="manufacturer-list-count">(12)</span>
+                                </li>
+                                <li class="manufacturer-list">
+                                    <input type="checkbox" name="Manufacturer" id="Manufacturer">
+                                    <span class="manufacturer-name"> Manufacturer 3</span>
+                                    <span class="manufacturer-list-count">(12)</span>
+                                </li>
+                                <li class="manufacturer-list">
+                                    <input type="checkbox" name="Manufacturer" id="Manufacturer">
+                                    <span class="manufacturer-name"> Manufacturer 4</span>
+                                    <span class="manufacturer-list-count">(12)</span>
+                                </li>
+                                <li class="manufacturer-list">
+                                    <input type="checkbox" name="Manufacturer" id="Manufacturer">
+                                    <span class="manufacturer-name"> Manufacturer 5 </span>
+                                    <span class="manufacturer-list-count">(12)</span>
+                                </li>
+                            </ul>
                         </div>
-                       
-                        <div class="details">
-                            <h2 class="product-name">{{$item->itemName}}</h2>
-                            <p class="price">$540.00 <span class="original-price">{{$item->sellRate}}</span></p>
-                            
-                        </div>
+                        <hr> -->
+
+                    <!-- colours -->
+
+                </div>
+                <br>
+
+
+            </div>
+
+            <!-- second coloumn -->
+
+            <div class="c2 product">
+
+                <div class="searh-results">
+                    <div class="results-box">
+                        <p>Search Reasult For <span>: Furniture</span></p>
                     </div>
+                    <div class="sort-by">
+                        <select>
+                            <option value="0">Default</option>
+                            <option value="1">All Categories</option>
+                            <option value="2">Brand</option>
+                        </select>
+                        <select>
+                            <option value="0">Show 10</option>
+                            <option value="1">Show All</option>
+                            <option value="2">Show 20</option>
+                        </select>
+                    </div>
+                </div>
+                <hr>
+                <div class="layout r5">
+                    @foreach ($itemsdetails as $item)
+                        <a href="{{route('productdesc',['id', $item->id])}}">
+                            <div class="card">
+                                <div class="image-container">
+                                    <img src="{{ $item->thumbnail }}" alt="Modular Modern Chair">
+
+                                    <div class="coupen-product discount-card">
+                                        <p>{{ isset($item->discountPercent) ? $item->discountPercent . '% Off' : '0% Off' }}
+                                        </p>
+
+                                    </div>
+                                    <div class="action-box">
+                                        <div class="add-to-cart">
+                                            <a href="">
+                                                <p>Add To Cart</p>
+                                            </a>
+                                        </div>
+                                        <div class="overlay-buttons">
+                                            <div class="overlay-box">
+                                                <a href=""> <i class="fa fa-heart"></i></a>
+                                            </div>
+                                            <div class="overlay-box">
+                                                <a href=""> <i class="fa fa-random"></i></a>
+                                            </div>
+                                            <div class="overlay-box">
+                                                <a href=""> <i class="fa fa-eye"></i></a>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="details">
+                                    <h2 class="product-name">{{ $item->itemName }}</h2>
+                                    <p class="price">${{$item->sellRate}} <span class="original-price">${{$item->mrp}}</span></p>
+
+                                </div>
+                            </div>
+                        </a>
                     @endforeach
 
-                    
-    
                 </div>
-    
+
                 <!-- page counter 2 -->
                 <hr>
-                <div class="page">
-                    <div class="c1">123 item(s)</div>
-                    <ul class="c2">
-                        <li class="topic">Pages: </li>
-                        <li class="page-list"><a href="#" class="page-num">1</a></li>
-                        <li class="page-list"><a href="#" class="page-num">2</a></li>
-                        <li class="page-list"><a href="#" class="page-num">3</a></li>
-                        <li class="page-list"><a href="#" class="page-num">></a></li>
-                    </ul>
+                <div class="pagination-pages">
+                    <div class="pag-box">
+                        <div class="pagination">
+                            <a href="#">&laquo;</a>
+                            <a href="#">1</a>
+                            <a href="#" class="active">2</a>
+                            <a href="#">3</a>
+                            <a href="#">4</a>
+                            <a href="#">5</a>
+                            <a href="#">6</a>
+                            <a href="#">&raquo;</a>
+                        </div>
+                    </div>
+                    <div class="total-items">
+                        <p>120 item(s)</p>
+                    </div>
+
                 </div>
-                
+
             </div>
         </div>
-    </div>
-   
-</section>
+    </section>
 @endsection
 <!-- /container -->
 
@@ -222,28 +220,28 @@
 <script src="js/common_func.js"></script>
 
 
-    <!-- slider script -->
+<!-- slider script -->
 
-    <script>
-        function updateSlider() {
-            let minPrice = document.getElementById('minPrice');
-            let maxPrice = document.getElementById('maxPrice');
-            let minValue = parseInt(minPrice.value);
-            let maxValue = parseInt(maxPrice.value);
+<script>
+    function updateSlider() {
+        let minPrice = document.getElementById('minPrice');
+        let maxPrice = document.getElementById('maxPrice');
+        let minValue = parseInt(minPrice.value);
+        let maxValue = parseInt(maxPrice.value);
 
-            if (minValue > maxValue - 10) {
-                if (event.target.id === "minPrice") {
-                    minPrice.value = maxValue - 10;
-                    minValue = maxValue - 10;
-                } else {
-                    maxPrice.value = minValue + 10;
-                    maxValue = minValue + 10;
-                }
+        if (minValue > maxValue - 10) {
+            if (event.target.id === "minPrice") {
+                minPrice.value = maxValue - 10;
+                minValue = maxValue - 10;
+            } else {
+                maxPrice.value = minValue + 10;
+                maxValue = minValue + 10;
             }
-
-            document.getElementById('minValue').textContent = minValue;
-            document.getElementById('maxValue').textContent = maxValue;
         }
 
-        updateSlider();
-    </script>
+        document.getElementById('minValue').textContent = minValue;
+        document.getElementById('maxValue').textContent = maxValue;
+    }
+
+    updateSlider();
+</script>

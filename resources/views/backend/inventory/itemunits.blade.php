@@ -175,8 +175,7 @@
                             <div class="row">
                                 <div class="col-12">
                                     <div class="p-2">
-                                        <form action="{{ route('admin.storeitemssettingdetails') }}"
-                                            class="form-horizontal" role="form" method="POST"
+                                        <form id="addonForm" class="form-horizontal" role="form" method="POST"
                                             enctype="multipart/form-data">
                                             @csrf
                                             <input autocomplete="off" type="hidden" class="form-control"
@@ -198,26 +197,18 @@
                                                 <label class="col-md-2 col-form-label">Select the Addon Item</label>
                                                 <div class="col-md-10">
                                                     <select id="addonItemsSelect" name="addon_item_id"
-                                                        class="form-control">
-
-                                                    </select>
+                                                        class="form-control"></select>
                                                 </div>
                                             </div>
-                                            
 
+                                            <button type="button" class="btn btn-primary" id="addButton">Add</button>
+                                            <button type="button" class="btn btn-success"
+                                                id="submitFormButton">Submit</button>
 
-                                            <button type="button" class="btn btn-primary" onclick="addItem()" id="addButton">Add</button>
-
-
-
-                                            <div id="selectedAddonItems">
-                                            </div>
-
+                                            <div id="selectedAddonItems"></div>
                                         </form>
-
                                     </div>
                                 </div>
-
                             </div>
                             <!-- end row -->
                         </div>
@@ -231,31 +222,29 @@
                             <div class="row">
                                 <div class="col-12">
                                     <div class="p-2">
-                                        <form action="{{ route('admin.storeitemsimage') }}"
-                                            class="form-horizontal" role="form" method="POST"
-                                            enctype="multipart/form-data">
+                                        <form action="{{ route('admin.storeitemsimage') }}" class="form-horizontal"
+                                            role="form" method="POST" enctype="multipart/form-data">
                                             @csrf
                                             <input autocomplete="off" type="hidden" class="form-control"
                                                 name="commonCode_id" value="{{ @$itemsdetail->id }}"
                                                 placeholder="UnitsStatus">
-                                            
-                                            
-                                                <div class="mb-2 row">
-                                                    <label class="col-md-2 col-form-label" for="simpleinput">
-                                                        Product Images</label>
-                                                    <div class="col-md-10">
-                                                        <input autocomplete="off" type="file" class="form-control"
-                                                            name="images[]" placeholder="Items Details"
-                                                             multiple>
-                                                    </div>
+
+
+                                            <div class="mb-2 row">
+                                                <label class="col-md-2 col-form-label" for="simpleinput">
+                                                    Product Images</label>
+                                                <div class="col-md-10">
+                                                    <input autocomplete="off" type="file" class="form-control"
+                                                        name="images[]" placeholder="Items Details" multiple>
                                                 </div>
+                                            </div>
 
 
-                                            <button type="submit" class="btn btn-primary" >Submit</button>
+                                            <button type="submit" class="btn btn-primary">Submit</button>
 
 
 
-                                            
+
 
                                         </form>
 
@@ -270,7 +259,7 @@
             </div>
 
 
-            
+
 
 
 
@@ -282,96 +271,141 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         $(document).ready(function() {
+            var selectedItems = []; // Array to store selected items
+
+            $('#addonCategorySelect').change(function() {
+                var selectedCategoryId = $(this).val();
+                var selectedCategoryText = $(this).find('option:selected').text();
+
+                $.ajax({
+                    url: '{{ route('admin.getaddonitems') }}',
+                    method: 'GET',
+                    data: {
+                        category_id: selectedCategoryId
+                    },
+                    success: function(response) {
+                        var $addonItemsSelect = $('#addonItemsSelect');
+                        $addonItemsSelect.empty();
+
+                        $.each(response, function(key, item) {
+                            var displayText = item.title;
+                            if (item.price !== null) {
+                                displayText += ' - $' + item.price;
+                            } else {
+                                displayText += ' - $0';
+                            }
+                            $addonItemsSelect.append('<option value="' + item.id +
+                                '" data-category="' + selectedCategoryText + '">' +
+                                displayText + '</option>');
+                        });
+                    },
+                    error: function(xhr, status, error) {
+                        console.error('Error fetching addon items:', error);
+                    }
+                });
+            });
+
+            $('#addButton').click(function() {
+                var selectedOption = $('#addonItemsSelect').find('option:selected');
+                var selectedItemId = selectedOption.val();
+                var selectedItemText = selectedOption.text();
+                var selectedCategory = selectedOption.data('category');
+                var selectedPrice = selectedItemText.split('- $')[1];
+
+                if (!selectedPrice) {
+                    selectedPrice = "0";
+                }
+
+                // Push selected item to the array
+                selectedItems.push({
+                    id: selectedItemId,
+                    title: selectedItemText,
+                    category: selectedCategory,
+                    price: selectedPrice
+                });
+
+                // Display selected items in the div
+                displaySelectedItems();
+            });
+
+            // Function to display selected items in the div
+            function displaySelectedItems() {
+                var $selectedAddonItems = $('#selectedAddonItems');
+                $selectedAddonItems.empty();
+
+                // Loop through selected items array and display them in the div
+                selectedItems.forEach(function(item, index) {
+                    $selectedAddonItems.append('<div>' + item.title + ' (' + item.category + ')' +
+                        ' - $<input type="text" class="price-input" value="' + item.price +
+                        '" data-index="' + index + '"><button class="delete-btn" data-id="' + item.id +
+                        '">Delete</button></div>');
+                });
+            }
+
+            // Event delegation for dynamically added delete buttons
+            $(document).on('click', '.delete-btn', function() {
+                var itemId = $(this).data('id');
+                // Remove the selected item from the array
+                selectedItems = selectedItems.filter(function(item) {
+                    return item.id != itemId;
+                });
+                // Display updated list of selected items
+                displaySelectedItems();
+            });
+
+            // Event handler for form submission via AJAX
+            $('#submitFormButton').click(function() {
+                // Collect form data
+                var formData = {
+                    commonCode_id: $('input[name="commonCode_id"]').val(),
+                    itemName: $('input[name="itemName"]').val(),
+                    itemgroup_id: $('input[name="itemgroup_id"]').val(),
+                    company_id: $('select[name="company_id"]').val(),
+                    units: $('input[name="units"]').val(),
+                    addonItems: selectedItems
+                };
+
+                // Send the data via AJAX
+                $.ajax({
+                    url: '{{ route('admin.storeaddonitems') }}',
+                    method: 'POST',
+                    data: JSON.stringify(formData),
+                    contentType: 'application/json',
+                    headers: {
+                        'X-CSRF-TOKEN': $('input[name="_token"]').val()
+                    },
+                    success: function(response) {
+                        alert('Data submitted successfully!');
+                        // Clear selected items
+                        selectedItems = [];
+                        
+                        if ($('#addonItemsSelect option:selected').length === 1) {
+                            $('#addonItemsSelect').val('');
+                        }
+                        // Update displayed selected items
+                        displaySelectedItems();
+                    },
+                    error: function(xhr, status, error) {
+                        console.error('Error submitting form:', error);
+                    }
+                });
+            });
+
+            $(document).on('input', '.price-input', function() {
+                var index = $(this).data('index');
+                var newPrice = $(this).val();
+                selectedItems[index].price = newPrice;
+            });
+        });
+    </script>
+
+
+    <script>
+        $(document).ready(function() {
             $('form').submit(function() {
                 var quillContent = $('.ql-editor').html();
                 $('#description-input').val(quillContent);
             });
         });
     </script>
-<script>
-    $(document).ready(function() {
-        var selectedItems = []; // Array to store selected items
-
-        $('#addonCategorySelect').change(function() {
-            var selectedCategoryId = $(this).val();
-
-            $.ajax({
-                url: '{{ route('admin.getaddonitems') }}',
-                method: 'GET',
-                data: {
-                    category_id: selectedCategoryId
-                },
-                success: function(response) {
-                    var $addonItemsSelect = $('#addonItemsSelect');
-                    $addonItemsSelect.empty();
-
-                    $.each(response, function(key, item) {
-                        var displayText = item.title;
-                        if (item.price !== null) {
-                            displayText += ' - $' + item.price;
-                        }
-                        $addonItemsSelect.append('<option value="' + item.id +
-                            '">' + displayText + '</option>');
-                    });
-                },
-                error: function(xhr, status, error) {
-                    console.error('Error fetching addon items:', error);
-                }
-            });
-        });
-
-        $('#addonItemsSelect').change(function() {
-            var selectedOption = $(this).find('option:selected');
-            var selectedItemId = selectedOption.val();
-            var selectedItemText = selectedOption.text();
-            var selectedPrice = selectedItemText.split('- $')[1]; 
-            
-            // Push selected item to the array
-            selectedItems.push({
-                id: selectedItemId,
-                title: selectedItemText,
-                price: selectedPrice
-            });
-
-            // Display selected items in the div
-            displaySelectedItems();
-        });
-
-        // Function to display selected items in the div
-        function displaySelectedItems() {
-            var $selectedAddonItems = $('#selectedAddonItems');
-            $selectedAddonItems.empty();
-            
-            // Loop through selected items array and display them in the div
-            selectedItems.forEach(function(item) {
-                $selectedAddonItems.append('<div>' + item.title +
-                    ' - $<input type="text" class="price-input" value="' + item.price +
-                    '"><button class="delete-btn" data-id="' + item.id + '">Delete</button></div>');
-            });
-        }
-
-        // Event delegation for dynamically added delete buttons
-        $(document).on('click', '.delete-btn', function() {
-            var itemId = $(this).data('id');
-            // Remove the selected item from the array
-            selectedItems = selectedItems.filter(function(item) {
-                return item.id != itemId;
-            });
-            // Display updated list of selected items
-            displaySelectedItems();
-        });
-
-        // Function to handle click event of "Add" button
-        function addItem() {
-            // Remove the selected options from both dropdowns
-            $('#addonCategorySelect').val('');
-            $('#addonItemsSelect').empty();
-
-            // Display selected items in the div
-            displaySelectedItems();
-        }
-    });
-</script>
-
-
 @endsection

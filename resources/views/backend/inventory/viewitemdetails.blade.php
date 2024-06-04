@@ -175,46 +175,10 @@
                             <div class="row">
                                 <div class="col-12">
                                     <div class="p-2">
-                                        <form action="{{ route('admin.storeitemssettingdetails') }}"
-                                            class="form-horizontal" role="form" method="POST"
-                                            enctype="multipart/form-data">
-                                            @csrf
-                                            <input autocomplete="off" type="hidden" class="form-control"
-                                                name="commonCode_id" value="{{ @$itemsdetail->id }}"
-                                                placeholder="UnitsStatus">
-                                            <div class="mb-2 row">
-                                                <label class="col-md-2 col-form-label">Select the Addon Category</label>
-                                                <div class="col-md-10">
-                                                    <select id="addonCategorySelect" name="company_id"
-                                                        class="form-control">
-                                                        @foreach ($addoncategory as $item)
-                                                            <option value="{{ $item->id }}">{{ $item->title }}
-                                                            </option>
-                                                        @endforeach
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class="mb-2 row">
-                                                <label class="col-md-2 col-form-label">Select the Addon Item</label>
-                                                <div class="col-md-10">
-                                                    <select id="addonItemsSelect" name="addon_item_id"
-                                                        class="form-control">
 
-                                                    </select>
-                                                </div>
-                                            </div>
-
-
-
-                                            <button type="button" class="btn btn-primary" onclick="addItem()"
-                                                id="addButton">Add</button>
-
-
-
-                                            <div id="selectedAddonItems">
-                                            </div>
-
-                                        </form>
+                                        <ul id="selectedAddonItems">
+                                            <!-- Added items will be displayed here -->
+                                        </ul>
 
                                     </div>
                                 </div>
@@ -281,6 +245,17 @@
                 $('#description-input').val(quillContent);
             });
         });
+
+        function displaySelectedItems() {
+            var $selectedAddonItems = $('#selectedAddonItems');
+            $selectedAddonItems.empty();
+
+            // Loop through selected items array and display them in the list
+            selectedItems.forEach(function(item) {
+                $selectedAddonItems.append('<li>' + item.title + ' (' + item.category + ')' + ' - $' + item.price +
+                    '</li>');
+            });
+        }
     </script>
     <script>
         $(document).ready(function() {

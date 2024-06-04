@@ -24,10 +24,10 @@
 					items: 1.5
 				},
 				600:{
-					items: 1.5
+					items: 2.5
 				},
 				1000:{
-					items: 1.75
+					items: 2.5
 				}
 			}
 		});
@@ -228,145 +228,6 @@
 			}
 		}
 	}
-	
-// hamburger menu function script
-document.addEventListener("DOMContentLoaded", function() {
-    // Get the current page URL
-    var currentUrl = window.location.pathname;
-
-    // Remove leading slash for comparison
-    currentUrl = currentUrl.replace(/^\/+|\/+$/g, '');
-
-    // Get all navigation links
-    var navLinks = document.querySelectorAll('.nav a');
-
-    // Loop through each navigation link
-    navLinks.forEach(function(link) {
-        // Get the href attribute value and remove leading slash for comparison
-        var href = link.getAttribute('href').replace(/^\/+|\/+$/g, '');
-
-        // Add the 'active' class to the link if its href matches the current page URL
-        if (href === currentUrl) {
-            link.classList.add('active');
-        }
-    });
-    var contactLink = document.getElementById('contact-link');
-        if (contactLink && currentUrl === 'contactus') {
-            contactLink.classList.add('active');
-        }
-});
-
-
-    // Get the elements
-    const wholeContainer = document.querySelector('.whole-container');
-    const containerShow = document.querySelector('.container-show');
-    const header = document.querySelector('.container-top-header');
-    const menuTrigger = document.querySelector('.menu-trigger');
-    function hideContainers() {
-        wholeContainer.style.display = 'none';
-        containerShow.style.display = 'none';
-    }
-
-    function showContainers() {
-        wholeContainer.style.display = 'block';
-
-        if (window.innerWidth < 992  ) {
-            containerShow.style.display = 'block';
-            wholeContainer.style.display = 'none';
-            
-        }
-        else{
-            containerShow.style.display = 'none';
-            wholeContainer.style.display = 'block';
-           
-        }
-    }
-   
-    function toggleContainers() {
-        if (window.scrollY > header.offsetHeight) {
-            hideContainers();
-            menuTrigger.classList.add('ham-menu-down');
-        } else {
-            showContainers();
-            
-            menuTrigger.classList.remove('ham-menu-down');
-        }
-    }
-
-    window.addEventListener('scroll', toggleContainers);
-    window.addEventListener('resize', toggleContainers);
-
-    // Initial call to set visibility based on initial scroll position
-    toggleContainers();
-
-	// langauge button function
-document.addEventListener('DOMContentLoaded', function() {
-    var langLinks = document.querySelectorAll('.language-link');
-
-    langLinks.forEach(function(link) {
-        link.addEventListener('click', function(e) {
-            e.preventDefault();
-            var lang = this.getAttribute('data-lang');
-            
-            // Remove 'selected' class from all links
-            langLinks.forEach(function(link) {
-                link.classList.remove('selected');
-            });
-
-            // Add 'selected' class to the clicked link
-            this.classList.add('selected');
-
-            // Update the language abbreviation in the span
-            var languageSpan = this.querySelector('span');
-            languageSpan.textContent = lang.toUpperCase();
-        });
-    });
-});
-
-// user account button function
-    document.addEventListener('DOMContentLoaded', function() {
-    var accountToggler = document.getElementById('account-toggler');
-    var accountDropdown = document.getElementById('account-dropdown');
-
-    accountToggler.addEventListener('click', function() {
-        accountDropdown.classList.toggle('show');
-    });
-});
-
-    document.addEventListener('DOMContentLoaded', function() {
-    var accountToggler = document.getElementById('account-toggler-m');
-    var accountDropdown = document.getElementById('account-dropdown-m');
-
-    accountToggler.addEventListener('click', function() {
-        accountDropdown.classList.toggle('show');
-    });
-});
-
-
-// search function start
-    document.addEventListener('DOMContentLoaded', function() {
-        var searchLink = document.getElementById('search-link');
-        var searchForm = document.getElementById('search-form');
-
-      
-
-        searchLink.addEventListener('click', function(event) {
-            event.preventDefault(); // Prevent the default link behavior
-
-            // Debugging: Log current display style
-            console.log('Current display style:', searchForm.style.display);
-
-            if (searchForm.style.display === 'none' || searchForm.style.display === '') {
-                searchForm.style.display = 'block';
-            } else {
-                searchForm.style.display = 'none';
-            }
-
-            // Debugging: Log new display style
-            console.log('New display style:', searchForm.style.display);
-        }, { passive: true });
-    });
 
 
 })(window.jQuery);
-

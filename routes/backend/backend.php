@@ -1,4 +1,3 @@
-
 <?php
 
 use Illuminate\Support\Facades\Route;
@@ -79,15 +78,36 @@ Route::prefix('admin')->middleware(['auth:admin'])->group(function () {
     Route::post('storebrand', [BrandController::class, 'store'])->name('admin.storebrand');
     Route::get('editbrand/{id}', [BrandController::class, 'edit'])->name('admin.editbrand');
     Route::get('deletebrand/{id}', [BrandController::class, 'destroy'])->name('admin.deletebrand');
-    
+
     Route::get('items', [InventorySettingsController::class, 'index'])->name('admin.items');
-    Route::get('/additemunitdetails/{id}', [InventorySettingsController::class, 'additemunitdetails']);
-    Route::get('/viewitemdetails/{id}', [InventorySettingsController::class, 'viewitemdetails']);
+
+   
+    Route::get(
+        '/additemunitdetails/{id}-{itemgroup_id}-{sub_groups_id}-{company_id}',
+        [InventorySettingsController::class, 'additemunitdetails']
+    )
+        ->name('admin.addunitdetails');
+
+   
+    Route::get(
+        '/viewitemdetails/{id}-{itemgroup_id}-{sub_groups_id}-{company_id}',
+        [InventorySettingsController::class, 'viewitemdetails']
+    )
+        ->name('admin.viewitemdetails');
+
+    
+    Route::get(
+        '/delete-itemsDetails/{id}',
+        [InventorySettingsController::class, 'deleteItemDetails']
+    )
+        ->name('admin.deleteitemdetails');
+
     Route::post('items', [InventorySettingsController::class, 'store'])->name('admin.storeitemssetting');
+    Route::post('storeitems', [InventorySettingsController::class, 'storeaddonitems'])->name('admin.storeaddonitems');
     Route::post('inventorysettingsdetails', [InventorySettingsController::class, 'inventorysettingStore'])->name('admin.storeitemssettingdetails');
     Route::get('searchsubgroup', [ItemSubGroupController::class, 'searchsubgroup'])->name('admin.searchsubgroup');
-   
-    
+
+
     Route::get('stockin', [InventorySettingsController::class, 'stockin'])->name('admin.stockin');
     Route::get('stockout', [InventorySettingsController::class, 'stockout'])->name('admin.stockout');
     Route::get('/searchforstockitem', [InventorySettingsController::class, 'searchforstockitem'])->name('admin.searchforstockitem');
@@ -99,7 +119,7 @@ Route::prefix('admin')->middleware(['auth:admin'])->group(function () {
     Route::get('stockin/save/{transactionDate}', [InventoriesController::class, 'store']);
     Route::get('stockout/save/{transactionDate}', [InventoriesController::class, 'saveOutStock']);
 
-    
+
     Route::get('/todaystockreport', [ReportController::class, 'todaytotalstock'])->name('admin.todaytotalstock');
     Route::get('/instockreport', [ReportController::class, 'instock'])->name('admin.instock');
     Route::get('/outstockreport', [ReportController::class, 'outstock'])->name('admin.outstock');
