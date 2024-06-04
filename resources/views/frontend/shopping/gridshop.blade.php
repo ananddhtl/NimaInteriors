@@ -146,7 +146,7 @@
                 <hr>
                 <div class="layout r5">
                     @foreach ($itemsdetails as $item)
-                        <a href="{{route('productdesc',['id'=> $item->id])}}">
+                        <a href="{{route('productdesc',['id'=> $item->item_id])}}">
                             <div class="card">
                                 <div class="image-container">
                                     <img src="{{ $item->thumbnail }}" alt="Modular Modern Chair">

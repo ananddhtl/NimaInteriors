@@ -79,7 +79,7 @@ class FrontendController extends Controller
         $itemsdetails = InventorySettings::join('inventory_setting_details', 'inventory_settings.id', '=', 'inventory_setting_details.commonCode_id')
             ->orderBy('inventory_settings.id', 'asc')
             ->where('inventory_settings.status', '0')
-            ->select('inventory_settings.*', 'inventory_setting_details.*')
+            ->select('inventory_settings.id as item_id','inventory_settings.*', 'inventory_setting_details.*')
             ->paginate(10);
 
         $category = ItemGroup::all();
@@ -110,7 +110,7 @@ class FrontendController extends Controller
        
         $productimages = ProductImages::where('product_id', $id)->get();
 
-        
+      
         if (!$itemsdetails) {
             return redirect()->back()->with('error', 'Product details not found.');
         }

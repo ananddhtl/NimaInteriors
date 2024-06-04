@@ -43,8 +43,8 @@ class InventorySettingsController extends Controller
             $request->validate([
                 'itemName' => 'required',
                 'itemgroup_id' => 'required',
-
-                'company_id' => 'required',
+                'itemDetails' => 'required',
+               
                 'units' => 'required',
                 'thumbnail' => 'image|mimes:jpeg,png,jpg,gif,webp|max:2048',
             ]);
@@ -95,43 +95,46 @@ class InventorySettingsController extends Controller
 
 
 
-    public function additemunitdetails($id, $itemgroup_id, $sub_groups_id, $company_id)
+    public function additemunitdetails($id)
     {
 
-        $brand = Brand::all();
-
-        $itemsgroupDetails = ItemGroup::findOrFail($itemgroup_id);
-
-        $itemssubgroupdetails = ItemSubGroup::findOrFail($sub_groups_id);
-
-        $itemscompanydetails = Brand::findOrFail($company_id);
-
         $itemsdetail = InventorySettings::findOrFail($id);
-
+    
+       
+        $itemsgroupDetails = ItemGroup::where('id', $itemsdetail->itemgroup_id)->first();
+       
+        $itemssubgroupdetails = ItemSubGroup::where('id', $itemsdetail->sub_groups_id)->first();
+        $itemscompanydetails = Brand::where('id', $itemsdetail->company_id)->first();
+    
+       
         $addoncategory = AddonCategory::get();
-
-        $itemsunitdetails = InventorySettingDetails::where('commonCode_id', '=', $id)
-            ->orderBy("id", "desc")
-            ->take(10)
-            ->get();
+        
+        $itemsunitdetails = InventorySettingDetails::where('commonCode_id', $id)->orderBy('id', 'desc')->first();
 
         return view('backend.inventory.itemunits', compact('itemsunitdetails', 'itemsdetail', 'itemsgroupDetails', 'itemssubgroupdetails', 'itemscompanydetails', 'addoncategory'));
     }
 
 
-    public function viewitemdetails($id, $itemgroup_id, $sub_groups_id, $company_id)
+    public function viewitemdetails(Request $request, $id)
     {
-        $brand = Brand::all();
-        $itemsgroupDetails = ItemGroup::findOrFail($itemgroup_id);
-        $itemssubgroupdetails = ItemSubGroup::findOrFail($sub_groups_id);
-        $itemscompanydetails = Brand::findOrFail($company_id);
+      
         $itemsdetail = InventorySettings::findOrFail($id);
+    
+       
+        $itemsgroupDetails = ItemGroup::where('id', $itemsdetail->itemgroup_id)->first();
+       
+        $itemssubgroupdetails = ItemSubGroup::where('id', $itemsdetail->sub_groups_id)->first();
+        $itemscompanydetails = Brand::where('id', $itemsdetail->company_id)->first();
+    
+       
         $addoncategory = AddonCategory::get();
         $productimages = ProductImages::where('product_id', $id)->get()->groupBy('product_id');
         $itemsunitdetails = InventorySettingDetails::where('commonCode_id', $id)->orderBy('id', 'desc')->first();
-
+    
+      
         return view('backend.inventory.viewitemdetails', compact('itemsunitdetails', 'itemsdetail', 'itemsgroupDetails', 'itemssubgroupdetails', 'itemscompanydetails', 'addoncategory', 'productimages'));
     }
+    
 
 
 
@@ -190,7 +193,7 @@ class InventorySettingsController extends Controller
      */
     public function destroy(InventorySettings $inventorySettings)
     {
-        //
+        
     }
 
     public function inventorysettingStore(Request $request)

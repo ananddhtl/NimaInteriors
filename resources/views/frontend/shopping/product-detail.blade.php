@@ -11,24 +11,11 @@
                     <div class="image-gallery-main">
                         <!-- big carousel -->
                         <div class="main-preview">
-                            <div class="preview-img">
-                                <img src="assets/images/photos/home/show2.jpeg" alt="1">
-                            </div>
-                            <div class="preview-img" style="display:none;">
-                                <img src="assets/images/photos/home/showroom1.jpeg" alt="2">
-                            </div>
-                            <div class="preview-img" style="display:none;">
-                                <img src="assets/images/photos/home-1/29200.jpg" alt="3">
-                            </div>
-                            <div class="preview-img" style="display:none;">
-                                <img src="assets/images/photos/home-1/30800.jpg" alt="3">
-                            </div>
-                            <div class="preview-img">
-                                <img src="assets/images/photos/home/show2.jpeg" alt="1">
-                            </div>
-                            <div class="preview-img" style="display:none;">
-                                <img src="assets/images/photos/home/showroom1.jpeg" alt="2">
-                            </div>
+                            @foreach ($productimages as $index => $image)
+                                <div class="preview-img" style="{{ $index === 0 ? '' : 'display:none;' }}">
+                                    <img src="{{ asset( $image->images) }}" alt="{{ $image->alt_text }}">
+                                </div>
+                            @endforeach
                         </div>
                         <!-- mini carousel -->
                         <div class="mini-preview">
@@ -37,29 +24,12 @@
                                     class="fa-solid fa-left-long"></i></button>
                             <!-- images for mini preview goes here -->
                             <div class="img-container">
-                                <div class="img-container-mini">
-                                    <img src="assets/images/photos/home/show2.jpeg" alt="1" class="mini-preview-img">
-                                </div>
-                                <div class="img-container-mini">
-                                    <img src="assets/images/photos/home/showroom1.jpeg" alt="2"
-                                        class="mini-preview-img">
-                                </div>
-                                <div class="img-container-mini">
-                                    <img src="assets/images/photos/home-1/29200.jpg" alt="3"
-                                        class="mini-preview-img">
-                                </div>
-                                <div class="img-container-mini">
-                                    <img src="assets/images/photos/home-1/30800.jpg" alt="3"
-                                        class="mini-preview-img">
-                                </div>
-                                <div class="img-container-mini">
-                                    <img src="assets/images/photos/home-1/30802.jpg" alt="3"
-                                        class="mini-preview-img">
-                                </div>
-                                <div class="img-container-mini">
-                                    <img src="assets/images/photos/home-1/30803.jpg" alt="3"
-                                        class="mini-preview-img">
-                                </div>
+                                @foreach ($productimages as $image)
+                                    <div class="img-container-mini">
+                                        <img src="{{ asset($image->images) }}" alt="{{ $image->alt_text }}"
+                                            class="mini-preview-img">
+                                    </div>
+                                @endforeach
                             </div>
                             <!-- next img btn -->
                             <button class="next btn btn-outline-dark right-btn"><i
@@ -73,8 +43,8 @@
                         <!-- name and price -->
                         <div class="product-title">
                             <a href="#" style="text-decoration: none; color: grey;">NIMA INTERIOR COLLECTIONS</a>
-                            <div class="product-name">Product Name</div>
-                            <div class="product-price">$100.00</div>
+                            <div class="product-name">{{$itemsdetails->itemName}}</div>
+                            <div class="product-price">${{$itemsdetails->sellRate}}</div>
                             <p class="available-stock">Availability: In Stock</p>
                         </div>
                         <hr>
@@ -155,7 +125,7 @@
                             </div>
                         </div>
                         <!-- <span class="delivery-text"><i class="fa-solid fa-stopwatch"></i> Home Delivery within 4-6
-                            weeks</span> -->
+                                    weeks</span> -->
 
                     </div>
                 </div>
@@ -350,3 +320,62 @@
         </div>
     </div>
 </div>
+
+<!-- custom script -->
+<script>
+    // script to show the wishlist
+    function showsidebar(className) {
+        document.getElementsByClassName(`${className}`)[0].style.display = "block";
+    }
+
+    // script to close sidebar
+    function close(className) {
+        document.getElementsByClassName(`${className}`)[0].style.display = "none";
+    }
+
+
+    // script to increment and decrement the quantity of item
+    function increment() {
+        var qtyElement = document.getElementsByClassName("qty-text")[0];
+        var qty = parseInt(qtyElement.innerHTML);
+        qty += 1;
+        qtyElement.innerHTML = qty;
+    }
+    function decrement() {
+        var qtyElement = document.getElementsByClassName("qty-text")[0];
+        var qty = parseInt(qtyElement.innerHTML);
+        qty -= 1;
+        // if qty is zero it stys zero
+        if (qty < 0) {
+            qty = 0;
+        }
+        qtyElement.innerHTML = qty;
+    }
+
+    // accordian script
+
+    var acc = document.getElementsByClassName("accordion-btn");
+    var extend = document.getElementsByClassName("accordion-extend");
+    var collapse = document.getElementsByClassName("accordion-collapse");
+
+    var i;
+
+    for (i = 0; i < acc.length; i++) {
+        acc[i].addEventListener("click", function () {
+            this.classList.toggle("active");
+
+            var panel = this.nextElementSibling;
+
+            if (panel.style.display === "block") {
+                panel.style.display = "none";
+                this.querySelector(".accordion-extend").style.display = "block";
+                this.querySelector(".accordion-collapse").style.display = "none";
+            } else {
+                panel.style.display = "block";
+                this.querySelector(".accordion-extend").style.display = "none";
+                this.querySelector(".accordion-collapse").style.display = "block";
+            }
+        });
+    }
+
+</script>

@@ -157,6 +157,9 @@
                                                 <div class="col-md-10">
                                                     <input type="text" name="itemName" id="simpleinput"
                                                         class="form-control" placeholder="Enter Item Name">
+                                                    @error('itemName')
+                                                        <p class="text-danger">{{ $message }}</p>
+                                                    @enderror
                                                 </div>
                                             </div>
                                             {{-- <div class="mb-2 row">
@@ -177,6 +180,9 @@
                                                 <div class="col-md-10">
                                                     <input type="text" name="itemDetails" id="simpleinput"
                                                         class="form-control" placeholder="Enter Item Details">
+                                                    @error('itemDetails')
+                                                        <p class="text-danger">{{ $message }}</p>
+                                                    @enderror
                                                 </div>
                                             </div>
                                             <div class="mb-2 row">
@@ -184,14 +190,18 @@
                                                 <div class="col-md-10">
                                                     <input autocomplete="off" type="hidden" class="form-control"
                                                         data-bs-toggle="modal" data-bs-target="#myModalForGroup"
-                                                        id="itemgroup_id" placeholder="Select Group" name="itemgroup_id"
+                                                        id="itemgroup_idval" placeholder="Select Group" name="itemgroup_id"
                                                         value="{{ @$itemsdetail->itemgroup_id }}" readonly>
 
                                                     <input autocomplete="off" type="text" class="form-control"
                                                         data-bs-toggle="modal" data-bs-target="#myModalForGroup"
                                                         id="groupName" placeholder="Select Group"
                                                         value="{{ @$itemsgroupDetails->groupName }}" readonly>
+                                                    @error('itemgroup_id')
+                                                        <p class="text-danger">{{ $message }}</p>
+                                                    @enderror
                                                 </div>
+
                                             </div>
                                             <div class="mb-2 row">
                                                 <label class="col-md-2 col-form-label" for="simpleinput">Sub Group</label>
@@ -207,7 +217,7 @@
                                                 </div>
 
                                             </div>
-                                            <div class="mb-2 row">
+                                            {{-- <div class="mb-2 row">
                                                 <label class="col-md-2 col-form-label">Select the Brand</label>
                                                 <div class="col-md-10">
                                                     <select name="company_id"class="form-control">
@@ -219,7 +229,7 @@
                                                     </select>
 
                                                 </div>
-                                            </div>
+                                            </div> --}}
 
                                             <div class="mb-2 row">
                                                 <label class="col-md-2 col-form-label" for="example-fileinput">Item
@@ -227,6 +237,9 @@
                                                 <div class="col-md-10">
                                                     <input type="file" name="thumbnail" class="form-control"
                                                         id="example-fileinput">
+                                                    @error('thumbnail')
+                                                        <p class="text-danger">{{ $message }}</p>
+                                                    @enderror
                                                 </div>
                                             </div>
                                             <div class="mb-2 row">
@@ -313,9 +326,9 @@
                                                     </div>
                                                 </th>
                                                 <td>
-                                                    <a href="{{ route('admin.addunitdetails', ['id' => $item->id, 'itemgroup_id' => $item->itemgroup_id, 'sub_groups_id' => $item->sub_groups_id, 'company_id' => $item->company_id]) }}"
+                                                    <a href="{{ route('admin.addunitdetails', ['id' => $item->id]) }}"
                                                         class="btn btn-info">Add Details</a>
-                                                    <a href="{{ route('admin.viewitemdetails', ['id' => $item->id, 'itemgroup_id' => $item->itemgroup_id, 'sub_groups_id' => $item->sub_groups_id, 'company_id' => $item->company_id]) }}"
+                                                    <a href="{{ route('admin.viewitemdetails', ['id' => $item->id]) }}"
                                                         class="btn btn-info">View</a>
                                                     <a href="{{ route('admin.deleteitemdetails', ['id' => $item->id]) }}"
                                                         class="btn btn-danger"
@@ -411,8 +424,8 @@
         }
 
         function putGroupNameAndGroupIdInTextField(groupId, groupName) {
-
-            $("#itemgroup_id").val(groupId);
+            
+            $("#itemgroup_idval").val(groupId);
             $("#groupName").val(groupName);
             $("#myModalForGroup").modal('hide');
         }

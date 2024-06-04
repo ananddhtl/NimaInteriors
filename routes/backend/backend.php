@@ -82,14 +82,14 @@ Route::prefix('admin')->middleware(['auth:admin'])->group(function () {
 
    
     Route::get(
-        '/additemunitdetails/{id}-{itemgroup_id}-{sub_groups_id}-{company_id}',
+        '/additemunitdetails/{id}',
         [InventorySettingsController::class, 'additemunitdetails']
     )
         ->name('admin.addunitdetails');
 
    
     Route::get(
-        '/viewitemdetails/{id}-{itemgroup_id}-{sub_groups_id}-{company_id}',
+        '/viewitemdetails/{id}',
         [InventorySettingsController::class, 'viewitemdetails']
     )
         ->name('admin.viewitemdetails');
