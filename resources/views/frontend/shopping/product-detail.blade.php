@@ -57,37 +57,9 @@
                         </div>
                         <hr>
                         <!-- toolbar -->
-                        <div class="tools-lvl-2 pt-2 pb-1">
-                            <h5 class="size-heading">- Size <span>(Select the ones you need *)</span> </h5>
-                            <div class="size-checkbox">
-                                <div class="check-box">
-                                    <input type="checkbox" id="size-m" name="size"
-                                        onchange="updateCheckboxes('size-m')">
-                                    <label for="size-m">M Size</label>
-                                </div>
-                                <div class="check-box">
-                                    <input type="checkbox" id="size-xl" name="size"
-                                        onchange="updateCheckboxes('size-xl')">
-                                    <label for="size-xl">XL Size</label>
-                                </div>
-                                <div class="check-box">
-                                    <input type="checkbox" id="size-x" name="size"
-                                        onchange="updateCheckboxes('size-x')">
-                                    <label for="size-x">X Size</label>
-                                </div>
-                            </div>
-                        </div>
+                       
 
-                        <script>
-                            function updateCheckboxes(checkedId) {
-                                var checkboxes = document.getElementsByName('size');
-                                for (var i = 0; i < checkboxes.length; i++) {
-                                    if (checkboxes[i].id !== checkedId) {
-                                        checkboxes[i].checked = false;
-                                    }
-                                }
-                            }
-                        </script>
+                        
                         <hr>
                         <div class="tools-lvl-1 pt-2 pb-1">
                             <h5>- Quick Overview</h5>

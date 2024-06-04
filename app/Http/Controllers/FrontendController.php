@@ -106,7 +106,7 @@ class FrontendController extends Controller
             ->where('inventory_settings.id', $id)
             ->select('inventory_settings.*', 'inventory_setting_details.*')
             ->first();
-
+dd($itemsdetails);
        
         $productimages = ProductImages::where('product_id', $id)->get();
 
